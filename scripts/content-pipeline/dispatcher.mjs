@@ -185,13 +185,27 @@ function deploy() {
   execFileSync("pm2", ["restart", PM2_PROCESS_NAME], { stdio: "inherit" });
 }
 
-function verifyLive(url) {
-  try {
-    const out = execFileSync("curl", ["-s", "-o", "/dev/null", "-w", "%{http_code}", url]).toString();
-    return out.trim() === "200";
-  } catch {
-    return false;
+function sleepSync(ms) {
+  execFileSync("node", ["-e", `setTimeout(()=>{}, ${ms})`], { stdio: "ignore" });
+}
+
+/**
+ * `pm2 restart` returns as soon as the restart is *initiated*, not once the
+ * new process is actually accepting connections again — checking the live
+ * URL immediately after can catch a brief gap and report a false failure.
+ * Retries with backoff before giving up.
+ */
+function verifyLive(url, attempts = 8, delayMs = 3000) {
+  for (let i = 0; i < attempts; i++) {
+    if (i > 0) sleepSync(delayMs);
+    try {
+      const out = execFileSync("curl", ["-s", "-o", "/dev/null", "-w", "%{http_code}", "--max-time", "10", url]).toString();
+      if (out.trim() === "200") return true;
+    } catch {
+      // connection refused / timeout while the process is still restarting — keep retrying
+    }
   }
+  return false;
 }
 
 function publishItem(item, manifest, state) {
