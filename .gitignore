@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# vinext font cache — bakes in this machine's absolute path, must regenerate per-environment
+/.vinext/
+
 # misc
 .DS_Store
 *.pem
