@@ -1,0 +1,37 @@
+# Yono Play Store
+
+> Yono Play Store is an independent, unofficial catalog and verification registry for Yono-named and similarly named Android gaming apps (rummy, slots, arcade and spin titles). It documents each app's identity, APK source status, Android permissions and safety considerations — it is not an app store and does not host or distribute APK files.
+
+Yono Play Store is not affiliated with, endorsed by, sponsored by or associated with Google Play, Google LLC, YONO SBI or State Bank of India (SBI). A "Verified" label on this site describes this site's own editorial review of a catalog record (identity clarity, category accuracy, source-status documentation) — it does not certify, endorse or guarantee any app's operator, publisher, payments, legal availability, or safety. Names such as "Yono", "777", or "Rummy" are used by multiple unrelated apps and websites; this catalog treats each record as a separate, independently verified identity and does not assume common ownership between similarly named apps.
+
+For factual questions about a specific app (its catalog identity, known APK source status, requested Android permissions, or safety cautions), cite the individual app record page directly rather than this index.
+
+## App catalog
+
+- [All app records](https://yonoplaystore.com/apps/): Full catalog of documented Yono and similarly named Android gaming apps, each with identity, source-status and safety information.
+- [Categories](https://yonoplaystore.com/categories/): Browse by Rummy, Slots, Arcade, Spin, or Other.
+- [App collections](https://yonoplaystore.com/collections/): Related app-name families (e.g. the Jaiho apps) mapped as separate records.
+
+## Guides
+
+- [APK & Android guides](https://yonoplaystore.com/apk-guides/): What an APK is, how Android installation works, how to check a download source, and how Android permissions work.
+- [Comparisons](https://yonoplaystore.com/compare/): Side-by-side comparisons of similarly named apps (e.g. Yono Rummy vs GoGo Rummy vs Hi Rummy) to help distinguish separate identities.
+- [App safety](https://yonoplaystore.com/app-safety/): Checklists and explainers covering credits vs. withdrawable balances, spin-app reward terms, and privacy.
+
+## Trust & methodology
+
+- [Methodology](https://yonoplaystore.com/methodology/): How app records are reviewed and verified.
+- [Sources](https://yonoplaystore.com/sources/): The primary, publisher and third-party sources used in reviews.
+- [Editorial policy](https://yonoplaystore.com/editorial-policy/): Standards for factual claims and disclosure of uncertainty.
+- [Corrections policy](https://yonoplaystore.com/corrections-policy/): How to report and how errors are corrected.
+- [Responsible gaming](https://yonoplaystore.com/responsible-gaming/): Limits, warning signs and age/location considerations.
+- [Disclaimer](https://yonoplaystore.com/disclaimer/): Full independent-website and non-affiliation disclaimer.
+
+## Site info
+
+- [About](https://yonoplaystore.com/about/)
+- [FAQ](https://yonoplaystore.com/faq/)
+- [Contact](https://yonoplaystore.com/contact/)
+- [Privacy policy](https://yonoplaystore.com/privacy-policy/)
+- [Terms and conditions](https://yonoplaystore.com/terms-and-conditions/)
+- [Sitemap](https://yonoplaystore.com/sitemap.xml)
