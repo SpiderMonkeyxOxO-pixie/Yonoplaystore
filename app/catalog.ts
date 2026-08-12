@@ -1,4 +1,6 @@
 import { appEditorial, type AppEditorial } from "./app-content";
+import { generatedAppArticles } from "./generated/app-articles.generated";
+import { generatedGuideIndexEntries } from "./generated/resource-articles.generated";
 
 export type StatusKind = "confirmed";
 export type AppCategory = "Rummy" | "Slots" | "Arcade" | "Spin" | "Other";
@@ -87,8 +89,9 @@ const appDownloadUrls: Partial<Record<string, string>> = {
 };
 
 function app(slug: string, name: string, category: AppCategory): AppRecord {
-  const editorial = appEditorial[slug];
-  if (!editorial) throw new Error(`Missing editorial profile for ${slug}`);
+  const baseEditorial = appEditorial[slug];
+  if (!baseEditorial) throw new Error(`Missing editorial profile for ${slug}`);
+  const editorial: AppEditorial = generatedAppArticles[slug] ? { ...baseEditorial, article: generatedAppArticles[slug] } : baseEditorial;
   const words = name.replace(/[^a-zA-Z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
   const mark = words.length === 1 ? words[0].slice(0, 2).toUpperCase() : words.map((word) => word[0]).join("").slice(0, 2).toUpperCase();
   return {
@@ -104,7 +107,7 @@ function app(slug: string, name: string, category: AppCategory): AppRecord {
     source: editorial.identityFocus,
     technical: editorial.apkFocus,
     downloadUrl: appDownloadUrls[slug],
-    reviewed: "Verified 12 August 2026",
+    reviewed: editorial.article?.dateModified ? `Verified ${editorial.article.dateModified}` : "Verified 12 August 2026",
     accent: categoryAccent[category],
     editorial,
   };
@@ -179,7 +182,7 @@ export const categories = [
   { name: "Other", slug: "other", code: "OTH", description: "App identities that do not yet fit a supported category." },
 ];
 
-export const guides = [
+const handAuthoredGuides = [
   {
     slug: "what-is-an-apk",
     number: "01",
@@ -209,6 +212,8 @@ export const guides = [
     read: "7 min",
   },
 ];
+
+export const guides = [...handAuthoredGuides, ...generatedGuideIndexEntries];
 
 export const safetyChecks = [
   ["01", "Check the app name", "Confirm that the name and identity match the app you intended to find."],

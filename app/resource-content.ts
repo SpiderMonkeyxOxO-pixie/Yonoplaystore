@@ -16,9 +16,16 @@ export type EditorialResource = {
   checklist: string[];
   faqs: [string, string][];
   relatedApps?: string[];
+  /** Full-size (1200x675) featured image, used for the page banner and OG/Twitter metadata. */
+  image?: string;
+  imageAlt?: string;
+  datePublished?: string;
+  dateModified?: string;
 };
 
-export const guideArticles: Record<string, EditorialResource> = {
+import { generatedGuideArticles, generatedComparisonUpdates } from "./generated/resource-articles.generated";
+
+const handAuthoredGuideArticles: Record<string, EditorialResource> = {
   "what-is-an-apk": {
     slug: "what-is-an-apk",
     code: "APK / 01",
@@ -191,12 +198,14 @@ export const guideArticles: Record<string, EditorialResource> = {
   },
 };
 
+export const guideArticles: Record<string, EditorialResource> = { ...handAuthoredGuideArticles, ...generatedGuideArticles };
+
 export type ComparisonResource = EditorialResource & {
   appSlugs: string[];
   identityNotes: Record<string, string>;
 };
 
-export const comparisonArticles: ComparisonResource[] = [
+const handAuthoredComparisonArticles: ComparisonResource[] = [
   {
     slug: "yono-rummy-vs-gogo-rummy-vs-hi-rummy",
     code: "CMP / 01",
@@ -264,6 +273,10 @@ export const comparisonArticles: ComparisonResource[] = [
     faqs: [["Are all 777 apps connected?", "No. The shared number alone does not establish an operator, package, account system or business relationship."], ["Is YN short for Yono?", "Do not assume an expansion. Use the publisher's own consistent documentation and technical identity."], ["Which URL should target “Yono 777”?", "The individual Yono 777 app record targets the entity query; this page targets users explicitly comparing the three names."]],
   },
 ];
+
+export const comparisonArticles: ComparisonResource[] = handAuthoredComparisonArticles.map((item) =>
+  generatedComparisonUpdates[item.slug] ? { ...item, ...generatedComparisonUpdates[item.slug] } : item
+);
 
 export const safetyArticles: EditorialResource[] = [
   {

@@ -1,5 +1,5 @@
 import { apps, categories, guides } from "./catalog";
-import { comparisonArticles, jaihoCollection, safetyArticles } from "./resource-content";
+import { comparisonArticles, guideArticles, jaihoCollection, safetyArticles } from "./resource-content";
 
 export const SITE_NAME = "Yono Play Store";
 export const SITE_URL = "https://yonoplaystore.com";
@@ -84,12 +84,13 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
   if (path.length === 2 && path[0] === "apps") {
     const app = apps.find((item) => item.slug === path[1]);
     if (!app) return null;
+    const article = app.editorial.article;
     return {
       title: app.editorial.seoTitle,
       description: app.editorial.seoDescription,
       canonicalPath: `/apps/${app.slug}/`,
-      image: app.image,
-      imageAlt: `${app.name} app icon`,
+      image: article?.image || app.image,
+      imageAlt: article?.imageAlt || `${app.name} app icon`,
     };
   }
 
@@ -120,11 +121,14 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
       "how-to-check-apk-source": "How to Check an APK Download Source",
       "android-app-permissions": "Android App Permissions Explained",
     };
+    const resource = guideArticles[guide.slug];
     return {
       title: titles[guide.slug] || guide.title,
       description: `${guide.summary} Read a practical, source-aware guide from the Yono Play Store editorial desk.`,
       canonicalPath: `/apk-guides/${guide.slug}/`,
       openGraphType: "article",
+      image: resource?.image,
+      imageAlt: resource?.imageAlt,
     };
   }
 
@@ -152,6 +156,8 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
       description: article.summary,
       canonicalPath: `/compare/${article.slug}/`,
       openGraphType: "article",
+      image: article.image,
+      imageAlt: article.imageAlt,
     };
   }
 

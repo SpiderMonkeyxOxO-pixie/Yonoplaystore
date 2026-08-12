@@ -346,11 +346,32 @@ const categoryEditorial: Record<AppRecord["category"], {
   },
 };
 
+function slugifyHeading(heading: string): string {
+  return heading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Renders editorial prose that may contain `**bold**` and `[text](/url/)` markdown
+ * as real HTML. Escapes HTML special characters first, so plain text (the vast
+ * majority of existing content) renders identically to before this was introduced.
+ */
+function mdInlineToHtml(text: string): string {
+  const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return escaped
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label: string, href: string) => `<a href="${href}">${label}</a>`)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
+function Prose({ text, className }: { text: string; className?: string }) {
+  return <p className={className} dangerouslySetInnerHTML={{ __html: mdInlineToHtml(text) }} />;
+}
+
 function AppDetail({ app }: { app: AppRecord }) {
   const profile = categoryEditorial[app.category];
   const related = apps.filter((candidate) => candidate.slug !== app.slug && candidate.category === app.category).slice(0, 4);
   const comparison = comparisonArticles.find((article) => article.appSlugs.includes(app.slug));
-  const appFaqs = [
+  const article = app.editorial.article;
+  const appFaqs: [string, string][] = article?.faqs ?? [
     [`What is ${app.name}?`, app.editorial.directAnswer],
     [`Is ${app.name} a verified catalog record?`, `Yes. This ${app.name} page has completed the catalog review for identity, category, record quality and visitor guidance. ${app.editorial.takeaway}`],
     [`Where can I download the ${app.name} APK?`, app.downloadUrl
@@ -359,10 +380,13 @@ function AppDetail({ app }: { app: AppRecord }) {
     [`What should I check before installing ${app.name}?`, app.editorial.apkFocus],
     [`What should I know about ${app.name} accounts and payments?`, `${app.editorial.accountFocus} ${app.editorial.paymentFocus}`],
   ];
+  const toc = article
+    ? [...article.sections.map((s) => [slugifyHeading(s.heading), s.heading] as [string, string]), ["faq", "FAQ"] as [string, string]]
+    : ([["overview", "Plain-language overview"], ["operator", "Operator & source"], ["apk", "APK & permissions"], ["privacy", "Login & privacy"], ["payments", "Payments & rewards"], ["legal", "Legal context"], ["warnings", "Warning signs"], ["faq", "FAQ"]] as [string, string][]);
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebPage", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#webpage`, url: absoluteUrl(`/apps/${app.slug}/`), name: app.editorial.seoTitle, description: app.editorial.seoDescription, isPartOf: { "@id": websiteId }, about: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#app` }, primaryImageOfPage: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image` }, inLanguage: "en-IN" },
+      { "@type": "WebPage", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#webpage`, url: absoluteUrl(`/apps/${app.slug}/`), name: app.editorial.seoTitle, description: app.editorial.seoDescription, isPartOf: { "@id": websiteId }, about: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#app` }, primaryImageOfPage: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image` }, inLanguage: "en-IN", ...(article ? { datePublished: article.datePublished, dateModified: article.dateModified } : {}) },
       { "@type": "SoftwareApplication", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#app`, name: app.name, applicationCategory: "GameApplication", operatingSystem: "Android", description: app.summary, image: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image` } },
       { "@type": "ImageObject", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image`, url: absoluteUrl(app.image), contentUrl: absoluteUrl(app.image), caption: `${app.name} app icon` },
       { "@type": "FAQPage", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#faq`, isPartOf: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#webpage` }, mainEntity: appFaqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
@@ -408,16 +432,24 @@ function AppDetail({ app }: { app: AppRecord }) {
           <article className="record-main">
             <div className="quick-answer">
               <span>DIRECT ANSWER</span>
-              <p>{app.editorial.directAnswer}</p>
-              <p>{app.editorial.localContext}</p>
+              <Prose text={article?.directAnswer ?? app.editorial.directAnswer} />
+              {!article && <p>{app.editorial.localContext}</p>}
             </div>
 
-            <section className="record-content-section record-content-section--overview" id="overview">
-              <span className="content-code">OVERVIEW / 00</span>
-              <h2>What is {app.name}?</h2>
-              <p>{app.summary}</p>
-              <p>This independent record brings the app name, catalog category, Android checks and user questions into one readable page. Facts that cannot be supported by a current source are left unclaimed rather than estimated.</p>
-            </section>
+            {article && (
+              <div className="record-featured-image">
+                <img src={article.image} alt={article.imageAlt} width="1200" height="675" loading="lazy" />
+              </div>
+            )}
+
+            {!article && (
+              <section className="record-content-section record-content-section--overview" id="overview">
+                <span className="content-code">OVERVIEW / 00</span>
+                <h2>What is {app.name}?</h2>
+                <p>{app.summary}</p>
+                <p>This independent record brings the app name, catalog category, Android checks and user questions into one readable page. Facts that cannot be supported by a current source are left unclaimed rather than estimated.</p>
+              </section>
+            )}
 
             <h2>App information</h2>
             <div className="fact-table">
@@ -452,61 +484,74 @@ function AppDetail({ app }: { app: AppRecord }) {
               </section>
             )}
 
-            <section className="record-content-section" id="operator">
-              <span className="content-code">CHECK / 01</span>
-              <h2>{app.name} operator and source checks</h2>
-              <p>{app.editorial.identityFocus}</p>
-              <p>For this {profile.label}, the most useful source trail connects the same operator name, domain, privacy policy, support address and Android identity. A polished page or social profile cannot replace that connection.</p>
-              <p>Before relying on a listing, compare the following details across its website, privacy policy, terms and support channels:</p>
-              <ul className="content-list"><li>Legal business or developer name</li><li>Physical business address and jurisdiction</li><li>Support email using the same domain</li><li>Privacy policy, terms and complaint route</li><li>Clear identification of who handles account and payment data</li></ul>
-              <p className="stop-note">Stop if important identity details are missing, contradictory or tied to unrelated domains.</p>
-            </section>
+            {article ? (
+              article.sections.map((section, index) => (
+                <section className="record-content-section" id={slugifyHeading(section.heading)} key={section.heading}>
+                  <span className="content-code">CHECK / {String(index + 1).padStart(2, "0")}</span>
+                  <h2>{section.heading}</h2>
+                  {section.paragraphs.map((paragraph) => <Prose text={paragraph} key={paragraph} />)}
+                  {section.bullets && <ul className="content-list">{section.bullets.map((item) => <li key={item} dangerouslySetInnerHTML={{ __html: mdInlineToHtml(item) }} />)}</ul>}
+                </section>
+              ))
+            ) : (
+              <>
+                <section className="record-content-section" id="operator">
+                  <span className="content-code">CHECK / 01</span>
+                  <h2>{app.name} operator and source checks</h2>
+                  <p>{app.editorial.identityFocus}</p>
+                  <p>For this {profile.label}, the most useful source trail connects the same operator name, domain, privacy policy, support address and Android identity. A polished page or social profile cannot replace that connection.</p>
+                  <p>Before relying on a listing, compare the following details across its website, privacy policy, terms and support channels:</p>
+                  <ul className="content-list"><li>Legal business or developer name</li><li>Physical business address and jurisdiction</li><li>Support email using the same domain</li><li>Privacy policy, terms and complaint route</li><li>Clear identification of who handles account and payment data</li></ul>
+                  <p className="stop-note">Stop if important identity details are missing, contradictory or tied to unrelated domains.</p>
+                </section>
 
-            <section className="record-content-section" id="apk">
-              <span className="content-code">CHECK / 02</span>
-              <h2>{app.name} APK, version and permission checks</h2>
-              <p>An APK is an Android installation file. Websites, shortened links, cloud folders and private messages can distribute APK files outside recognized app stores.</p>
-              <p>{app.editorial.apkFocus}</p>
-              <p>Before opening an unfamiliar APK, check:</p>
-              <ul className="content-list"><li>Whether the publisher identifies a real developer or business</li><li>Whether the website domain and support email match</li><li>Whether Android asks you to disable important device protections</li><li>Whether each permission fits the app’s stated purpose</li><li>Whether it requests contacts, SMS, accessibility, screen control or device administration without a clear reason</li></ul>
-              <div className="source-warning"><b>A scan is not proof of identity</b><p>A clean file scan may fail to detect a new threat and cannot establish who published the file, whether it was modified, or whether the service behind it is lawful.</p></div>
-            </section>
+                <section className="record-content-section" id="apk">
+                  <span className="content-code">CHECK / 02</span>
+                  <h2>{app.name} APK, version and permission checks</h2>
+                  <p>An APK is an Android installation file. Websites, shortened links, cloud folders and private messages can distribute APK files outside recognized app stores.</p>
+                  <p>{app.editorial.apkFocus}</p>
+                  <p>Before opening an unfamiliar APK, check:</p>
+                  <ul className="content-list"><li>Whether the publisher identifies a real developer or business</li><li>Whether the website domain and support email match</li><li>Whether Android asks you to disable important device protections</li><li>Whether each permission fits the app’s stated purpose</li><li>Whether it requests contacts, SMS, accessibility, screen control or device administration without a clear reason</li></ul>
+                  <div className="source-warning"><b>A scan is not proof of identity</b><p>A clean file scan may fail to detect a new threat and cannot establish who published the file, whether it was modified, or whether the service behind it is lawful.</p></div>
+                </section>
 
-            <section className="record-content-section" id="privacy">
-              <span className="content-code">CHECK / 03</span>
-              <h2>{app.name} login, OTP and privacy checks</h2>
-              <p>{app.editorial.accountFocus}</p>
-              <p>The policy should explain what data is collected, why it is needed, how long it is retained, whether it is shared, how correction or deletion can be requested, and where a complaint can be raised.</p>
-              <p className="stop-note">Never share an OTP, UPI PIN, card PIN, device lock code or remote access to your phone. A support message, caller ID or screenshot is not independent proof of identity.</p>
-            </section>
+                <section className="record-content-section" id="privacy">
+                  <span className="content-code">CHECK / 03</span>
+                  <h2>{app.name} login, OTP and privacy checks</h2>
+                  <p>{app.editorial.accountFocus}</p>
+                  <p>The policy should explain what data is collected, why it is needed, how long it is retained, whether it is shared, how correction or deletion can be requested, and where a complaint can be raised.</p>
+                  <p className="stop-note">Never share an OTP, UPI PIN, card PIN, device lock code or remote access to your phone. A support message, caller ID or screenshot is not independent proof of identity.</p>
+                </section>
 
-            <section className="record-content-section" id="payments">
-              <span className="content-code">CHECK / 04</span>
-              <h2>{app.name} payment, reward and withdrawal claims</h2>
-              <p>{app.editorial.paymentFocus}</p>
-              <p>For this {profile.label}, written terms should explain the {profile.mechanics}. The named payment recipient should also match the documented operator, and the terms should state refund limits, restrictions and the complaint process.</p>
-              <p>Do not make an additional payment merely because someone says it will release a balance, reward, account or pending withdrawal. If a transfer appears deceptive or unauthorized, preserve the URL, messages and transaction details, then contact the relevant bank or payment provider and an official cybercrime-reporting channel.</p>
-            </section>
+                <section className="record-content-section" id="payments">
+                  <span className="content-code">CHECK / 04</span>
+                  <h2>{app.name} payment, reward and withdrawal claims</h2>
+                  <p>{app.editorial.paymentFocus}</p>
+                  <p>For this {profile.label}, written terms should explain the {profile.mechanics}. The named payment recipient should also match the documented operator, and the terms should state refund limits, restrictions and the complaint process.</p>
+                  <p>Do not make an additional payment merely because someone says it will release a balance, reward, account or pending withdrawal. If a transfer appears deceptive or unauthorized, preserve the URL, messages and transaction details, then contact the relevant bank or payment provider and an official cybercrime-reporting channel.</p>
+                </section>
 
-            <section className="record-content-section" id="legal">
-              <span className="content-code">CHECK / 05</span>
-              <h2>{app.name} and the legal context</h2>
-              <p>{app.editorial.localContext}</p>
-              <p>Because those product-specific facts are not confirmed here, Yono Play Store does not classify {app.name} as lawful, licensed or prohibited. Users should consult current official guidance and obtain qualified advice when a legal determination matters.</p>
-            </section>
+                <section className="record-content-section" id="legal">
+                  <span className="content-code">CHECK / 05</span>
+                  <h2>{app.name} and the legal context</h2>
+                  <p>{app.editorial.localContext}</p>
+                  <p>Because those product-specific facts are not confirmed here, Yono Play Store does not classify {app.name} as lawful, licensed or prohibited. Users should consult current official guidance and obtain qualified advice when a legal determination matters.</p>
+                </section>
 
-            <section className="record-content-section" id="warnings">
-              <span className="content-code">CHECK / 06</span>
-              <h2>Warning signs that justify stopping</h2>
-              <p>Pause before installing, registering, sharing data or making a payment if:</p>
-              <ul className="warning-grid"><li>The website, support email and payment recipient do not match.</li><li>No identifiable operator or business address is shown.</li><li>An APK asks you to disable device protections.</li><li>Sensitive permissions are requested without a clear reason.</li><li>A message pressures you to act quickly or privately.</li><li>Someone asks for an OTP, UPI PIN or remote phone access.</li><li>Another payment is demanded to unlock money or an account.</li><li>No privacy policy, written terms or complaint route is available.</li></ul>
-            </section>
+                <section className="record-content-section" id="warnings">
+                  <span className="content-code">CHECK / 06</span>
+                  <h2>Warning signs that justify stopping</h2>
+                  <p>Pause before installing, registering, sharing data or making a payment if:</p>
+                  <ul className="warning-grid"><li>The website, support email and payment recipient do not match.</li><li>No identifiable operator or business address is shown.</li><li>An APK asks you to disable device protections.</li><li>Sensitive permissions are requested without a clear reason.</li><li>A message pressures you to act quickly or privately.</li><li>Someone asks for an OTP, UPI PIN or remote phone access.</li><li>Another payment is demanded to unlock money or an account.</li><li>No privacy policy, written terms or complaint route is available.</li></ul>
+                </section>
+              </>
+            )}
 
             <section className="record-content-section" id="faq">
               <span className="content-code">ANSWERS / 05</span>
               <h2>Frequently asked questions</h2>
               <div className="faq-list faq-list--record">
-                {appFaqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<i>+</i></summary><p>{answer}</p></details>)}
+                {appFaqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}
               </div>
             </section>
 
@@ -528,14 +573,7 @@ function AppDetail({ app }: { app: AppRecord }) {
             </div>
             <nav className="record-toc" aria-label="On this page">
               <b>ON THIS PAGE</b>
-              <a href="#overview"><span>00</span>Plain-language overview</a>
-              <a href="#operator"><span>01</span>Operator & source</a>
-              <a href="#apk"><span>02</span>APK & permissions</a>
-              <a href="#privacy"><span>03</span>Login & privacy</a>
-              <a href="#payments"><span>04</span>Payments & rewards</a>
-              <a href="#legal"><span>05</span>Legal context</a>
-              <a href="#warnings"><span>06</span>Warning signs</a>
-              <a href="#faq"><span>07</span>FAQ</a>
+              {toc.map(([id, label], index) => <a href={`#${id}`} key={id}><span>{String(index).padStart(2, "0")}</span>{label}</a>)}
             </nav>
             <div className="aside-note"><b>Before you install</b><p>{app.editorial.takeaway}</p><a href="/app-safety/">Open safety checklist ↗</a></div>
           </aside>
@@ -571,7 +609,7 @@ function GuidesPage() {
 function EditorialArticlePage({ resource, basePath, sectionLabel }: { resource: EditorialResource; basePath: string; sectionLabel: string }) {
   const articleUrl = absoluteUrl(`${basePath}${resource.slug}/`);
   const schema = { "@context": "https://schema.org", "@graph": [{ "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: resource.title, description: resource.summary, url: articleUrl, author: { "@type": "Organization", "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: resource.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
-  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],[sectionLabel,basePath],[resource.title,`${basePath}${resource.slug}/`]]} /><article className="article article--resource shell"><header><span className="section-index">{resource.code}</span><p className="eyebrow">{resource.eyebrow}</p><h1>{resource.title}</h1><p>{resource.summary}</p><div><span>{resource.read} read</span><span>Independent guidance</span><span>Reviewed 12 Aug 2026</span></div></header><div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><p>{resource.directAnswer}</p></div>{resource.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><p key={paragraph}>{paragraph}</p>)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item}>{item}</li>)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Questions people ask</h2><div className="faq-list faq-list--record">{resource.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><p>{answer}</p></details>)}</div></section><div className="article-disclosure"><b>Scope of this resource</b><p>This guide explains a verification method. It does not certify every APK, publisher, account, reward, payment or legal status. Apply the checks to the current app and source.</p></div></div><aside className="article-aside article-aside--resource"><b>FIELD CHECK</b>{resource.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/apps/">Open an app record ↗</a><a href="/guides/">All resources ↗</a></aside></div></article></main><Footer /></>;
+  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],[sectionLabel,basePath],[resource.title,`${basePath}${resource.slug}/`]]} /><article className="article article--resource shell"><header><span className="section-index">{resource.code}</span><p className="eyebrow">{resource.eyebrow}</p><h1>{resource.title}</h1><p>{resource.summary}</p><div><span>{resource.read} read</span><span>Independent guidance</span><span>Reviewed 12 Aug 2026</span></div></header>{resource.image && <div className="article-featured-image"><img src={resource.image} alt={resource.imageAlt || resource.title} width="1200" height="675" loading="lazy" /></div>}<div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={resource.directAnswer} /></div>{resource.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Questions people ask</h2><div className="faq-list faq-list--record">{resource.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section><div className="article-disclosure"><b>Scope of this resource</b><p>This guide explains a verification method. It does not certify every APK, publisher, account, reward, payment or legal status. Apply the checks to the current app and source.</p></div></div><aside className="article-aside article-aside--resource"><b>FIELD CHECK</b>{resource.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/apps/">Open an app record ↗</a><a href="/guides/">All resources ↗</a></aside></div></article></main><Footer /></>;
 }
 
 function GuideArticle({ slug }: { slug: string }) {
@@ -600,7 +638,7 @@ function ComparisonArticle({ slug }: { slug: string }) {
   const comparedApps = comparison.appSlugs.map((appSlug)=>apps.find((app)=>app.slug===appSlug)).filter((app): app is AppRecord=>Boolean(app));
   const articleUrl = absoluteUrl(`/compare/${comparison.slug}/`);
   const schema = { "@context": "https://schema.org", "@graph": [{ "@type": "Article", "@id": `${articleUrl}#article`, headline: comparison.title, description: comparison.summary, url: articleUrl, author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: comparison.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
-  return <><JsonLd data={schema}/><Header/><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],["App Comparisons","/compare/"],[comparison.title,`/compare/${comparison.slug}/`]]}/><article className="article article--resource shell"><header><span className="section-index">{comparison.code}</span><p className="eyebrow">{comparison.eyebrow}</p><h1>{comparison.title}</h1><p>{comparison.summary}</p><div><span>{comparison.read} read</span><span>{comparedApps.length} exact records</span><span>Reviewed 12 Aug 2026</span></div></header><div className="comparison-records">{comparedApps.map((app)=><a href={`/apps/${app.slug}/`} key={app.slug}><AppIcon app={app}/><span><small>{app.category} record</small><b>{app.name}</b><p>{comparison.identityNotes[app.slug]}</p></span><i>Open record ↗</i></a>)}</div><div className="comparison-matrix" role="table" aria-label={`${comparison.title} identity comparison`}><div className="comparison-matrix-row comparison-matrix-head" role="row"><span role="columnheader">Check</span>{comparedApps.map((app)=><b role="columnheader" key={app.slug}>{app.name}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Canonical record</span>{comparedApps.map((app)=><a role="cell" href={`/apps/${app.slug}/`} key={app.slug}>/apps/{app.slug}/</a>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Catalog category</span>{comparedApps.map((app)=><b role="cell" key={app.slug}>{app.category}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Do not assume</span>{comparedApps.map((app)=><p role="cell" key={app.slug}>{comparison.identityNotes[app.slug]}</p>)}</div></div><div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><p>{comparison.directAnswer}</p></div>{comparison.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><p key={paragraph}>{paragraph}</p>)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item}>{item}</li>)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Comparison questions</h2><div className="faq-list faq-list--record">{comparison.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><p>{answer}</p></details>)}</div></section></div><aside className="article-aside article-aside--resource"><b>IDENTITY CHECK</b>{comparison.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/compare/">All comparisons ↗</a><a href="/apps/">Search app records ↗</a></aside></div></article></main><Footer/></>;
+  return <><JsonLd data={schema}/><Header/><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],["App Comparisons","/compare/"],[comparison.title,`/compare/${comparison.slug}/`]]}/><article className="article article--resource shell"><header><span className="section-index">{comparison.code}</span><p className="eyebrow">{comparison.eyebrow}</p><h1>{comparison.title}</h1><p>{comparison.summary}</p><div><span>{comparison.read} read</span><span>{comparedApps.length} exact records</span><span>Reviewed 12 Aug 2026</span></div></header>{comparison.image && <div className="article-featured-image"><img src={comparison.image} alt={comparison.imageAlt || comparison.title} width="1200" height="675" loading="lazy" /></div>}<div className="comparison-records">{comparedApps.map((app)=><a href={`/apps/${app.slug}/`} key={app.slug}><AppIcon app={app}/><span><small>{app.category} record</small><b>{app.name}</b><p>{comparison.identityNotes[app.slug]}</p></span><i>Open record ↗</i></a>)}</div><div className="comparison-matrix" role="table" aria-label={`${comparison.title} identity comparison`}><div className="comparison-matrix-row comparison-matrix-head" role="row"><span role="columnheader">Check</span>{comparedApps.map((app)=><b role="columnheader" key={app.slug}>{app.name}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Canonical record</span>{comparedApps.map((app)=><a role="cell" href={`/apps/${app.slug}/`} key={app.slug}>/apps/{app.slug}/</a>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Catalog category</span>{comparedApps.map((app)=><b role="cell" key={app.slug}>{app.category}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Do not assume</span>{comparedApps.map((app)=><p role="cell" key={app.slug}>{comparison.identityNotes[app.slug]}</p>)}</div></div><div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={comparison.directAnswer} /></div>{comparison.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Comparison questions</h2><div className="faq-list faq-list--record">{comparison.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section></div><aside className="article-aside article-aside--resource"><b>IDENTITY CHECK</b>{comparison.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/compare/">All comparisons ↗</a><a href="/apps/">Search app records ↗</a></aside></div></article></main><Footer/></>;
 }
 
 function CollectionsPage() {

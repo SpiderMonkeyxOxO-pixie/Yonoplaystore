@@ -1,3 +1,16 @@
+import type { ArticleSection } from "./resource-content";
+
+export type AppArticle = {
+  /** Full-size (1200x675) featured/hero image, distinct from the small square app icon. */
+  image: string;
+  imageAlt: string;
+  directAnswer: string;
+  sections: ArticleSection[];
+  faqs: [string, string][];
+  datePublished: string;
+  dateModified: string;
+};
+
 export type AppEditorial = {
   summary: string;
   hero: string;
@@ -10,6 +23,12 @@ export type AppEditorial = {
   takeaway: string;
   seoTitle: string;
   seoDescription: string;
+  /**
+   * Full long-form article body for the SEO/AEO content pipeline. When present,
+   * AppDetail renders these sections/faqs instead of the short templated fields
+   * above. Absent for records not yet refreshed by the pipeline.
+   */
+  article?: AppArticle;
 };
 
 export const appEditorial: Record<string, AppEditorial> = {

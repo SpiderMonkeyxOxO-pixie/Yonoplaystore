@@ -38,8 +38,14 @@ yarn-error.log*
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 /.sites-runtime/
 /outputs/
 /work/
+
+# content pipeline runtime output (regenerated on the server, not source)
+/logs/
+/scripts/content-pipeline/dry-run-report.json
+/scripts/content-pipeline/.publisher.lock
