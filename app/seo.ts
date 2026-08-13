@@ -72,6 +72,13 @@ function categorySeo(slug: string): RouteSeo | null {
   };
 }
 
+/** Slugs removed because the app is no longer available/functioning. Redirect to the category hub rather than 404. */
+const retiredAppRedirects: Record<string, string> = {
+  "spin-lucky": "/categories/spin/",
+  "spin-777": "/categories/spin/",
+  "ind-bingo": "/categories/other/",
+};
+
 export function getRouteSeo(path: string[]): RouteSeo | null {
   if (path.length === 1 && path[0] === "apps") {
     return {
@@ -83,7 +90,13 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
 
   if (path.length === 2 && path[0] === "apps") {
     const app = apps.find((item) => item.slug === path[1]);
-    if (!app) return null;
+    if (!app) {
+      const redirectTo = retiredAppRedirects[path[1]];
+      if (redirectTo) {
+        return { title: "Redirecting…", description: "This app record has been retired.", canonicalPath: `/apps/${path[1]}/`, redirectTo };
+      }
+      return null;
+    }
     const article = app.editorial.article;
     return {
       title: app.editorial.seoTitle,
