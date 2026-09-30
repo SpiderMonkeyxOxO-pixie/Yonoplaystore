@@ -179,6 +179,15 @@ test("every app record has distinct people-first editorial copy", async () => {
   assert.equal(directAnswers.size, appSlugs.length);
 });
 
+test("never applies the trailing-slash redirect to public files", async () => {
+  const worker = await loadWorker();
+  for (const file of ["/favicon.ico", "/yono-playstore-logo.webp", "/llms.txt", "/apps/yono-rummy.webp", "/articles/day-01-yono-rummy-featured.webp"]) {
+    const response = await worker.fetch(new Request(`http://localhost${file}`), undefined, { waitUntil() {}, passThroughOnException() {} });
+    assert.notEqual(response.status, 308, `${file} must not redirect`);
+    assert.equal(response.headers.get("x-vinext-static-file"), file, `${file} should be handed to the static file server`);
+  }
+});
+
 test("publishes clean robots and sitemap discovery files", async () => {
   const robots = await render("/robots.txt");
   assert.equal(robots.status, 200);

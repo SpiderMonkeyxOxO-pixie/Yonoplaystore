@@ -60,6 +60,16 @@ const worker = {
   },
 };
 
+/** Signal header the vinext Node server reads to serve a file from dist/client. */
+const VINEXT_STATIC_FILE_HEADER = "x-vinext-static-file";
+
+/** True for paths whose last segment has a file extension, e.g. /articles/x.webp. */
+function isFilePath(pathname: string) {
+  if (pathname.endsWith("/") || pathname.startsWith("/_vinext/")) return false;
+  const last = pathname.slice(pathname.lastIndexOf("/") + 1);
+  return /\.[A-Za-z0-9]{1,8}$/.test(last);
+}
+
 function escapeXml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
@@ -94,6 +104,14 @@ async function routeRequest(request: Request, env: Env, ctx: ExecutionContext, u
     }
     if (url.pathname === "/robots.txt") {
       return new Response(robotsTxt(), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+    }
+
+    // Files from public/ (images, favicon, llms.txt, …) must not get the
+    // trailing-slash redirect. Under `vinext start` every request reaches this
+    // handler first, so hand file-like paths straight to the static server.
+    if (isFilePath(url.pathname)) {
+      if (env?.ASSETS) return env.ASSETS.fetch(request);
+      return new Response(null, { headers: { [VINEXT_STATIC_FILE_HEADER]: url.pathname } });
     }
 
     if (url.pathname === "/_vinext/image") {
