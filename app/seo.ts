@@ -86,8 +86,8 @@ const retiredAppRedirects: Record<string, string> = {
 export function getRouteSeo(path: string[]): RouteSeo | null {
   if (path.length === 1 && path[0] === "apps") {
     return {
-      title: "Yono Apps Catalog: Games and APK Information",
-      description: `Explore ${apps.length} Yono apps and games. Compare categories, read APK download information and check each app record's source status.`,
+      title: "All Yono Games List 2026: Every Yono App in One Place",
+      description: `See all Yono games in one list: ${apps.length} Yono apps across rummy, slots, arcade and spin, each with its download source, review date and safety checks.`,
       canonicalPath: "/apps/",
     };
   }
@@ -103,8 +103,8 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
     }
     const article = app.editorial.article;
     return {
-      title: app.editorial.seoTitle,
-      description: app.editorial.seoDescription,
+      title: article?.seoTitle || app.editorial.seoTitle,
+      description: article?.seoDescription || app.editorial.seoDescription,
       canonicalPath: `/apps/${app.slug}/`,
       image: article?.image || app.image,
       imageAlt: article?.imageAlt || `${app.name} app icon`,
@@ -140,8 +140,8 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
     };
     const resource = guideArticles[guide.slug];
     return {
-      title: titles[guide.slug] || guide.title,
-      description: `${guide.summary} Read a practical, source-aware guide from the Yono Play Store editorial desk.`,
+      title: resource?.seoTitle || titles[guide.slug] || guide.title,
+      description: resource?.seoDescription || `${guide.summary} Read a practical, source-aware guide from the Yono Play Store editorial desk.`,
       canonicalPath: `/apk-guides/${guide.slug}/`,
       openGraphType: "article",
       image: resource?.image,
@@ -169,8 +169,8 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
     const article = comparisonArticles.find((item) => item.slug === path[1]);
     if (!article) return null;
     return {
-      title: article.title,
-      description: article.summary,
+      title: article.seoTitle || article.title,
+      description: article.seoDescription || article.summary,
       canonicalPath: `/compare/${article.slug}/`,
       openGraphType: "article",
       image: article.image,

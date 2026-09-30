@@ -308,7 +308,7 @@ function AppsExplorer({ initialCategory = "All" }: { initialCategory?: string })
 
 function AppsPage({ category }: { category?: string }) {
   const normalized = category ? category.charAt(0).toUpperCase() + category.slice(1) : "All";
-  const title = category ? `${normalized} Yono Apps` : "Explore the Yono App Catalog";
+  const title = category ? `${normalized} Yono Apps` : "All Yono Games & Apps List (2026)";
   const listedApps = category ? apps.filter((app) => app.category === normalized) : apps;
   const canonicalPath = category ? `/categories/${category}/` : "/apps/";
   const schema = {
@@ -318,7 +318,7 @@ function AppsPage({ category }: { category?: string }) {
       { "@type": "ItemList", "@id": `${absoluteUrl(canonicalPath)}#itemlist`, numberOfItems: listedApps.length, itemListElement: listedApps.map((app, index) => ({ "@type": "ListItem", position: index + 1, name: app.name, url: absoluteUrl(`/apps/${app.slug}/`) })) },
     ],
   };
-  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={category ? [["Categories","/categories/"],[normalized,`/categories/${category}/`]] : [["Yono Apps","/apps/"]]} /><PageHero code="A/01" eyebrow="Discovery index" title={title} copy="Search the app registry, filter by supported categories and open a record to review its identity, source status and available information." /><section className="section shell section--catalog"><AppsExplorer initialCategory={category ? normalized : "All"} /></section></main><Footer /></>;
+  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={category ? [["Categories","/categories/"],[normalized,`/categories/${category}/`]] : [["Yono Apps","/apps/"]]} /><PageHero code="A/01" eyebrow="Discovery index" title={title} copy={category ? "Search the app registry, filter by supported categories and open a record to review its identity, source status and available information." : `Every Yono game and app we review, in one list: ${apps.length} records across rummy, slots, arcade and spin. Open any record to check its download source, review date and safety guidance. Yono-named games are not connected to YONO SBI.`} /><section className="section shell section--catalog"><AppsExplorer initialCategory={category ? normalized : "All"} /></section></main><Footer /></>;
 }
 
 const categoryEditorial: Record<AppRecord["category"], {
@@ -375,7 +375,28 @@ function mdInlineToHtml(text: string): string {
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
 
+/** Parses a newline-separated Markdown table ("| a | b |" rows); returns null for ordinary text. */
+function parseMdTable(text: string): { head: string[]; rows: string[][] } | null {
+  const lines = text.split("\n").map((line) => line.trim());
+  if (lines.length < 2 || !lines.every((line) => line.startsWith("|"))) return null;
+  const cells = (line: string) => line.replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
+  const isDivider = (line: string) => /^\|?(\s*:?-{2,}:?\s*\|)+\s*:?-{2,}:?\s*\|?$|^\|?\s*:?-{2,}:?\s*\|?$/.test(line);
+  const [head, ...rest] = lines;
+  return { head: cells(head), rows: rest.filter((line) => !isDivider(line)).map(cells) };
+}
+
 function Prose({ text, className }: { text: string; className?: string }) {
+  const table = parseMdTable(text);
+  if (table) {
+    return (
+      <div className="md-table-wrap">
+        <table className="md-table">
+          <thead><tr>{table.head.map((cell, i) => <th key={i} dangerouslySetInnerHTML={{ __html: mdInlineToHtml(cell) }} />)}</tr></thead>
+          <tbody>{table.rows.map((row, r) => <tr key={r}>{row.map((cell, i) => <td key={i} data-label={table.head[i]} dangerouslySetInnerHTML={{ __html: mdInlineToHtml(cell) }} />)}</tr>)}</tbody>
+        </table>
+      </div>
+    );
+  }
   return <p className={className} dangerouslySetInnerHTML={{ __html: mdInlineToHtml(text) }} />;
 }
 

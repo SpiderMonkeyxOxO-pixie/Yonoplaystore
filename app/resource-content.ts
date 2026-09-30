@@ -21,6 +21,9 @@ export type EditorialResource = {
   imageAlt?: string;
   datePublished?: string;
   dateModified?: string;
+  /** Search title and meta description from the content brief, when one was supplied. */
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 import { generatedGuideArticles, generatedComparisonUpdates } from "./generated/resource-articles.generated";

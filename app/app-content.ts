@@ -9,6 +9,9 @@ export type AppArticle = {
   faqs: [string, string][];
   datePublished: string;
   dateModified: string;
+  /** Search title and meta description from the content brief, when one was supplied. */
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type AppEditorial = {

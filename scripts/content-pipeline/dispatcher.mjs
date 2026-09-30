@@ -125,7 +125,7 @@ function validateItem(item, manifest, state) {
     const liveByPublishTime = manifest.items.filter((i) => new Date(i.publishAt) <= new Date(item.publishAt) && i.day !== item.day);
     for (const link of parsed.internalLinksInBody) {
       const targetManifestItem = manifest.items.find((i) => i.canonicalUrl.endsWith(link.href) || `${SITE_ORIGIN}${link.href}` === i.canonicalUrl.replace(/\/$/, "") + "/");
-      if (targetManifestItem) {
+      if (targetManifestItem && createsNewPage(targetManifestItem)) {
         const isLiveByNow = liveByPublishTime.some((i) => i.day === targetManifestItem.day);
         if (!isLiveByNow && targetManifestItem.day !== item.day) {
           issues.push(`FORWARD REFERENCE: links to ${link.href} (Day ${targetManifestItem.day}, publishes ${targetManifestItem.publishAt}) which is not live yet at this item's publish time — dispatcher will omit this link at publish time`);
@@ -225,9 +225,19 @@ function publishItem(item, manifest, state) {
  * that was stripped for being forward-referencing reappears automatically the
  * moment its target's state flips to "published" — no patching required.
  */
+/**
+ * Only items that create a page make a URL go live. Updates to existing records
+ * (e.g. "update-existing-app-record") target URLs that are already live, so
+ * links to them must never be stripped while the update is pending.
+ */
+function createsNewPage(item) {
+  return typeof item.action === "string" && item.action.startsWith("create-new");
+}
+
 function computeIsLive(manifest, state) {
   const unpublished = new Set(
     manifest.items
+      .filter((item) => createsNewPage(item))
       .filter((item) => state.items[item.day]?.status !== "published" && state.items[item.day]?.status !== "pending_build")
       .map((item) => new URL(item.canonicalUrl).pathname)
   );
@@ -260,7 +270,16 @@ function buildAppArticle(item, parsed) {
     faqs: parsed.faqs,
     datePublished: dateStr,
     dateModified: dateStr,
+    ...briefSeo(parsed),
   };
+}
+
+/** Carries the brief's SEO title and meta description through to the page metadata. */
+function briefSeo(parsed) {
+  const seo = {};
+  if (parsed.brief["SEO title"]) seo.seoTitle = parsed.brief["SEO title"];
+  if (parsed.brief["Meta description"]) seo.seoDescription = parsed.brief["Meta description"];
+  return seo;
 }
 
 function buildEditorialResourceUpdate(item, parsed, extra) {
@@ -278,6 +297,7 @@ function buildEditorialResourceUpdate(item, parsed, extra) {
     imageAlt: `${parsed.h1} illustration`,
     datePublished: dateStr,
     dateModified: dateStr,
+    ...briefSeo(parsed),
     ...extra,
   };
 }

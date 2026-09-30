@@ -46,7 +46,9 @@
       "canonicalUrl": "https://yonoplaystore.com/apps/yono-games/",
       "action": "update-existing-app-record",
       "status": "pending",
-      "activatesDeferredLinks": ["day-2:/apps/yono-games/"]
+      "activatesDeferredLinks": [
+        "day-2:/apps/yono-games/"
+      ]
     },
     {
       "day": 4,
@@ -102,7 +104,9 @@
       "canonicalUrl": "https://yonoplaystore.com/apps/hi-rummy/",
       "action": "update-existing-app-record",
       "status": "pending",
-      "activatesDeferredLinks": ["day-5:/apps/hi-rummy/"],
+      "activatesDeferredLinks": [
+        "day-5:/apps/hi-rummy/"
+      ],
       "warnings": [
         "Article body links to /compare/yono-rummy-vs-gogo-rummy-vs-hi-rummy/ (Day 16, publishes 2026-09-21 — 21 days AFTER this item). Dispatcher must defer this link until Day 16 publishes."
       ]
@@ -212,7 +216,9 @@
       "canonicalUrl": "https://yonoplaystore.com/apk-guides/yono-app-name-lookalikes/",
       "action": "create-new-guide",
       "status": "pending",
-      "activatesDeferredLinks": ["day-13:/apk-guides/yono-app-name-lookalikes/"],
+      "activatesDeferredLinks": [
+        "day-13:/apk-guides/yono-app-name-lookalikes/"
+      ],
       "note": "Confirmed: no existing entry in app/catalog.ts `guides` array or app/resource-content.ts `guideArticles` for this slug. Genuinely new — matches spec."
     },
     {
@@ -227,7 +233,9 @@
       "canonicalUrl": "https://yonoplaystore.com/compare/yono-rummy-vs-gogo-rummy-vs-hi-rummy/",
       "action": "update-existing-comparison-stub",
       "status": "pending",
-      "activatesDeferredLinks": ["day-7:/compare/yono-rummy-vs-gogo-rummy-vs-hi-rummy/"],
+      "activatesDeferredLinks": [
+        "day-7:/compare/yono-rummy-vs-gogo-rummy-vs-hi-rummy/"
+      ],
       "resolution": "2026-08-12: user confirmed replace-in-place. Existing comparisonArticles entry for this slug will be updated with the prepared article content rather than a new route being created."
     },
     {
@@ -257,6 +265,216 @@
       "action": "create-new-guide",
       "status": "pending",
       "note": "Confirmed genuinely new, no existing entry."
+    },
+    {
+      "day": 19,
+      "publishAt": "2026-10-02T09:00:00+05:30",
+      "publishAtUtc": "2026-10-02T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-19-New-Yono-Games.md",
+      "imageSourceFile": "Content-img/New Yono Games 2026_ How to Check a New Yono App First.jpg",
+      "imageWebp": "public/articles/day-19-new-yono-games-featured.webp",
+      "targetType": "guide",
+      "targetSlug": "new-yono-games",
+      "canonicalUrl": "https://yonoplaystore.com/apk-guides/new-yono-games/",
+      "action": "create-new-guide",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 20,
+      "publishAt": "2026-10-03T09:00:00+05:30",
+      "publishAtUtc": "2026-10-03T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-20-Yono-VIP.md",
+      "imageSourceFile": "Content-img/Yono VIP App_ APK Source, Login and SBI Confusion Explained.jpg",
+      "imageWebp": "public/articles/day-20-yono-vip-featured.webp",
+      "targetType": "app",
+      "targetSlug": "yono-vip",
+      "canonicalUrl": "https://yonoplaystore.com/apps/yono-vip/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 21,
+      "publishAt": "2026-10-04T09:00:00+05:30",
+      "publishAtUtc": "2026-10-04T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-21-IND-Rummy.md",
+      "imageSourceFile": "Content-img/IND Rummy App_ APK Source, KYC and India Rules (2026).jpg",
+      "imageWebp": "public/articles/day-21-ind-rummy-featured.webp",
+      "targetType": "app",
+      "targetSlug": "ind-rummy",
+      "canonicalUrl": "https://yonoplaystore.com/apps/ind-rummy/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 22,
+      "publishAt": "2026-10-05T09:00:00+05:30",
+      "publishAtUtc": "2026-10-05T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-22-Rummy-App-List.md",
+      "imageSourceFile": "Content-img/Rummy App List 2026_ 20 Apps and 51 Bonus Explained.jpg",
+      "imageWebp": "public/articles/day-22-rummy-app-list-featured.webp",
+      "targetType": "guide",
+      "targetSlug": "rummy-app-list",
+      "canonicalUrl": "https://yonoplaystore.com/apk-guides/rummy-app-list/",
+      "action": "create-new-guide",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 23,
+      "publishAt": "2026-10-06T09:00:00+05:30",
+      "publishAtUtc": "2026-10-06T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-23-Rummy-888.md",
+      "imageSourceFile": "Content-img/Rummy 888 App_ APK Source, Bonus Terms and Identity Checks.jpg",
+      "imageWebp": "public/articles/day-23-rummy-888-featured.webp",
+      "targetType": "app",
+      "targetSlug": "rummy-888",
+      "canonicalUrl": "https://yonoplaystore.com/apps/rummy-888/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 24,
+      "publishAt": "2026-10-07T09:00:00+05:30",
+      "publishAtUtc": "2026-10-07T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-24-Spin-101.md",
+      "imageSourceFile": "Content-img/Spin 101 App_ APK Source, Spin Types and Reward Checks.jpg",
+      "imageWebp": "public/articles/day-24-spin-101-featured.webp",
+      "targetType": "app",
+      "targetSlug": "spin-101",
+      "canonicalUrl": "https://yonoplaystore.com/apps/spin-101/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 25,
+      "publishAt": "2026-10-08T09:00:00+05:30",
+      "publishAtUtc": "2026-10-08T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-25-Rummy-77.md",
+      "imageSourceFile": "Content-img/Rummy 77 App_ APK Source, Yono 77 and 77 vs 777 Explained.jpg",
+      "imageWebp": "public/articles/day-25-rummy-77-featured.webp",
+      "targetType": "app",
+      "targetSlug": "rummy-77",
+      "canonicalUrl": "https://yonoplaystore.com/apps/rummy-77/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 26,
+      "publishAt": "2026-10-09T09:00:00+05:30",
+      "publishAtUtc": "2026-10-09T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-26-Rummy-Rules.md",
+      "imageSourceFile": "Content-img/Rummy Rules_ How to Play 13-Card Indian Rummy.jpg",
+      "imageWebp": "public/articles/day-26-rummy-rules-featured.webp",
+      "targetType": "guide",
+      "targetSlug": "rummy-rules",
+      "canonicalUrl": "https://yonoplaystore.com/apk-guides/rummy-rules/",
+      "action": "create-new-guide",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 27,
+      "publishAt": "2026-10-10T09:00:00+05:30",
+      "publishAtUtc": "2026-10-10T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-27-Jaiho-Arcade.md",
+      "imageSourceFile": "Content-img/Jaiho Arcade APK Download_ Source, Games and Account Checks.jpg",
+      "imageWebp": "public/articles/day-27-jaiho-arcade-featured.webp",
+      "targetType": "app",
+      "targetSlug": "jaiho-arcade",
+      "canonicalUrl": "https://yonoplaystore.com/apps/jaiho-arcade/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 28,
+      "publishAt": "2026-10-11T09:00:00+05:30",
+      "publishAtUtc": "2026-10-11T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-28-Jaiho-Win.md",
+      "imageSourceFile": "Content-img/Jaiho Win APK_ Download Source and Win Claims Checked.jpg",
+      "imageWebp": "public/articles/day-28-jaiho-win-featured.webp",
+      "targetType": "app",
+      "targetSlug": "jaiho-win",
+      "canonicalUrl": "https://yonoplaystore.com/apps/jaiho-win/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 29,
+      "publishAt": "2026-10-12T09:00:00+05:30",
+      "publishAtUtc": "2026-10-12T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-29-Yono-Game-Login-Help.md",
+      "imageSourceFile": "Content-img/Yono Game Login Problems_ Safe Fixes for OTP and Password.jpg",
+      "imageWebp": "public/articles/day-29-yono-game-login-help-featured.webp",
+      "targetType": "guide",
+      "targetSlug": "yono-game-login-help",
+      "canonicalUrl": "https://yonoplaystore.com/apk-guides/yono-game-login-help/",
+      "action": "create-new-guide",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 30,
+      "publishAt": "2026-10-13T09:00:00+05:30",
+      "publishAtUtc": "2026-10-13T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-30-Rummy-Ludo.md",
+      "imageSourceFile": "Content-img/Rummy Ludo App_ APK Source and Card vs Board Mode Rules.jpg",
+      "imageWebp": "public/articles/day-30-rummy-ludo-featured.webp",
+      "targetType": "app",
+      "targetSlug": "rummy-ludo",
+      "canonicalUrl": "https://yonoplaystore.com/apps/rummy-ludo/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 31,
+      "publishAt": "2026-10-14T09:00:00+05:30",
+      "publishAtUtc": "2026-10-14T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-31-Joy-Rummy.md",
+      "imageSourceFile": "Content-img/Joy Rummy App_ APK Source and the Joy Rummy Yono Search.jpg",
+      "imageWebp": "public/articles/day-31-joy-rummy-featured.webp",
+      "targetType": "app",
+      "targetSlug": "joy-rummy",
+      "canonicalUrl": "https://yonoplaystore.com/apps/joy-rummy/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 32,
+      "publishAt": "2026-10-15T09:00:00+05:30",
+      "publishAtUtc": "2026-10-15T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-32-Jaiho-Rummy.md",
+      "imageSourceFile": "Content-img/Jaiho Rummy APK_ Download Source and Agent Links.jpg",
+      "imageWebp": "public/articles/day-32-jaiho-rummy-featured.webp",
+      "targetType": "app",
+      "targetSlug": "jaiho-rummy",
+      "canonicalUrl": "https://yonoplaystore.com/apps/jaiho-rummy/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
+    },
+    {
+      "day": 33,
+      "publishAt": "2026-10-16T09:00:00+05:30",
+      "publishAtUtc": "2026-10-16T03:30:00Z",
+      "articleFile": "Content/Yono-Play-Store-Day-33-Yes-Spin.md",
+      "imageSourceFile": "Content-img/Yes Spin APK_ Why Its Domain Is y754.com, and What to Check.jpg",
+      "imageWebp": "public/articles/day-33-yes-spin-featured.webp",
+      "targetType": "app",
+      "targetSlug": "yes-spin",
+      "canonicalUrl": "https://yonoplaystore.com/apps/yes-spin/",
+      "action": "update-existing-app-record",
+      "status": "pending",
+      "note": "Batch 2: low-KD keyword plan researched 2026-09-30 (Ahrefs, India). Featured image is a generated title card; replace with the illustration described in the brief if desired."
     }
   ]
 }

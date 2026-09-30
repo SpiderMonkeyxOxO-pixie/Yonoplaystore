@@ -22,13 +22,17 @@ function stripBold(text) {
   return text.trim();
 }
 
-/** Splits an H2 block's body into paragraphs vs. a single trailing bullet/numbered list. */
+/**
+ * Splits an H2 block's body into paragraphs vs. a single trailing bullet/numbered list.
+ * A blank line ends a paragraph. A Markdown table is kept as one paragraph whose rows
+ * stay newline-separated, so the renderer can draw it as a table.
+ */
 function splitParagraphsAndBullets(body) {
-  const lines = body.split("\n").filter((l) => l.trim().length > 0);
+  const lines = body.split("\n");
   const paragraphs = [];
   const bullets = [];
-  let inList = false;
   let paragraphBuf = [];
+  let tableBuf = [];
 
   function flushParagraph() {
     if (paragraphBuf.length) {
@@ -37,21 +41,36 @@ function splitParagraphsAndBullets(body) {
     }
   }
 
-  for (const line of lines) {
+  function flushTable() {
+    if (tableBuf.length) {
+      paragraphs.push(tableBuf.join("\n"));
+      tableBuf = [];
+    }
+  }
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) {
+      flushParagraph();
+      flushTable();
+      continue;
+    }
+    if (line.startsWith("|")) {
+      flushParagraph();
+      tableBuf.push(line);
+      continue;
+    }
+    flushTable();
     const bulletMatch = line.match(/^[-*]\s+(.*)$/) || line.match(/^\d+\.\s+(.*)$/);
     if (bulletMatch) {
       flushParagraph();
-      inList = true;
       bullets.push(stripBold(bulletMatch[1]));
     } else {
-      if (inList) {
-        // A non-bullet line after a list starts a new paragraph block.
-        inList = false;
-      }
-      paragraphBuf.push(line.trim());
+      paragraphBuf.push(line);
     }
   }
   flushParagraph();
+  flushTable();
   return { paragraphs, bullets: bullets.length ? bullets : undefined };
 }
 

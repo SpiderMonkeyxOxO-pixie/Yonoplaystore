@@ -646,3 +646,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .arrow-link { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; }
   .hero h1 { font-size: clamp(44px, 13vw, 56px); }
 }
+
+/* Markdown tables in articles (rendered by Prose); stacked into cards on narrow screens. */
+.md-table-wrap { margin: 18px 0 22px; overflow-x: auto; }
+.md-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.45; }
+.md-table th, .md-table td { padding: 10px 12px; border: 1px solid rgba(11,27,29,.14); text-align: left; vertical-align: top; }
+.md-table th { background: rgba(11,27,29,.05); font-weight: 700; }
+@media (max-width: 600px) {
+  .md-table thead { display: none; }
+  .md-table, .md-table tbody, .md-table tr, .md-table td { display: block; width: 100%; }
+  .md-table tr { margin-bottom: 10px; border: 1px solid rgba(11,27,29,.14); border-radius: 10px; }
+  .md-table td { border: 0; border-top: 1px solid rgba(11,27,29,.08); }
+  .md-table td:first-child { border-top: 0; }
+  .md-table td::before { content: attr(data-label); display: block; margin-bottom: 2px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+}
