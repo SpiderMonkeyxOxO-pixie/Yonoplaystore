@@ -16,6 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import os from "node:os";
 import { parseContentFile } from "./convert-markdown.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
@@ -199,7 +200,7 @@ function verifyLive(url, attempts = 8, delayMs = 3000) {
   for (let i = 0; i < attempts; i++) {
     if (i > 0) sleepSync(delayMs);
     try {
-      const out = execFileSync("curl", ["-s", "-o", "/dev/null", "-w", "%{http_code}", "--max-time", "10", url]).toString();
+      const out = execFileSync("curl", ["-s", "-o", os.devNull, "-w", "%{http_code}", "--max-time", "10", url]).toString();
       if (out.trim() === "200") return true;
     } catch {
       // connection refused / timeout while the process is still restarting — keep retrying
@@ -311,7 +312,7 @@ function buildEditorialResourceUpdate(item, parsed, extra) {
 function regenerateGeneratedFiles(manifest, state) {
   const isLive = computeIsLive(manifest, state);
   const publishedItems = manifest.items
-    .filter((item) => ["published", "pending_build"].includes(state.items[item.day]?.status))
+    .filter((item) => ["published", "pending_build", "publish_failed_verification"].includes(state.items[item.day]?.status))
     .sort((a, b) => a.day - b.day);
 
   const generatedAppArticles = {};
@@ -383,9 +384,24 @@ function runPublish() {
       process.exitCode = 1;
       return;
     }
+    // Items that were built and deployed but failed the live check only need
+    // re-checking, not a rebuild: rebuilding + restarting on every cron run
+    // turned one failed check into a restart loop.
+    let reverified = false;
+    for (const item of manifest.items) {
+      if (state.items[item.day]?.status !== "publish_failed_verification" || forceDay) continue;
+      if (verifyLive(item.canonicalUrl, 2, 3000)) {
+        state.items[item.day] = { ...state.items[item.day], status: "published", verifiedAt: nowIso() };
+        log("info", `Day ${item.day} now verified live`, { url: item.canonicalUrl });
+        reverified = true;
+      }
+    }
+    if (reverified) saveJsonAtomic(STATE_PATH, state);
+
     const now = new Date();
     let due = manifest.items
       .filter((item) => state.items[item.day]?.status !== "published")
+      .filter((item) => forceDay || state.items[item.day]?.status !== "publish_failed_verification")
       .filter((item) => forceDay ? item.day === forceDay : new Date(item.publishAt) <= now)
       .sort((a, b) => a.day - b.day);
 
