@@ -60,19 +60,29 @@ test("loads Google Analytics once with the requested measurement ID", async () =
   }
 });
 
-test("uses the supplied YONO PLAYSTORE artwork for the site logo and favicon", async () => {
+test("uses the optimized YONO PLAYSTORE artwork for the site logo and favicon", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /<img[^>]+class="brand-logo"[^>]+src="\/yono-playstore-logo\.png"[^>]+alt="YONO PLAYSTORE"/i);
-  assert.match(html, /<link rel="icon" href="https:\/\/yonoplaystore\.com\/yono-playstore-logo\.png"/i);
+  assert.match(html, /<img[^>]+class="brand-logo"[^>]+src="\/yono-playstore-logo\.webp"[^>]+alt="Yono Play Store"/i);
+  assert.match(html, /<link rel="icon" href="https:\/\/yonoplaystore\.com\/favicon\.ico"/i);
+  assert.match(html, /<html lang="en-IN"/i);
+});
+
+test("discloses referral links and age limits beside external downloads", async () => {
+  const html = await (await render("/apps/hi-rummy/")).text();
+  assert.match(html, /class="record-disclosure"/);
+  assert.match(html, /18\+ only/);
+  assert.match(html, /href="\/affiliate-disclosure\/"/);
+  const disclosure = await render("/affiliate-disclosure/");
+  assert.equal(disclosure.status, 200);
 });
 
 test("renders unique app metadata and schema", async () => {
   const response = await render("/apps/hi-rummy/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /<title>Hi Rummy APK Download, Source and Safety Guide \| Yono Play Store<\/title>/i);
+  assert.match(html, /<title>Hi Rummy APK Download, Source and Safety Guide<\/title>/i);
   assert.match(html, /<link rel="canonical" href="https:\/\/yonoplaystore\.com\/apps\/hi-rummy\/"/i);
   assert.match(html, /"@type":"SoftwareApplication"/);
   assert.match(html, /"@type":"BreadcrumbList"/);
@@ -93,7 +103,7 @@ test("every indexable route has unique, descriptive and canonical metadata", asy
   const guideSlugs = ["what-is-an-apk", "how-to-install-apk", "how-to-check-apk-source", "android-app-permissions"];
   const comparisonSlugs = ["yono-rummy-vs-gogo-rummy-vs-hi-rummy", "rummy-91-vs-rummy-888-vs-rummy-77", "yono-777-vs-777-game-vs-yn-777"];
   const safetySlugs = ["credits-vs-withdrawable-balances", "spin-app-reward-terms", "yono-app-privacy-checklist"];
-  const staticRoutes = ["/", "/apps/", "/categories/", "/guides/", "/apk-guides/", "/compare/", "/collections/", "/app-safety/", "/methodology/", "/sources/", "/editorial-policy/", "/corrections-policy/", "/about/", "/contact/", "/disclaimer/", "/responsible-gaming/", "/privacy-policy/", "/terms-and-conditions/", "/faq/"];
+  const staticRoutes = ["/", "/apps/", "/categories/", "/guides/", "/apk-guides/", "/compare/", "/collections/", "/app-safety/", "/methodology/", "/sources/", "/editorial-policy/", "/corrections-policy/", "/about/", "/contact/", "/disclaimer/", "/affiliate-disclosure/", "/responsible-gaming/", "/privacy-policy/", "/terms-and-conditions/", "/faq/"];
   const routes = [
     ...staticRoutes,
     ...appSlugs.map((slug) => `/apps/${slug}/`),
@@ -124,7 +134,7 @@ test("every indexable route has unique, descriptive and canonical metadata", asy
     descriptions.add(description);
   }
 
-  assert.equal(routes.length, 93);
+  assert.equal(routes.length, 20 + appSlugs.length + 16);
 });
 
 test("renders the supplied external APK destinations safely", async () => {
@@ -134,7 +144,7 @@ test("renders the supplied external APK destinations safely", async () => {
   const mappedSlugs = new Set(downloadEntries.map(([slug]) => slug));
 
   assert.equal(downloadEntries.length, 54);
-  assert.deepEqual(appSlugs.filter((slug) => !mappedSlugs.has(slug)), ["ind-bingo", "spin-777", "spin-lucky", "yn-777"]);
+  assert.deepEqual(appSlugs.filter((slug) => !mappedSlugs.has(slug)), ["yn-777"]);
 
   for (const [slug, url] of downloadEntries) {
     const response = await render(`/apps/${slug}/`);
@@ -166,7 +176,7 @@ test("every app record has distinct people-first editorial copy", async () => {
     directAnswers.add(answer);
   }
 
-  assert.equal(directAnswers.size, 58);
+  assert.equal(directAnswers.size, appSlugs.length);
 });
 
 test("publishes clean robots and sitemap discovery files", async () => {
@@ -180,7 +190,8 @@ test("publishes clean robots and sitemap discovery files", async () => {
   const sitemap = await render("/sitemap.xml");
   assert.equal(sitemap.status, 200);
   const sitemapXml = await sitemap.text();
-  assert.equal((sitemapXml.match(/<url>/g) || []).length, 93);
+  assert.equal((sitemapXml.match(/<url>/g) || []).length, 91);
   assert.match(sitemapXml, /\/guides\//);
-  assert.doesNotMatch(sitemapXml, /<lastmod>|<priority>|<changefreq>/);
+  assert.equal((sitemapXml.match(/<lastmod>/g) || []).length, (sitemapXml.match(/<url>/g) || []).length - 17);
+  assert.doesNotMatch(sitemapXml, /<priority>|<changefreq>/);
 });

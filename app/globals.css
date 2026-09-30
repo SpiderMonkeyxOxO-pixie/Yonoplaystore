@@ -629,3 +629,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important; }
 }
+
+/* Referral / 18+ notice beside the Download button. */
+.record-actions .record-disclosure { flex-basis: 100%; max-width: 520px; padding: 8px 10px; border-left: 3px solid var(--lime); background: rgba(11,27,29,.04); color: var(--ink); }
+.record-actions .record-disclosure a { text-decoration: underline; }
+.footer-disclaimer p + p { margin-top: 8px; }
+.footer-disclaimer a { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  /* Icon-only Telegram button so it doesn't cover page content; keep room below the last block. */
+  .telegram-widget { min-height: 52px; padding: 5px; grid-template-columns: 42px; gap: 0; }
+  .telegram-widget__copy, .telegram-widget__arrow { display: none; }
+  body { padding-bottom: 72px; }
+  /* 44px minimum tap targets for breadcrumbs and arrow links. */
+  .breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; }
+  .arrow-link { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; }
+  .hero h1 { font-size: clamp(44px, 13vw, 56px); }
+}

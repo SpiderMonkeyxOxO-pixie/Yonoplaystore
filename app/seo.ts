@@ -37,7 +37,11 @@ const infoSeo: Record<string, Omit<RouteSeo, "canonicalPath">> = {
   },
   "responsible-gaming": {
     title: "Responsible Gaming Guidance",
-    description: "Read practical guidance on gaming limits, warning signs, age requirements and understanding the rules that apply in your location.",
+    description: "18+ guidance on gaming limits, warning signs, self-exclusion, Indian legal context and where to get help, including the Tele-MANAS helpline.",
+  },
+  "affiliate-disclosure": {
+    title: "Affiliate and Referral Disclosure",
+    description: "How Yono Play Store uses referral links on Download buttons, what a referral does and does not mean, and how editorial independence is kept.",
   },
   disclaimer: {
     title: "Independent Website Disclaimer",

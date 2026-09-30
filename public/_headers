@@ -1,0 +1,23 @@
+# Static-asset headers for Cloudflare Workers Static Assets.
+# Providing this file replaces the one vinext would generate, so its
+# immutable rule for hashed build assets is repeated here.
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/apps/*
+  Cache-Control: public, max-age=2592000
+
+/articles/*
+  Cache-Control: public, max-age=2592000
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

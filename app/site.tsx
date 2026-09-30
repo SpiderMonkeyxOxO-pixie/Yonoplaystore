@@ -8,7 +8,19 @@ import { comparisonArticles, guideArticles, jaihoCollection, safetyArticles, typ
 import { absoluteUrl, SITE_NAME, SITE_URL } from "./seo";
 
 const organizationId = `${SITE_URL}/#organization`;
+const organizationNode = {
+  "@type": "Organization",
+  "@id": organizationId,
+  name: SITE_NAME,
+  url: `${SITE_URL}/`,
+  logo: { "@type": "ImageObject", url: absoluteUrl("/yono-playstore-logo.png"), width: 512, height: 512 },
+  description: "Independent, unofficial catalog of Yono-named Android gaming apps. It documents app identity, source status and safety checks, and does not host or distribute APK files.",
+  disambiguatingDescription: "Not affiliated with Google Play, Google LLC, YONO SBI or State Bank of India.",
+  sameAs: ["https://t.me/OfficialYonoPlaystore"],
+};
 const websiteId = `${SITE_URL}/#website`;
+/** Date of the initial editorial review, used where a page has no article-level date. */
+const BASE_REVIEW_DATE = "2026-08-12";
 
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
@@ -25,7 +37,7 @@ const nav = [
 ];
 
 const statusLabels: Record<StatusKind, string> = {
-  confirmed: "Verified",
+  confirmed: "Reviewed",
 };
 
 function AppIcon({ app, small = false }: { app: AppRecord; small?: boolean }) {
@@ -51,7 +63,7 @@ function Header() {
   return (
     <header className="site-header">
       <a className="brand" href="/" aria-label="Yono Play Store home">
-        <img className="brand-logo" src="/yono-playstore-logo.png" alt="YONO PLAYSTORE" width="1254" height="1254" />
+        <img className="brand-logo" src="/yono-playstore-logo.webp" alt="Yono Play Store" width="296" height="120" />
       </a>
       <nav className={`main-nav ${open ? "main-nav--open" : ""}`} aria-label="Primary navigation">
         {nav.map(([label, href]) => <a href={href} key={href} onClick={() => setOpen(false)}>{label}</a>)}
@@ -70,18 +82,19 @@ function Footer() {
       <div className="footer-top">
         <div className="footer-brand">
           <a className="brand brand--footer" href="/">
-            <img className="brand-logo" src="/yono-playstore-logo.png" alt="YONO PLAYSTORE" width="1254" height="1254" loading="lazy" />
+            <img className="brand-logo" src="/yono-playstore-logo.webp" alt="Yono Play Store" width="296" height="120" loading="lazy" />
           </a>
-          <p>A reviewed registry of verified Yono app records, with source guidance for more informed installation decisions.</p>
+          <p>A reviewed registry of Yono app records, with source guidance for more informed installation decisions.</p>
           <span className="registry-code">REGISTRY / YPS–2026</span>
         </div>
-        <div className="footer-links"><h3>Yono Play Store</h3><a href="/about/">About us</a><a href="/methodology/">Methodology</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact us</a></div>
+        <div className="footer-links"><h3>Yono Play Store</h3><a href="/about/">About us</a><a href="/methodology/">Methodology</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections-policy/">Corrections</a><a href="/contact/">Contact us</a></div>
         <div className="footer-links"><h3>Explore</h3><a href="/apps/">All Yono apps</a><a href="/categories/">Categories</a><a href="/compare/">App comparisons</a><a href="/collections/">App collections</a></div>
-        <div className="footer-links"><h3>Resources</h3><a href="/guides/">Guides & comparisons</a><a href="/apk-guides/">APK guides</a><a href="/app-safety/">App safety</a><a href="/sources/">Sources</a></div>
-        <div className="footer-links"><h3>Legal</h3><a href="/disclaimer/">Disclaimer</a><a href="/privacy-policy/">Privacy policy</a><a href="/terms-and-conditions/">Terms & conditions</a></div>
+        <div className="footer-links"><h3>Resources</h3><a href="/guides/">Guides & comparisons</a><a href="/apk-guides/">APK guides</a><a href="/app-safety/">App safety</a><a href="/sources/">Sources</a><a href="/faq/">FAQ</a></div>
+        <div className="footer-links"><h3>Legal</h3><a href="/disclaimer/">Disclaimer</a><a href="/privacy-policy/">Privacy policy</a><a href="/terms-and-conditions/">Terms & conditions</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/responsible-gaming/">Responsible gaming</a></div>
       </div>
       <div className="footer-disclaimer">
         <p><strong>Independent notice:</strong> YonoPlayStore.com is not affiliated with, endorsed by, sponsored by or associated with Google Play, Google LLC, YONO SBI or State Bank of India (SBI). Google Play, YONO SBI, product names, logos and trademarks belong to their respective owners.</p>
+        <p><strong>Referral disclosure:</strong> Some Download buttons are referral links, and YonoPlayStore.com may receive a benefit when visitors register through them. Listed apps may involve real-money play and are intended for adults aged 18+ only where lawful. <a href="/affiliate-disclosure/">Read the disclosure</a>.</p>
         <span>© 2026 YonoPlayStore.com</span>
       </div>
     </footer>
@@ -152,7 +165,7 @@ function HomePage() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": organizationId, name: SITE_NAME, url: `${SITE_URL}/`, logo: absoluteUrl("/yono-playstore-logo.png"), description: "Independent Yono app discovery and APK download information catalog." },
+      organizationNode,
       { "@type": "WebSite", "@id": websiteId, name: SITE_NAME, url: `${SITE_URL}/`, publisher: { "@id": organizationId }, inLanguage: "en-IN" },
       { "@type": "WebPage", "@id": `${SITE_URL}/#webpage`, url: `${SITE_URL}/`, name: "Yono Play Store – Yono Apps, Games and APK Guides", description: "Explore Yono apps, APK download information, source checks and Android installation guidance.", isPartOf: { "@id": websiteId }, about: { "@id": organizationId }, inLanguage: "en-IN" },
     ],
@@ -167,11 +180,11 @@ function HomePage() {
         <section className="hero shell">
           <div className="hero-copy">
             <div className="signal-label"><span /> Independent Yono app information</div>
-            <h1>Explore Yono<br /><em>Apps & Games</em></h1>
+            <h1>Explore Yono{" "}<br /><em>Apps & Games</em></h1>
             <p className="hero-lead">Find Yono gaming apps, review available download information, check source status, and learn what to verify before installing Android applications.</p>
             <SearchCatalog />
             <div className="hero-actions"><a className="button button--primary" href="/apps/">Browse Yono apps <span>↗</span></a><a className="button button--ghost" href="/guides/">Guides & comparisons</a></div>
-            <p className="trust-line"><i /> All app records verified <b>•</b> Source guidance included <b>•</b> No fabricated ratings</p>
+            <p className="trust-line"><i /> All app records reviewed <b>•</b> Source guidance included <b>•</b> No fabricated ratings</p>
             <div className="hero-proof" aria-label="Catalog overview">
               <span><b>{apps.length}</b><small>App records</small></span>
               <span><b>{categories.length}</b><small>Categories</small></span>
@@ -223,7 +236,7 @@ function HomePage() {
 
         <section className="status-band">
           <div className="shell">
-            <div className="status-intro"><span className="section-index">04</span><p className="eyebrow">Catalog standard</p><h2>Every record.<br />Verified.</h2><p>Each published game has completed the catalog review for identity, category, record quality and visitor guidance.</p></div>
+            <div className="status-intro"><span className="section-index">04</span><p className="eyebrow">Catalog standard</p><h2>Every record.{" "}<br />Reviewed.</h2><p>Each published game has completed the catalog review for identity, category, record quality and visitor guidance.</p></div>
             <div className="status-grid">
               <article><Status kind="confirmed" /><h3>Identity checked</h3><p>The app name and visual record have been reviewed for catalog inclusion.</p></article>
               <article><Status kind="confirmed" /><h3>Category checked</h3><p>Each game is placed in the catalog category that best matches its listing.</p></article>
@@ -245,7 +258,7 @@ function HomePage() {
 
         <section className="section safety-section">
           <div className="shell safety-layout">
-            <div className="safety-title"><span className="section-index">06</span><p className="eyebrow">Pre-install checklist</p><h2>Check before<br /><em>you install.</em></h2><p>An app name, logo or download button alone does not establish that a file comes from the intended publisher.</p><a className="button button--dark" href="/app-safety/">Read the safety guide <span>↗</span></a></div>
+            <div className="safety-title"><span className="section-index">06</span><p className="eyebrow">Pre-install checklist</p><h2>Check before{" "}<br /><em>you install.</em></h2><p>An app name, logo or download button alone does not establish that a file comes from the intended publisher.</p><a className="button button--dark" href="/app-safety/">Read the safety guide <span>↗</span></a></div>
             <div className="safety-grid">{safetyChecks.map(([number,title,copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
           </div>
         </section>
@@ -256,7 +269,7 @@ function HomePage() {
         </section>
 
         <section className="final-cta shell">
-          <div><p className="eyebrow">Ready to search?</p><h2>Find the Yono app<br />you’re looking for.</h2></div>
+          <div><p className="eyebrow">Ready to search?</p><h2>Find the Yono app{" "}<br />you’re looking for.</h2></div>
           <div><p>Search the catalog, open the app record, and understand what is known before visiting an external source.</p><a className="button button--primary" href="/apps/">Browse all apps <span>↗</span></a><a href="/methodology/">How we verify apps</a></div>
         </section>
       </main>
@@ -373,7 +386,7 @@ function AppDetail({ app }: { app: AppRecord }) {
   const article = app.editorial.article;
   const appFaqs: [string, string][] = article?.faqs ?? [
     [`What is ${app.name}?`, app.editorial.directAnswer],
-    [`Is ${app.name} a verified catalog record?`, `Yes. This ${app.name} page has completed the catalog review for identity, category, record quality and visitor guidance. ${app.editorial.takeaway}`],
+    [`What does "Reviewed" mean for ${app.name}?`, `It means this ${app.name} page has completed the catalog review for identity, category, record quality and visitor guidance. ${app.editorial.takeaway}`],
     [`Where can I download the ${app.name} APK?`, app.downloadUrl
       ? `Use the Download APK button near the top of this page to open the external source supplied for ${app.name}. Confirm the final destination, publisher relationship and current file details before obtaining or installing any file.`
       : `A direct external source has not been added to this ${app.name} record. Use the APK information section to understand the checks to complete before obtaining or installing a file.`],
@@ -417,6 +430,7 @@ function AppDetail({ app }: { app: AppRecord }) {
                   <span>{app.downloadUrl ? "Download APK" : "Review APK information"}</span><i>{app.downloadUrl ? "↗" : "↓"}</i>
                 </a>
                 <small>{app.downloadUrl ? "External source — verify the destination and file before installing." : "No external source supplied — review the APK checks below."}</small>
+                {app.downloadUrl && <small className="record-disclosure"><b>18+ only.</b> This is a referral link: we may receive a benefit if you register. Real-money gaming may be restricted or prohibited where you live. <a href="/affiliate-disclosure/">Disclosure</a> · <a href="/responsible-gaming/">Responsible gaming</a></small>}
               </div>
             </div>
           </div>
@@ -455,12 +469,9 @@ function AppDetail({ app }: { app: AppRecord }) {
             <div className="fact-table">
               <div><span>Application name</span><b>{app.name}</b></div>
               <div><span>Catalog category</span><b>{app.category}</b></div>
-              <div><span>Record verification</span><b>Verified</b></div>
-              <div><span>Catalog identity</span><b>Verified</b></div>
-              <div><span>Category review</span><b>Verified</b></div>
-              <div><span>Source guidance</span><b>Verified</b></div>
-              <div><span>APK guidance</span><b>Verified</b></div>
-              <div><span>Safety guidance</span><b>Verified</b></div>
+              <div><span>Record status</span><b>Editorially reviewed</b></div>
+              <div><span>Download source</span><b>{app.downloadUrl ? new URL(app.downloadUrl).hostname : "Not supplied"}</b></div>
+              <div><span>What this review covers</span><b>Page identity, category and guidance — not the APK, operator or payments</b></div>
               <div><span>Last reviewed</span><b>{app.reviewed}</b></div>
             </div>
 
@@ -569,7 +580,7 @@ function AppDetail({ app }: { app: AppRecord }) {
             <div className="aside-card">
               <span>RECORD SNAPSHOT</span>
               <Status kind={app.statusKind} />
-              <dl><div><dt>Category</dt><dd>{app.category}</dd></div><div><dt>Record</dt><dd>Verified</dd></div><div><dt>Review date</dt><dd>12 Aug 2026</dd></div><div><dt>Guidance</dt><dd>Included</dd></div></dl>
+              <dl><div><dt>Category</dt><dd>{app.category}</dd></div><div><dt>Record</dt><dd>Reviewed</dd></div><div><dt>Review date</dt><dd>{app.editorial.article?.dateModified ?? BASE_REVIEW_DATE}</dd></div><div><dt>Guidance</dt><dd>Included</dd></div></dl>
             </div>
             <nav className="record-toc" aria-label="On this page">
               <b>ON THIS PAGE</b>
@@ -598,7 +609,7 @@ function ResourceCard({ code, label, title, summary, href, tone = "plain" }: { c
 function ResourceHub() {
   const total = guides.length + comparisonArticles.length + safetyArticles.length + 1;
   const schema = { "@context": "https://schema.org", "@type": "CollectionPage", "@id": `${absoluteUrl("/guides/")}#webpage`, url: absoluteUrl("/guides/"), name: "Yono App Guides and Comparisons", description: "APK, Android, app-comparison, privacy, balance and source-verification resources.", isPartOf: { "@id": websiteId } };
-  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"]]} /><section className="resource-hero shell"><div><span className="section-index">DESK / 01</span><p className="eyebrow">Editorial resource desk</p><h1>Understand the app.<br/><em>Then decide.</em></h1><p>Use task-focused APK guides, exact-name comparisons, safety explainers and app-family maps. Every resource answers a different question and links back to the canonical app records.</p><div className="resource-hero-actions"><a className="button button--primary" href="#library">Browse {total} resources <span>↓</span></a><a className="button button--ghost" href="/apps/">Find an app record</a></div></div><div className="resource-scoreboard" aria-label="Resource library summary"><div><span>{String(guides.length).padStart(2,"0")}</span><b>APK guides</b><small>Files, sources and Android</small></div><div><span>{String(comparisonArticles.length).padStart(2,"0")}</span><b>Comparisons</b><small>Similar names, separate records</small></div><div><span>{String(safetyArticles.length + 1).padStart(2,"0")}</span><b>Safety resources</b><small>Privacy, balances and rewards</small></div><div><span>01</span><b>App collection</b><small>Related names, clear boundaries</small></div></div></section><section className="section shell" id="library"><SectionHead index="01" eyebrow="Choose by question" title="Four routes through the resource library" copy="Start with the task you need to complete. The app catalog remains the canonical source for exact app-name searches."/><div className="resource-path-grid"><a className="resource-path resource-path--lime" href="/apk-guides/"><span>APK / 04</span><h3>APK & Android</h3><p>What a file is, how installation works, how to inspect its source and which permissions require explanation.</p><i>Open APK guides ↗</i></a><a className="resource-path resource-path--violet" href="/compare/"><span>CMP / 03</span><h3>App comparisons</h3><p>Separate similar Rummy, Yono and 777 records using names, sources and Android identity.</p><i>Open comparisons ↗</i></a><a className="resource-path resource-path--amber" href="/app-safety/"><span>SAFE / 04</span><h3>Safety & privacy</h3><p>Understand account data, balance labels, reward language and warning signs before acting.</p><i>Open safety resources ↗</i></a><a className="resource-path resource-path--mint" href="/collections/"><span>SET / 01</span><h3>App collections</h3><p>Navigate a shared naming family without assuming every record has the same operator or account.</p><i>Open collections ↗</i></a></div></section><section className="section section--ink"><div className="shell"><SectionHead index="02" eyebrow="How the library works" title="One query. One clear destination."/><div className="resource-method"><article><span>01</span><h3>Entity query</h3><p>Searches such as “Yono Rummy” go to the individual app record—not a duplicate article.</p></article><article><span>02</span><h3>Comparison query</h3><p>A “versus” page exists only when a visitor needs to distinguish several records.</p></article><article><span>03</span><h3>Safety question</h3><p>A focused guide explains the method and then links to the app where it should be applied.</p></article></div></div></section></main><Footer /></>;
+  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"]]} /><section className="resource-hero shell"><div><span className="section-index">DESK / 01</span><p className="eyebrow">Editorial resource desk</p><h1>Understand the app.{" "}<br/><em>Then decide.</em></h1><p>Use task-focused APK guides, exact-name comparisons, safety explainers and app-family maps. Every resource answers a different question and links back to the canonical app records.</p><div className="resource-hero-actions"><a className="button button--primary" href="#library">Browse {total} resources <span>↓</span></a><a className="button button--ghost" href="/apps/">Find an app record</a></div></div><div className="resource-scoreboard" aria-label="Resource library summary"><div><span>{String(guides.length).padStart(2,"0")}</span><b>APK guides</b><small>Files, sources and Android</small></div><div><span>{String(comparisonArticles.length).padStart(2,"0")}</span><b>Comparisons</b><small>Similar names, separate records</small></div><div><span>{String(safetyArticles.length + 1).padStart(2,"0")}</span><b>Safety resources</b><small>Privacy, balances and rewards</small></div><div><span>01</span><b>App collection</b><small>Related names, clear boundaries</small></div></div></section><section className="section shell" id="library"><SectionHead index="01" eyebrow="Choose by question" title="Four routes through the resource library" copy="Start with the task you need to complete. The app catalog remains the canonical source for exact app-name searches."/><div className="resource-path-grid"><a className="resource-path resource-path--lime" href="/apk-guides/"><span>APK / 04</span><h3>APK & Android</h3><p>What a file is, how installation works, how to inspect its source and which permissions require explanation.</p><i>Open APK guides ↗</i></a><a className="resource-path resource-path--violet" href="/compare/"><span>CMP / 03</span><h3>App comparisons</h3><p>Separate similar Rummy, Yono and 777 records using names, sources and Android identity.</p><i>Open comparisons ↗</i></a><a className="resource-path resource-path--amber" href="/app-safety/"><span>SAFE / 04</span><h3>Safety & privacy</h3><p>Understand account data, balance labels, reward language and warning signs before acting.</p><i>Open safety resources ↗</i></a><a className="resource-path resource-path--mint" href="/collections/"><span>SET / 01</span><h3>App collections</h3><p>Navigate a shared naming family without assuming every record has the same operator or account.</p><i>Open collections ↗</i></a></div></section><section className="section section--ink"><div className="shell"><SectionHead index="02" eyebrow="How the library works" title="One query. One clear destination."/><div className="resource-method"><article><span>01</span><h3>Entity query</h3><p>Searches such as “Yono Rummy” go to the individual app record—not a duplicate article.</p></article><article><span>02</span><h3>Comparison query</h3><p>A “versus” page exists only when a visitor needs to distinguish several records.</p></article><article><span>03</span><h3>Safety question</h3><p>A focused guide explains the method and then links to the app where it should be applied.</p></article></div></div></section></main><Footer /></>;
 }
 
 function GuidesPage() {
@@ -608,7 +619,7 @@ function GuidesPage() {
 
 function EditorialArticlePage({ resource, basePath, sectionLabel }: { resource: EditorialResource; basePath: string; sectionLabel: string }) {
   const articleUrl = absoluteUrl(`${basePath}${resource.slug}/`);
-  const schema = { "@context": "https://schema.org", "@graph": [{ "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: resource.title, description: resource.summary, url: articleUrl, author: { "@type": "Organization", "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: resource.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
+  const schema = { "@context": "https://schema.org", "@graph": [organizationNode, { "@type": "WebPage", "@id": `${articleUrl}#webpage`, url: articleUrl, name: resource.title, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: resource.title, description: resource.summary, url: articleUrl, datePublished: resource.datePublished ?? BASE_REVIEW_DATE, dateModified: resource.dateModified ?? resource.datePublished ?? BASE_REVIEW_DATE, image: absoluteUrl(resource.image ?? "/yono-playstore-logo.png"), author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: resource.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
   return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],[sectionLabel,basePath],[resource.title,`${basePath}${resource.slug}/`]]} /><article className="article article--resource shell"><header><span className="section-index">{resource.code}</span><p className="eyebrow">{resource.eyebrow}</p><h1>{resource.title}</h1><p>{resource.summary}</p><div><span>{resource.read} read</span><span>Independent guidance</span><span>Reviewed 12 Aug 2026</span></div></header>{resource.image && <div className="article-featured-image"><img src={resource.image} alt={resource.imageAlt || resource.title} width="1200" height="675" loading="lazy" /></div>}<div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={resource.directAnswer} /></div>{resource.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Questions people ask</h2><div className="faq-list faq-list--record">{resource.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section><div className="article-disclosure"><b>Scope of this resource</b><p>This guide explains a verification method. It does not certify every APK, publisher, account, reward, payment or legal status. Apply the checks to the current app and source.</p></div></div><aside className="article-aside article-aside--resource"><b>FIELD CHECK</b>{resource.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/apps/">Open an app record ↗</a><a href="/guides/">All resources ↗</a></aside></div></article></main><Footer /></>;
 }
 
@@ -637,7 +648,7 @@ function ComparisonArticle({ slug }: { slug: string }) {
   if (!comparison) return <NotFoundPage/>;
   const comparedApps = comparison.appSlugs.map((appSlug)=>apps.find((app)=>app.slug===appSlug)).filter((app): app is AppRecord=>Boolean(app));
   const articleUrl = absoluteUrl(`/compare/${comparison.slug}/`);
-  const schema = { "@context": "https://schema.org", "@graph": [{ "@type": "Article", "@id": `${articleUrl}#article`, headline: comparison.title, description: comparison.summary, url: articleUrl, author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: comparison.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
+  const schema = { "@context": "https://schema.org", "@graph": [organizationNode, { "@type": "WebPage", "@id": `${articleUrl}#webpage`, url: articleUrl, name: comparison.title, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: comparison.title, description: comparison.summary, url: articleUrl, datePublished: comparison.datePublished ?? BASE_REVIEW_DATE, dateModified: comparison.dateModified ?? comparison.datePublished ?? BASE_REVIEW_DATE, image: absoluteUrl(comparison.image ?? "/yono-playstore-logo.png"), author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: comparison.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
   return <><JsonLd data={schema}/><Header/><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],["App Comparisons","/compare/"],[comparison.title,`/compare/${comparison.slug}/`]]}/><article className="article article--resource shell"><header><span className="section-index">{comparison.code}</span><p className="eyebrow">{comparison.eyebrow}</p><h1>{comparison.title}</h1><p>{comparison.summary}</p><div><span>{comparison.read} read</span><span>{comparedApps.length} exact records</span><span>Reviewed 12 Aug 2026</span></div></header>{comparison.image && <div className="article-featured-image"><img src={comparison.image} alt={comparison.imageAlt || comparison.title} width="1200" height="675" loading="lazy" /></div>}<div className="comparison-records">{comparedApps.map((app)=><a href={`/apps/${app.slug}/`} key={app.slug}><AppIcon app={app}/><span><small>{app.category} record</small><b>{app.name}</b><p>{comparison.identityNotes[app.slug]}</p></span><i>Open record ↗</i></a>)}</div><div className="comparison-matrix" role="table" aria-label={`${comparison.title} identity comparison`}><div className="comparison-matrix-row comparison-matrix-head" role="row"><span role="columnheader">Check</span>{comparedApps.map((app)=><b role="columnheader" key={app.slug}>{app.name}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Canonical record</span>{comparedApps.map((app)=><a role="cell" href={`/apps/${app.slug}/`} key={app.slug}>/apps/{app.slug}/</a>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Catalog category</span>{comparedApps.map((app)=><b role="cell" key={app.slug}>{app.category}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Do not assume</span>{comparedApps.map((app)=><p role="cell" key={app.slug}>{comparison.identityNotes[app.slug]}</p>)}</div></div><div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={comparison.directAnswer} /></div>{comparison.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Comparison questions</h2><div className="faq-list faq-list--record">{comparison.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section></div><aside className="article-aside article-aside--resource"><b>IDENTITY CHECK</b>{comparison.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/compare/">All comparisons ↗</a><a href="/apps/">Search app records ↗</a></aside></div></article></main><Footer/></>;
 }
 
@@ -658,7 +669,8 @@ const infoPages: Record<string,{code:string;eyebrow:string;title:string;intro:st
   "editorial-policy": {code:"E/01",eyebrow:"Editorial standards",title:"Editorial Policy",intro:"The catalog favors verifiable information, transparent uncertainty and useful context over promotional completeness.",sections:[["Source hierarchy","Primary publisher-controlled sources and authoritative Android documentation receive preference. Third-party statements remain clearly attributed."],["No invented completeness","Missing ratings, file sizes, dates or technical fields remain unrecorded rather than being estimated."],["Review dates","Dates reflect actual editorial work and are not updated automatically during routine deployments."]] },
   "corrections-policy": {code:"E/02",eyebrow:"Accountability",title:"Corrections Policy",intro:"Visitors and publishers may report a specific factual error for editorial review.",sections:[["What to include","Identify the page, disputed statement and a reliable source that supports the correction."],["How we respond","A reported issue is assessed against the source hierarchy. Material corrections should receive a genuine review date."],["What does not qualify","Promotional requests, unsupported safety claims and requests to fabricate popularity data are not accepted as corrections."]] },
   "sources": {code:"E/03",eyebrow:"Evidence hierarchy",title:"Sources and Verification",intro:"Verified catalog records still separate stable listing information from live details that can change at an external source.",sections:[["Primary sources","Publisher-controlled documentation, app-store records where applicable, and official Android guidance."],["Platform statements","Claims made by a platform remain attributed until they can be supported by appropriate evidence."],["Supporting references","Third-party pages can lead to further research but do not automatically establish ownership or technical facts."]] },
-  "responsible-gaming": {code:"L/04",eyebrow:"User wellbeing",title:"Responsible Gaming",intro:"Gaming should remain controlled, informed and appropriate for the user’s age and local laws.",sections:[["Set limits","Decide time and spending limits before playing and do not chase losses."],["Know when to stop","Take a break if gaming causes stress, financial pressure or conflict."],["Local requirements","Availability and legal requirements differ by location. Users are responsible for understanding the rules that apply to them."]] },
+  "responsible-gaming": {code:"L/04",eyebrow:"User wellbeing",title:"Responsible Gaming",intro:"Gaming should remain controlled, informed, legal where you live and limited to adults. If gaming is causing stress, debt or conflict, stop and talk to someone.",sections:[["18+ only","Apps that involve real-money play, cash rewards or withdrawals are intended only for adults aged 18 or over. Do not install them for, or share accounts with, anyone under 18."],["Check the law where you live","Rules on online real-money games differ across India and have changed recently, including under the Promotion and Regulation of Online Gaming Act, 2025 and state laws. Listing an app here does not mean it is lawful in your location. Check current official guidance before registering or paying."],["Set limits before you start","Decide a fixed time and spending limit before playing, and never play with money needed for rent, food, bills or loan repayments. Do not borrow to play and do not chase losses."],["Warning signs","Stop and seek support if you spend more than you planned, hide gaming from family, feel anxious when not playing, borrow money to play, or keep playing to win back losses."],["Self-exclusion","Use any account limits, cool-off periods or self-exclusion options the operator provides. You can also uninstall the app, remove saved payment methods and ask your bank to block gaming-related transactions."],["Get help","Tele-MANAS, the Government of India's free 24x7 mental-health helpline, is available at 14416 or 1-800-891-4416. In an emergency, call 112. If you have lost money to a scam or fraudulent app, report it at cybercrime.gov.in or call 1930."]] },
+  "affiliate-disclosure": {code:"L/05",eyebrow:"How this site is funded",title:"Affiliate and Referral Disclosure",intro:"Some Download APK buttons on YonoPlayStore.com are referral links. When a visitor registers with an app through one of these links, YonoPlayStore.com may receive a referral benefit from that app's operator or agent.",sections:[["Which links are referral links","Download APK buttons that open an external website may carry a referral or invitation code in the URL. These links are marked rel=\"sponsored\" and are identified with a short notice beside the button."],["What a referral does not mean","A referral relationship is not an endorsement. It does not mean Yono Play Store has checked the APK, the operator, payment handling, game fairness or legal status, and it does not change how records are reviewed or labeled."],["Editorial independence","Records are written using the same method whether or not a referral link is present. Operators cannot pay to change a review label, remove warnings or add claims about winnings, bonuses or safety."],["Age and legality","Apps that involve real-money play are for adults aged 18+ only, and may be restricted or prohibited in your state. See the Responsible Gaming page before registering with any app."],["Questions","Use the contact page to ask about a specific link or to report one that appears inaccurate."]] },
   "disclaimer": {code:"L/01",eyebrow:"Independent status",title:"Disclaimer",intro:"YonoPlayStore.com is independently operated and is not affiliated with, endorsed by, sponsored by or associated with Google Play, Google LLC, YONO SBI or State Bank of India (SBI).",sections:[["No Google affiliation","This website is not Google Play, is not operated by Google and is not an official Google Play Store service or publisher."],["No SBI affiliation","This website is not part of YONO SBI or State Bank of India and does not represent, operate or provide SBI banking services."],["Third-party names and trademarks","Google Play, YONO SBI, app names, logos and related trademarks belong to their respective owners. Their appearance is for identification and informational purposes only."],["Third-party applications","Listing an app does not mean Yono Play Store publishes, operates, endorses or officially represents it."],["External sources and accuracy","External destinations and app details can change. The catalog aims for accuracy but does not guarantee that every record is complete, current or suitable for every user."]] },
   "privacy-policy": {code:"L/02",eyebrow:"Privacy notice",title:"Privacy Policy",intro:"This page explains the information that may be processed when visitors use the catalog.",sections:[["Basic usage data","Hosting and security services may process technical request data needed to deliver and protect the website."],["Search interaction","Catalog searches are designed to work without requiring a user account."],["Contact information","Information voluntarily submitted through a contact method should be used only to review and respond to the request."]] },
   "terms-and-conditions": {code:"L/03",eyebrow:"Website terms",title:"Terms and Conditions",intro:"By using this website, visitors agree to use its informational content responsibly and lawfully.",sections:[["Informational use","Catalog records and guides are general information, not a guarantee, endorsement or substitute for independent judgment."],["Intellectual property","Third-party names, logos and trademarks belong to their respective owners."],["Acceptable use","Do not misuse the website, interfere with its operation or misrepresent its independent content as an official publisher statement."]] },

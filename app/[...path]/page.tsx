@@ -5,6 +5,21 @@ import { SitePage } from "../site";
 
 type Props = { params: Promise<{ path: string[] }> };
 
+const TITLE_SUFFIX = ` | ${SITE_NAME}`;
+const DEFAULT_IMAGE = { url: "/yono-playstore-logo.png", width: 512, height: 512, alt: `${SITE_NAME} logo` };
+
+/** Keep the brand suffix only when the full title still fits in ~60 characters. */
+function pageTitle(title: string): Metadata["title"] {
+  return title.length + TITLE_SUFFIX.length > 60 ? { absolute: title } : title;
+}
+
+/** Trim descriptions to <=160 characters at a word boundary. */
+function clampDescription(text: string, max = 160) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.\s]+$/, "")}…`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { path } = await params;
   const seo = getRouteSeo(path);
@@ -15,14 +30,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       robots: { index: false, follow: false },
     };
   }
-  const image = seo.image ? [{ url: seo.image, width: 256, height: 256, alt: seo.imageAlt }] : undefined;
+  const isArticleImage = seo.image?.startsWith("/articles/");
+  const image = seo.image
+    ? [{ url: seo.image, width: isArticleImage ? 1200 : 256, height: isArticleImage ? 675 : 256, alt: seo.imageAlt }]
+    : [DEFAULT_IMAGE];
+  const description = clampDescription(seo.description);
   return {
-    title: seo.title,
-    description: seo.description,
+    title: pageTitle(seo.title),
+    description,
     alternates: { canonical: seo.canonicalPath },
     openGraph: {
       title: seo.title,
-      description: seo.description,
+      description,
       url: seo.canonicalPath,
       siteName: SITE_NAME,
       locale: "en_IN",
@@ -30,10 +49,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: image,
     },
     twitter: {
-      card: "summary",
+      card: isArticleImage ? "summary_large_image" : "summary",
       title: seo.title,
-      description: seo.description,
-      images: seo.image ? [absoluteUrl(seo.image)] : undefined,
+      description,
+      images: [absoluteUrl(image[0].url)],
     },
     robots: {
       index: true,

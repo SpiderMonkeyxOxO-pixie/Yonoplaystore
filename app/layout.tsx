@@ -9,9 +9,12 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+// Mono is only used for small labels; skip preloading it so it doesn't compete
+// with the LCP element for bandwidth.
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -26,9 +29,12 @@ export const metadata: Metadata = {
   creator: "Yono Play Store Editorial Desk",
   publisher: "Yono Play Store",
   icons: {
-    icon: [{ url: "/yono-playstore-logo.png", type: "image/png", sizes: "1254x1254" }],
-    shortcut: "/yono-playstore-logo.png",
-    apple: "/yono-playstore-logo.png",
+    icon: [{ url: "/favicon.ico", sizes: "48x48" }],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    images: [{ url: "/yono-playstore-logo.png", width: 512, height: 512, alt: "Yono Play Store logo" }],
   },
 };
 
@@ -38,16 +44,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-TD9D02FDMM"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

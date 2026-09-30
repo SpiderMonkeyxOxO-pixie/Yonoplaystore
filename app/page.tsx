@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     siteName: "Yono Play Store",
     locale: "en_IN",
     type: "website",
+    images: [{ url: "/yono-playstore-logo.png", width: 512, height: 512, alt: "Yono Play Store logo" }],
   },
   twitter: {
     card: "summary",
