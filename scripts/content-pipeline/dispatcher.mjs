@@ -380,7 +380,8 @@ function runPublish() {
     const state = loadJson(STATE_PATH, { items: {} });
     if (!manifest) {
       log("error", "Manifest not found");
-      process.exit(1);
+      process.exitCode = 1;
+      return;
     }
     const now = new Date();
     let due = manifest.items
@@ -431,7 +432,8 @@ function runPublish() {
       saveJsonAtomic(STATE_PATH, state);
     }
 
-    if (anyFailed) process.exit(1);
+    // exitCode instead of process.exit(): exit() would skip the finally and leave the lock behind.
+    if (anyFailed) process.exitCode = 1;
   } finally {
     releaseLock();
   }
