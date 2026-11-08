@@ -97,7 +97,7 @@ export function getRouteSeo(path: string[]): RouteSeo | null {
     if (!app) {
       const redirectTo = retiredAppRedirects[path[1]];
       if (redirectTo) {
-        return { title: "Redirecting…", description: "This app record has been retired.", canonicalPath: `/apps/${path[1]}/`, redirectTo };
+        return { title: "Redirecting...", description: "This app record has been retired.", canonicalPath: `/apps/${path[1]}/`, redirectTo };
       }
       return null;
     }

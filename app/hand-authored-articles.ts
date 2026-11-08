@@ -103,7 +103,7 @@ export const handAuthoredAppArticles: Record<string, AppArticle> = {
     datePublished: "2026-11-08",
     dateModified: "2026-11-08",
     seoTitle: "Dhan Game APK: Referral Source, Identity and Safety Checks",
-    seoDescription: "What “Dhan” in Dhan Game's name means, why its download source identifies itself as a referral domain, APK checks, account privacy and withdrawal-claim guidance.",
+    seoDescription: "What \"Dhan\" in Dhan Game's name means, why its download source identifies itself as a referral domain, APK checks, account privacy and withdrawal-claim guidance.",
   },
 
   "win-rummy": {
