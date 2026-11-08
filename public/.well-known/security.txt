@@ -1,4 +1,0 @@
-Contact: https://yonoplaystore.com/contact/
-Expires: 2027-11-08T00:00:00.000Z
-Preferred-Languages: en
-Canonical: https://yonoplaystore.com/.well-known/security.txt

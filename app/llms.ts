@@ -1,4 +1,16 @@
-# Yono Play Store
+/**
+ * Content for /llms.txt, served directly by the Worker (see worker/index.ts).
+ *
+ * This used to live as a static file at public/llms.txt, served through
+ * vinext's static-asset pipeline. In production (self-hosted via `vinext
+ * start`, no Cloudflare ASSETS binding) that pipeline strips any Content-Type
+ * override before the file reaches the browser, so it was served as
+ * application/octet-stream instead of text/plain no matter what headers were
+ * set elsewhere. Serving it as a plain Response here — the same pattern
+ * already used for /robots.txt and /sitemap.xml — sidesteps that entirely.
+ */
+export default function llmsTxt(): string {
+  return `# Yono Play Store
 
 > Yono Play Store is an independent, unofficial catalog and verification registry for Yono-named and similarly named Android gaming apps (rummy, slots, arcade and spin titles). It documents each app's identity, APK source status, Android permissions and safety considerations — it is not an app store and does not host or distribute APK files.
 
@@ -35,3 +47,5 @@ For factual questions about a specific app (its catalog identity, known APK sour
 - [Privacy policy](https://yonoplaystore.com/privacy-policy/)
 - [Terms and conditions](https://yonoplaystore.com/terms-and-conditions/)
 - [Sitemap](https://yonoplaystore.com/sitemap.xml)
+`;
+}

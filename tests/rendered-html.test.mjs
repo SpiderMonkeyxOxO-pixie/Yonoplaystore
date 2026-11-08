@@ -181,7 +181,14 @@ test("every app record has distinct people-first editorial copy", async () => {
 
 test("never applies the trailing-slash redirect to public files", async () => {
   const worker = await loadWorker();
-  for (const file of ["/favicon.ico", "/yono-playstore-logo.webp", "/llms.txt", "/apps/yono-rummy.webp", "/articles/day-01-yono-rummy-featured.webp"]) {
+  // /llms.txt and /.well-known/security.txt are NOT in this list: they're served
+  // directly in routeRequest() (see the next test), not handed to the static file
+  // server. In the self-hosted `vinext start` deployment this site actually runs
+  // under (no real ASSETS binding), that static-file path strips any Content-Type
+  // override and has no .txt entry in its own extension lookup, so anything routed
+  // through it came back as application/octet-stream regardless of headers set
+  // elsewhere — serving these two directly sidesteps that entirely.
+  for (const file of ["/favicon.ico", "/yono-playstore-logo.webp", "/apps/yono-rummy.webp", "/articles/day-01-yono-rummy-featured.webp"]) {
     const response = await worker.fetch(new Request(`http://localhost${file}`), undefined, { waitUntil() {}, passThroughOnException() {} });
     assert.notEqual(response.status, 308, `${file} must not redirect`);
     assert.equal(response.headers.get("x-vinext-static-file"), file, `${file} should be handed to the static file server`);
@@ -201,6 +208,29 @@ test("publishes clean robots and sitemap discovery files", async () => {
   const sitemapXml = await sitemap.text();
   assert.equal((sitemapXml.match(/<url>/g) || []).length, 91);
   assert.match(sitemapXml, /\/guides\//);
-  assert.equal((sitemapXml.match(/<lastmod>/g) || []).length, (sitemapXml.match(/<url>/g) || []).length - 17);
+  // 12 static/legal pages (about, privacy-policy, etc.) deliberately have no
+  // lastmod: there's no tracked edit date for hand-written prose pages, and
+  // this site's own Editorial Policy says dates must reflect real work, not
+  // be invented. The 5 other hub pages (guides, apk-guides, compare,
+  // collections, app-safety) DO get one now, derived from their listed content.
+  assert.equal((sitemapXml.match(/<lastmod>/g) || []).length, (sitemapXml.match(/<url>/g) || []).length - 12);
   assert.doesNotMatch(sitemapXml, /<priority>|<changefreq>/);
+});
+
+test("serves llms.txt and security.txt directly as text/plain, not through the static file server", async () => {
+  const llms = await render("/llms.txt");
+  assert.equal(llms.status, 200);
+  assert.match(llms.headers.get("content-type") ?? "", /text\/plain/i);
+  assert.equal(llms.headers.get("x-vinext-static-file"), null);
+  const llmsText = await llms.text();
+  assert.match(llmsText, /^# Yono Play Store/);
+  assert.match(llmsText, /yonoplaystore\.com\/apps\//i);
+
+  const security = await render("/.well-known/security.txt");
+  assert.equal(security.status, 200);
+  assert.match(security.headers.get("content-type") ?? "", /text\/plain/i);
+  assert.equal(security.headers.get("x-vinext-static-file"), null);
+  const securityText = await security.text();
+  assert.match(securityText, /^Contact: https:\/\/yonoplaystore\.com\/contact\//);
+  assert.match(securityText, /^Expires: \d{4}-\d{2}-\d{2}T/m);
 });
