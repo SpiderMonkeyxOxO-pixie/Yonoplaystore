@@ -330,7 +330,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .record-disclaimer { margin-top: 26px; padding: 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: #75807b!important; font-size: 10px!important; line-height: 1.65!important; }
 .record-toc { padding: 19px; display: grid; border: 1px solid var(--line); border-radius: 7px; background: var(--white); }
 .record-toc > b { margin-bottom: 10px; color: #78847e; font: 750 8px/1 var(--font-mono-interface); letter-spacing: .08em; }
-.record-toc a { min-height: 38px; display: grid; grid-template-columns: 28px 1fr; align-items: center; border-top: 1px solid var(--line); color: #53605b; font-size: 10px; font-weight: 650; }
+.record-toc a { min-height: 44px; display: grid; grid-template-columns: 28px 1fr; align-items: center; border-top: 1px solid var(--line); color: #53605b; font-size: 10px; font-weight: 650; }
 .record-toc a:hover { color: var(--ink); }
 .record-toc a span { color: #909a95; font: 700 8px/1 var(--font-mono-interface); }
 
@@ -568,7 +568,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .safety-title h2{font-size:54px}.safety-title p:not(.eyebrow){font-size:13px}.safety-grid{gap:7px}.safety-grid article{min-height:155px;padding:12px}.safety-grid h3,.safety-grid h2{font-size:14px}.safety-grid p{font-size:9.5px}.safety-title .button{width:100%}
   .faq-list summary{min-height:65px;padding:14px 2px;grid-template-columns:30px 1fr auto;gap:8px;font-size:13px}.faq-list summary>span{font-size:8px}.faq-list summary i{width:26px;height:26px}.faq-list details>p{margin:0 35px 18px 40px;font-size:12px;line-height:1.55}
   .final-cta{width:calc(100% - 12px);margin-bottom:60px;padding:34px 20px}.final-cta h2{font-size:45px}.final-cta>div:last-child>p{font-size:12px}.final-cta .button{margin-right:8px}.final-cta>div:last-child>a:last-child{font-size:9px}.final-cta::after{font-size:110px;bottom:-32px}
-  .footer{width:calc(100% - 12px);margin-bottom:6px;padding:35px 20px}.footer-top{gap:30px 20px}.footer-links h3{font-size:8px}.footer-links a{font-size:11px}.footer-disclaimer{margin-top:40px;display:grid;gap:18px}.footer-disclaimer span{font-size:8px}
+  .footer{width:calc(100% - 12px);margin-bottom:6px;padding:35px 20px}.footer-top{gap:30px 20px}.footer-links h3{font-size:8px}.footer-links{gap:0}.footer-links a{font-size:11px;display:flex;align-items:center;min-height:44px;padding:11px 0;box-sizing:border-box}.footer-disclaimer{margin-top:40px;display:grid;gap:18px}.footer-disclaimer span{font-size:8px}
   .breadcrumb{padding-top:25px;font-size:8px;overflow:auto;white-space:nowrap}.page-hero{padding:44px 0 50px;grid-template-columns:1fr;gap:14px}.page-hero>div:first-child{padding:0}.page-hero h1{font-size:50px}.page-hero>div:last-child>p{font-size:14px;line-height:1.55}
   .catalog-tools>label{height:48px}.filter-row{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.filter-row button{min-height:44px;padding:0 8px;font-size:9px}.catalog-count{margin-top:25px}.catalog-count small{font-size:9px}
   .record-hero{padding:40px 0}.record-identity{align-items:flex-start;gap:16px}.record-identity .app-icon{width:68px;height:68px;font-size:17px}.record-identity h1{font-size:38px;overflow-wrap:anywhere}.record-identity h1+p{font-size:12px}.record-actions{margin-top:17px;display:grid;grid-template-columns:minmax(0,1fr)}.record-download{width:100%;min-height:52px}.record-actions small{max-width:none}.record-signal{width:100%}.record-layout{padding:45px 0 70px;grid-template-columns:minmax(0,1fr)}.quick-answer{margin-bottom:45px;padding:17px}.quick-answer p{font-size:13px}.record-main h2{font-size:26px;margin-top:45px;overflow-wrap:anywhere}.record-main>p{font-size:13px}.fact-table>div{grid-template-columns:42% minmax(0,1fr)}.fact-table span{font-size:8px}.fact-table b{font-size:11px;overflow-wrap:anywhere}.record-aside{min-width:0;grid-template-columns:minmax(0,1fr)}.aside-card .status{width:fit-content;max-width:100%;white-space:normal}.record-toc{grid-column:auto;grid-row:auto}.number-list li{grid-template-columns:35px minmax(0,1fr)}.number-list p{font-size:12px}.faq-list--record summary{grid-template-columns:minmax(0,1fr) auto}.faq-list--record details>p{margin-left:2px}.verification-table{overflow:visible;border:0;background:transparent}.verification-row{margin-bottom:7px;padding:13px;grid-template-columns:minmax(0,1fr);gap:8px;border:1px solid var(--line);border-radius:5px;background:var(--white)}.verification-row--head{display:none}.verification-row>.status{width:fit-content;max-width:100%;white-space:normal}.verification-row>p{grid-column:1}.record-subhead{grid-template-columns:1fr;gap:0}.comparison-grid{gap:6px}.comparison-grid>a{min-height:68px;padding:8px;grid-template-columns:auto minmax(0,1fr)}.comparison-grid>a>span{min-width:0}.comparison-grid>a>i{display:none}.comparison-grid .app-icon{width:36px;height:36px}.comparison-grid b{font-size:10px;overflow-wrap:anywhere}.comparison-grid small{font-size:7px}.record-content-section{padding-top:1px}.record-content-section>p{font-size:13px;line-height:1.7}.content-list,.warning-grid{gap:6px}.content-list li{min-height:62px;padding:10px 8px 10px 27px;font-size:10px}.content-list li::before{left:10px;width:6px;height:6px}.warning-grid li{min-height:94px;padding:12px 9px 10px 34px;font-size:9.5px}.warning-grid li::before{left:9px;top:11px}.record-takeaway{margin-top:55px;padding:25px 17px}.record-takeaway h2{font-size:36px;overflow-wrap:anywhere}.record-takeaway p{font-size:12px}.record-takeaway a{font-size:8px}.record-disclaimer{font-size:9px!important}
@@ -645,7 +645,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; }
   .arrow-link { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; }
   .hero h1 { font-size: clamp(44px, 13vw, 56px); }
+  /* The apk-guides/compare/app-safety article template never got the hero's
+     mobile H1 scaling fix: it was a flat 52px, wrapping to ~5 lines and
+     overflowing on narrow phones. Match the hero's clamp approach. */
+  .article h1 { font-size: clamp(38px, 13vw, 52px); }
 }
+
+/* Inline `code` spans rendered by mdInlineToHtml(); overflow-wrap lets a long
+   unbroken domain/URL break instead of forcing the page wider than the viewport. */
+code { font-family: var(--font-mono-interface); background: rgba(11,27,29,.06); padding: .1em .35em; border-radius: 4px; font-size: .92em; overflow-wrap: anywhere; word-break: break-word; }
+
+/* Defensive wrap for editorial prose: a long unbroken string (URL, domain,
+   code span) in body copy should break rather than overflow the viewport. */
+.editorial-section p, .editorial-section li, .article-body p, .record-main p, .article-direct p, .quick-answer p { overflow-wrap: anywhere; }
 
 /* Markdown tables in articles (rendered by Prose); stacked into cards on narrow screens. */
 .md-table-wrap { margin: 18px 0 22px; overflow-x: auto; }

@@ -35,6 +35,8 @@ const SECURITY_HEADERS: Record<string, string> = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "X-Frame-Options": "SAMEORIGIN",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "Content-Security-Policy":
+    "default-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; base-uri 'self'",
 };
 
 function withSecurityHeaders(response: Response): Response {
@@ -43,6 +45,29 @@ function withSecurityHeaders(response: Response): Response {
     if (!secured.headers.has(name)) secured.headers.set(name, value);
   }
   return secured;
+}
+
+/**
+ * public/_headers is a Cloudflare Pages/Workers-Static-Assets convention: it only
+ * applies to requests Cloudflare's own asset pipeline serves directly. Calling
+ * env.ASSETS.fetch() from inside this Worker script bypasses that pipeline
+ * entirely, so _headers is silently inert in production. Re-apply the same
+ * rules here instead of relying on the file.
+ */
+function withStaticAssetHeaders(response: Response, pathname: string): Response {
+  const withHeaders = new Response(response.body, response);
+  const headers = withHeaders.headers;
+
+  if (pathname === "/llms.txt" || pathname === "/.well-known/security.txt") {
+    headers.set("Content-Type", "text/plain; charset=utf-8");
+  }
+  if (pathname.startsWith("/assets/")) {
+    headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  } else if (pathname.startsWith("/apps/") || pathname.startsWith("/articles/")) {
+    headers.set("Cache-Control", "public, max-age=2592000");
+  }
+
+  return withHeaders;
 }
 
 const worker = {
@@ -110,7 +135,7 @@ async function routeRequest(request: Request, env: Env, ctx: ExecutionContext, u
     // trailing-slash redirect. Under `vinext start` every request reaches this
     // handler first, so hand file-like paths straight to the static server.
     if (isFilePath(url.pathname)) {
-      if (env?.ASSETS) return env.ASSETS.fetch(request);
+      if (env?.ASSETS) return withStaticAssetHeaders(await env.ASSETS.fetch(request), url.pathname);
       return new Response(null, { headers: { [VINEXT_STATIC_FILE_HEADER]: url.pathname } });
     }
 

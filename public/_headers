@@ -1,6 +1,14 @@
 # Static-asset headers for Cloudflare Workers Static Assets.
 # Providing this file replaces the one vinext would generate, so its
 # immutable rule for hashed build assets is repeated here.
+#
+# NOTE: this file has no effect in the current production deploy. The Worker
+# (worker/index.ts) calls env.ASSETS.fetch() directly for every file-like
+# path, which bypasses Cloudflare's native _headers-processing pipeline
+# entirely. The same Content-Type/Cache-Control rules below are applied in
+# code instead, in worker/index.ts's withStaticAssetHeaders(). Keep both in
+# sync if either changes; this file only becomes live if asset routing is
+# ever restructured so Cloudflare's own pipeline serves these paths again.
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
