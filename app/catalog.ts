@@ -1,5 +1,6 @@
 import { appEditorial, type AppEditorial } from "./app-content";
 import { generatedAppArticles } from "./generated/app-articles.generated";
+import { handAuthoredAppArticles } from "./hand-authored-articles";
 import { generatedGuideIndexEntries } from "./generated/resource-articles.generated";
 
 export type StatusKind = "confirmed";
@@ -91,7 +92,11 @@ const appDownloadUrls: Partial<Record<string, string>> = {
 function app(slug: string, name: string, category: AppCategory): AppRecord {
   const baseEditorial = appEditorial[slug];
   if (!baseEditorial) throw new Error(`Missing editorial profile for ${slug}`);
-  const editorial: AppEditorial = generatedAppArticles[slug] ? { ...baseEditorial, article: generatedAppArticles[slug] } : baseEditorial;
+  // generatedAppArticles is server-only output from the content pipeline (gitignored, not in
+  // git); handAuthoredAppArticles is the git-tracked equivalent for records the pipeline hasn't
+  // reached. If the pipeline ever does process one of those slugs, its output takes precedence.
+  const article = generatedAppArticles[slug] ?? handAuthoredAppArticles[slug];
+  const editorial: AppEditorial = article ? { ...baseEditorial, article } : baseEditorial;
   const words = name.replace(/[^a-zA-Z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
   const mark = words.length === 1 ? words[0].slice(0, 2).toUpperCase() : words.map((word) => word[0]).join("").slice(0, 2).toUpperCase();
   return {

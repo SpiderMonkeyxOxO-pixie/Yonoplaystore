@@ -1,9 +1,9 @@
 import type { ArticleSection } from "./resource-content";
 
 export type AppArticle = {
-  /** Full-size (1200x675) featured/hero image, distinct from the small square app icon. */
-  image: string;
-  imageAlt: string;
+  /** Full-size (1200x675) featured/hero image, distinct from the small square app icon. Omit when no real featured image exists -- the page then simply skips that block, same as resource articles do. */
+  image?: string;
+  imageAlt?: string;
   directAnswer: string;
   sections: ArticleSection[];
   faqs: [string, string][];
