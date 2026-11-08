@@ -30,6 +30,17 @@ interface ExecutionContext {
 
 const CANONICAL_HOST = "yonoplaystore.com";
 
+/**
+ * IndexNow host-verification key. Amazon, Bing, Naver, Seznam.cz, Yandex and
+ * Yep consume the IndexNow endpoint; Google does not (per indexnow.org/faq),
+ * so this is specifically a non-Google indexing signal -- it speeds up
+ * re-crawling on the engines that already send this site real traffic
+ * (confirmed via GA4: DuckDuckGo, Bing, Yahoo), not Google itself. The key
+ * must be served as plain text at /<key>.txt for IndexNow to verify
+ * ownership before accepting submissions.
+ */
+const INDEXNOW_KEY = "994c369da6ab0fb818fcc4d5eb317214";
+
 const SECURITY_TXT = `Contact: https://${CANONICAL_HOST}/contact/
 Expires: 2027-11-08T00:00:00.000Z
 Preferred-Languages: en
@@ -147,6 +158,9 @@ async function routeRequest(request: Request, env: Env, ctx: ExecutionContext, u
     }
     if (url.pathname === "/.well-known/security.txt") {
       return new Response(SECURITY_TXT, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+    }
+    if (url.pathname === `/${INDEXNOW_KEY}.txt`) {
+      return new Response(INDEXNOW_KEY, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
     }
 
     // Files from public/ (images, favicon, llms.txt, …) must not get the
