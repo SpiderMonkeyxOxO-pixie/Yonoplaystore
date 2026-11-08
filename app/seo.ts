@@ -24,7 +24,7 @@ const infoSeo: Record<string, Omit<RouteSeo, "canonicalPath">> = {
     description: "Read the editorial method used to review Yono app identities, APK sources, Android details, evidence labels and corrections.",
   },
   sources: {
-    title: "Yono App Sources and Verification Standards",
+    title: "Yono App Sources and Review Standards",
     description: "See which primary, publisher and third-party sources Yono Play Store uses when reviewing app identities and APK information.",
   },
   "editorial-policy": {
