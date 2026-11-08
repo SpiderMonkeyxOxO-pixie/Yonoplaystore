@@ -51,8 +51,8 @@ export const appEditorial: Record<string, AppEditorial> = {
   "yono-777": {
     summary: "Understand the Yono 777 app name, its multi-game listing, Android download trail and the evidence to check before using it.",
     hero: "This Yono 777 guide helps visitors distinguish the app from similarly named 777 platforms and inspect its present APK source, permissions and account claims.",
-    directAnswer: "Yono 777 appears in this catalog as an arcade and multi-game record. The verified label covers this page’s review, not every website, message or APK carrying the same name.",
-    identityFocus: "Numbers such as “777” are common in gaming brands. Verify the exact Yono 777 spelling, icon, developer name and source domain together so a different 777 app is not mistaken for this record.",
+    directAnswer: "Yono 777 appears in this catalog as an arcade and multi-game record. The Reviewed label covers this page’s review, not every website, message or APK carrying the same name.",
+    identityFocus: "Numbers such as “777” are common in gaming brands. Verify the exact Yono 777 spelling, icon, developer name and source domain together so a different 777 app is not mistaken for this record. The download source listed for this record is uono777network.online — spelled “uono”, not “yono” — so read the domain carefully before treating it as a Yono-branded source.",
     apkFocus: "A Yono 777 download should lead to a clearly identified Android file from a consistent source. Compare the package ID after redirects and recheck it whenever a new version is offered.",
     accountFocus: "Before entering a mobile number or OTP, find the privacy notice for the exact Yono 777 source and confirm who manages registration data, support requests and account deletion.",
     paymentFocus: "Multi-game menus can combine free modes, paid entries and promotional balances. Check which Yono 777 rules apply to each game and whether a displayed balance can actually be withdrawn.",
@@ -77,7 +77,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "win-rummy": {
     summary: "Check the Win Rummy identity, card-game context, APK origin and the difference between promotional language and verified account terms.",
     hero: "This page explains how to evaluate a Win Rummy listing before downloading an Android file, registering a player account or relying on reward claims.",
-    directAnswer: "Win Rummy is cataloged as a rummy and card-game app record. Its page is verified for editorial completeness while live publisher, file and money details remain source-dependent.",
+    directAnswer: "Win Rummy is cataloged as a rummy and card-game app record. Its page carries a Reviewed status for editorial completeness while live publisher, file and money details remain source-dependent.",
     identityFocus: "The phrase “Win Rummy” is descriptive and may be reused by unrelated pages. Check the exact logo, developer identity, domain history and support channel as one connected record.",
     apkFocus: "For any Win Rummy APK, verify that the download host belongs to the identified publisher and that updates retain a consistent package identity rather than silently replacing the app.",
     accountFocus: "A player account may expose phone, profile and transaction information. The Win Rummy privacy notice should explain retention, sharing, deletion and how users can challenge an incorrect record.",
@@ -91,7 +91,7 @@ export const appEditorial: Record<string, AppEditorial> = {
     summary: "A clear Yono Arcade app record focused on multi-game identity, download-source consistency, permissions and mode-specific terms.",
     hero: "Explore what the Yono Arcade name describes and how to check a multi-game Android listing before installing, registering or using paid features.",
     directAnswer: "Yono Arcade is presented as an arcade and mixed-game record. This guide helps identify the exact listing and review its current Android and account information.",
-    identityFocus: "An arcade label can cover very different game collections. Compare the full Yono Arcade name, icon, listed modes, publisher and domain rather than assuming two similarly named menus are the same app.",
+    identityFocus: "An arcade label can cover very different game collections. Compare the full Yono Arcade name, icon, listed modes, publisher and domain rather than assuming two similarly named menus are the same app. The download source listed for this record is yonoofficial1.com; the word “official” in a domain name is not evidence that Google, a publisher or any authority has verified it as such.",
     apkFocus: "A Yono Arcade APK may change as games are added or removed. Confirm the package, signing identity and permission changes on each update instead of relying only on the previous icon.",
     accountFocus: "Multi-game apps may share one login across several modes. Check whether the Yono Arcade policy explains how account data travels between games, support services and payment providers.",
     paymentFocus: "Review each mode separately for entry costs, virtual credits, promotional rewards and redemption limits. A rule shown for one arcade game may not apply to another.",
@@ -104,7 +104,7 @@ export const appEditorial: Record<string, AppEditorial> = {
     summary: "Review the Yono Slots listing, Android source, reel-style game claims and the terms behind credits, jackpots or withdrawals.",
     hero: "This independent Yono Slots page puts the source, APK and reward questions in plain language before a visitor follows any download link.",
     directAnswer: "Yono Slots is listed as a slots-style game record. The catalog verifies this page’s identity and guidance, while live reels, rewards and file details must be checked at their source.",
-    identityFocus: "Slots-themed icons and Yono wording can be copied easily. Match the exact Yono Slots domain, publisher name, support contact and privacy terms before treating a page as connected to this record.",
+    identityFocus: "Slots-themed icons and Yono wording can be copied easily. Match the exact Yono Slots domain, publisher name, support contact and privacy terms before treating a page as connected to this record. The download source listed for this record is uonoslots.fun — spelled “uono”, not “yono” — so read the domain carefully before treating it as a Yono-branded source.",
     apkFocus: "Before installing a Yono Slots APK, inspect its origin and permissions and compare the Android package with a reliable publisher record. A changed file size alone cannot prove an update is genuine.",
     accountFocus: "Check whether the account policy distinguishes game history, device data and payment information, and whether users can request access, correction or deletion.",
     paymentFocus: "Displayed coins, jackpots and bonus amounts may be promotional or non-withdrawable. Read the Yono Slots rules for credit value, result generation, wagering conditions and cash-out limits.",
@@ -116,7 +116,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "101z": {
     summary: "A focused 101Z guide for confirming the short app name, recognizing lookalike files and checking spin-style reward claims.",
     hero: "Because 101Z is a short letter-and-number name, this page emphasizes exact identity checks before any APK, login or reward interaction.",
-    directAnswer: "101Z is documented here as a spin-style gaming record. The listing is verified, but the compact name makes package, icon and source matching especially important.",
+    directAnswer: "101Z is documented here as a spin-style gaming record. The listing carries a Reviewed status, but the compact name makes package, icon and source matching especially important.",
     identityFocus: "One changed character can lead to a different 101Z-looking page or file. Read the full domain and package ID and compare the letter Z carefully with similar numeric or lowercase variants.",
     apkFocus: "Do not rely on a file named 101Z.apk. Confirm the download host, signing identity and Android permissions, and be cautious if the installation label differs from the name shown on the source page.",
     accountFocus: "If 101Z asks for phone or device access, the responsible company and purpose should be stated in a readable privacy notice rather than only inside a chat message.",
@@ -129,7 +129,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "567-slots": {
     summary: "Learn how to distinguish 567 Slots from numeric lookalikes and assess its APK, account data and slot-credit claims.",
     hero: "This 567 Slots record explains the practical checks behind a number-led slots app: exact source, Android identity, privacy and reward terms.",
-    directAnswer: "567 Slots is a verified catalog entry for a slots-style app name. Verification covers the published record, not every 567-branded file or promotional page online.",
+    directAnswer: "567 Slots is a Reviewed catalog entry for a slots-style app name. The review covers the published record, not every 567-branded file or promotional page online.",
     identityFocus: "Numeric brands are easy to imitate or mistype. Confirm the complete “567 Slots” wording, icon, final domain and developer details instead of searching or matching only the number.",
     apkFocus: "A 567 Slots APK should keep a traceable package and signing identity. Recheck both after redirects or updates, particularly when a download is offered through a generic file host.",
     accountFocus: "Look for a policy that names the controller of phone, device and play-history data and explains how support and deletion requests are handled.",
@@ -142,7 +142,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "777-game": {
     summary: "An independent 777 Game record explaining numeric-name confusion, multi-game APK checks and reward or wallet questions.",
     hero: "Use this 777 Game guide to separate the exact app from many 777-branded alternatives and review its source before installation.",
-    directAnswer: "777 Game is cataloged as an arcade and multi-game app record. The page gives a verified reference point without assuming that every 777 download belongs to the same operator.",
+    directAnswer: "777 Game is cataloged as an arcade and multi-game app record. The page gives a Reviewed reference point without assuming that every 777 download belongs to the same operator.",
     identityFocus: "“777 Game” is a broad name used across gaming pages. The decisive signals are the full domain, developer name, icon details, package ID and support identity—not the number by itself.",
     apkFocus: "Follow every redirect before assessing a 777 Game APK. The displayed button text can stay the same even when the host, package or signer has changed.",
     accountFocus: "Before a shared multi-game login is created, check which service receives the phone number and whether its privacy terms cover all included modes.",
@@ -155,7 +155,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "789-jackpots": {
     summary: "A plain-language 789 Jackpots guide covering brand matching, APK origin and the evidence behind jackpot or withdrawal messages.",
     hero: "This record helps visitors evaluate 789 Jackpots without assuming that a large displayed prize, familiar number or download button proves authenticity.",
-    directAnswer: "789 Jackpots is listed as a slots-style app record. The verified catalog page documents the name and review guidance but does not validate a live jackpot amount or payout.",
+    directAnswer: "789 Jackpots is listed as a slots-style app record. The Reviewed catalog page documents the name and review guidance but does not validate a live jackpot amount or payout.",
     identityFocus: "Check all three digits, the plural “Jackpots,” the icon, publisher and final domain. A small naming difference can identify a separate app or an unrelated promotional page.",
     apkFocus: "Inspect the package and signer behind any 789 Jackpots APK, especially when a file arrives from a message or cloud folder. The filename and landing-page logo are not enough.",
     accountFocus: "A jackpot notification should never be treated as proof that an account is controlled by the person sending it. Use only documented support routes and never disclose an OTP.",
@@ -194,7 +194,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "bingo-101": {
     summary: "A Bingo 101 app guide covering exact-name checks, Android download sources, account privacy and bingo reward terms.",
     hero: "Use this Bingo 101 record to understand the listing and verify the app behind the beginner-style name before installing or joining a game.",
-    directAnswer: "Bingo 101 is cataloged as a general gaming-app record. The verified page provides identity and safety guidance without confirming a live room, prize or payment arrangement.",
+    directAnswer: "Bingo 101 is cataloged as a general gaming-app record. The Reviewed page provides identity and safety guidance without confirming a live room, prize or payment arrangement.",
     identityFocus: "“101” can mean an introduction and can also be part of many app names. Match the complete Bingo 101 identity, icon, developer and domain instead of using the number alone.",
     apkFocus: "Check whether a Bingo 101 APK installs under the expected package name and keeps a consistent signer. Unexpected SMS, contact or accessibility access deserves an explanation before proceeding.",
     accountFocus: "Bingo profiles may display names, rooms or play history. Read whether that information is public, shared with service providers or removable by the account holder.",
@@ -220,7 +220,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "club-inr": {
     summary: "A Club INR information page focused on rupee-themed branding, app-source identity, Android permissions and money-related claims.",
     hero: "Club INR uses a currency reference in its name, so this guide separates branding from verifiable facts about the app, account and payment path.",
-    directAnswer: "Club INR is listed as a general gaming-app record. The verified catalog entry does not establish a financial service, rupee balance, operator or withdrawal facility.",
+    directAnswer: "Club INR is listed as a general gaming-app record. The Reviewed catalog entry does not establish a financial service, rupee balance, operator or withdrawal facility.",
     identityFocus: "“INR” describes the Indian rupee and does not identify a publisher. Check the full Club INR legal name, domain, developer details and support contact before trusting a currency-themed page.",
     apkFocus: "An APK labeled Club INR should be checked for its final host, package ID, signer and permissions. Currency wording does not make a file safer or more official.",
     accountFocus: "If the app requests identity or financial details, its privacy notice should name the controller, explain the purpose and provide a secure complaint and deletion route.",
@@ -233,7 +233,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "game-rummy": {
     summary: "A no-nonsense Game Rummy guide for distinguishing the generic name, checking its APK source and reading the player terms.",
     hero: "Because “Game Rummy” is highly descriptive, this page shows which identity, Android and account details must match before visitors proceed.",
-    directAnswer: "Game Rummy is recorded as a rummy and card-game listing. Its catalog status is verified, but the broad name does not identify a unique operator or APK by itself.",
+    directAnswer: "Game Rummy is recorded as a rummy and card-game listing. Its catalog status is Reviewed, but the broad name does not identify a unique operator or APK by itself.",
     identityFocus: "Search results may use the words “game” and “rummy” in many combinations. Match the exact icon, developer name, domain and package instead of treating a keyword match as the same product.",
     apkFocus: "A file named game-rummy.apk offers little identity evidence. Confirm the package ID, signer, download host and permissions against a publisher-controlled source before installation.",
     accountFocus: "The player-data policy should identify who receives phone, KYC and play-history information and how a user can correct or remove it.",
@@ -246,7 +246,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "gogo-rummy": {
     summary: "Explore the GoGo Rummy listing with checks for repeated-name branding, Android file origin, account privacy and card-game payments.",
     hero: "This GoGo Rummy page turns a playful brand into a clear checklist for verifying the source, APK, registration and money terms.",
-    directAnswer: "GoGo Rummy is cataloged as a rummy and card-game app record. The entry is verified for publication, while live operator and technical facts must remain traceable to a current source.",
+    directAnswer: "GoGo Rummy is cataloged as a rummy and card-game app record. The entry is Reviewed for publication, while live operator and technical facts must remain traceable to a current source.",
     identityFocus: "Check whether the brand is written GoGo, Gogo or another variation, then match the icon, domain and developer. Small capitalization changes can accompany unrelated listings.",
     apkFocus: "For a GoGo Rummy APK, compare the installed label with the package and signer. A familiar splash screen cannot prove that a file has not been replaced or modified.",
     accountFocus: "Registration terms should explain what happens to phone, device and identity information and how the player can reach a responsible privacy contact.",
@@ -259,7 +259,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "hi-rummy": {
     summary: "A clear Hi Rummy overview for checking the friendly brand name, current APK source, player-data handling and withdrawal terms.",
     hero: "This Hi Rummy record explains what the app name can—and cannot—prove before someone downloads a file or opens a card-game account.",
-    directAnswer: "Hi Rummy is listed as a rummy and card-game catalog entry. Its verified status confirms the editorial record, not every website, APK or contact using the Hi Rummy name.",
+    directAnswer: "Hi Rummy is listed as a rummy and card-game catalog entry. Its Reviewed status confirms the editorial record, not every website, APK or contact using the Hi Rummy name.",
     identityFocus: "“Hi” is a common word and can create many close search matches. Confirm the full Hi Rummy name together with the icon, developer, domain and support email.",
     apkFocus: "A Hi Rummy APK should come from a consistent publisher trail. Compare the Android package, signer and permission list with the source page whenever an update is offered.",
     accountFocus: "Before sharing a phone number, OTP or identity document, check the named data controller and whether the Hi Rummy privacy process supports access, correction and deletion.",
@@ -285,7 +285,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "ind-club": {
     summary: "A practical IND Club app record addressing country-style branding, source identity, Android access and shared-club payment claims.",
     hero: "This IND Club guide explains how to move from a broad club name to verifiable facts about the operator, APK, account and money flow.",
-    directAnswer: "IND Club is cataloged as a general gaming-app entry. The verified record does not establish that it is an official Indian club, financial service or regulated platform.",
+    directAnswer: "IND Club is cataloged as a general gaming-app entry. The Reviewed record does not establish that it is an official Indian club, financial service or regulated platform.",
     identityFocus: "Neither “IND” nor “Club” uniquely identifies a company. Look for a legal entity, complete address, matching domain and support contact behind the exact app icon.",
     apkFocus: "Check where an IND Club APK is actually hosted and whether its package, signer and permissions remain consistent across the source page and installed app.",
     accountFocus: "A club-style membership may combine profile, referral and transaction data. The privacy notice should explain each use and provide a direct account-deletion process.",
@@ -310,8 +310,8 @@ export const appEditorial: Record<string, AppEditorial> = {
   },
   "ind-slots": {
     summary: "Review IND Slots as an India-themed slots listing with clear checks for source identity, APK permissions and reward values.",
-    hero: "This IND Slots page separates the brand’s Indian cue from verified facts about the Android file, game credits and local availability.",
-    directAnswer: "IND Slots is documented as a slots-style catalog record. Its verified page does not confirm an India-based operator, regulated status, jackpot or withdrawal service.",
+    hero: "This IND Slots page separates the brand’s Indian cue from reviewed information about the Android file, game credits and local availability.",
+    directAnswer: "IND Slots is documented as a slots-style catalog record. Its Reviewed page does not confirm an India-based operator, regulated status, jackpot or withdrawal service.",
     identityFocus: "Confirm what “IND” represents by finding a complete company name, address, domain and matching support identity. An abbreviation is not evidence of registration.",
     apkFocus: "Inspect an IND Slots APK for package, signer and permission consistency. Be cautious when the file arrives through a different host than the policy or support domain.",
     accountFocus: "Check whether device, play-history and payment data are linked to one account and whether users have a clear way to request deletion.",
@@ -324,7 +324,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "inr-rummy": {
     summary: "An INR Rummy guide explaining rupee-branded balances, Android app identity, player privacy and withdrawal terminology.",
     hero: "This page helps visitors understand what an INR label does not prove and which Rummy APK, account and money details need checking.",
-    directAnswer: "INR Rummy is included as a rummy and card-game catalog record. The verified listing does not establish that displayed INR amounts are deposits, winnings or withdrawable cash.",
+    directAnswer: "INR Rummy is included as a rummy and card-game catalog record. The Reviewed listing does not establish that displayed INR amounts are deposits, winnings or withdrawable cash.",
     identityFocus: "INR is a currency code, not a publisher identity. Verify the full INR Rummy operator, domain, icon, developer and support route before treating a rupee display as trustworthy.",
     apkFocus: "Compare the INR Rummy APK package and signer with the identified source. Pay close attention to SMS, contacts or accessibility requests that are not needed for card play.",
     accountFocus: "Financial and KYC information needs a named controller, retention policy and secure correction or deletion process.",
@@ -363,7 +363,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "jaiho-rummy": {
     summary: "A dedicated Jaiho Rummy guide for verifying the rummy variant, Android source, player account and card-table money rules.",
     hero: "This page distinguishes Jaiho Rummy from other Jaiho listings and puts its APK, privacy and card-game checks in a clear order.",
-    directAnswer: "Jaiho Rummy is documented as a rummy and card-game catalog record. The verified page does not show that all Jaiho-branded apps share the same publisher or wallet.",
+    directAnswer: "Jaiho Rummy is documented as a rummy and card-game catalog record. The Reviewed page does not show that all Jaiho-branded apps share the same publisher or wallet.",
     identityFocus: "Confirm the “Rummy” qualifier, icon, developer, domain and support contact. Do not substitute a Jaiho 777, Arcade, Slots or Spin page when checking this record.",
     apkFocus: "The Jaiho Rummy APK should keep its own package and signer. Compare those details with the intended publisher before accepting an update from a cross-promotional link.",
     accountFocus: "Find out whether the player profile or KYC record is limited to Jaiho Rummy or shared with other Jaiho services, and how deletion works.",
@@ -415,7 +415,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "jaiho-91": {
     summary: "A Jaiho 91 identity and APK guide designed to prevent confusion with other numbered or brand-family gaming listings.",
     hero: "Use this page to verify the exact Jaiho 91 record before a number-based search result, download or account prompt is trusted.",
-    directAnswer: "Jaiho 91 is listed as an arcade and multi-game catalog record. Its verified status does not show that every Jaiho or “91” page shares the same operator.",
+    directAnswer: "Jaiho 91 is listed as an arcade and multi-game catalog record. Its Reviewed status does not show that every Jaiho or “91” page shares the same operator.",
     identityFocus: "Both the Jaiho prefix and the number 91 must match the icon, developer, domain and package. Close numeric variants can lead to a different product.",
     apkFocus: "Confirm that a Jaiho 91 APK is not a renamed build for another Jaiho app. Compare package, signer, host and installed label before proceeding.",
     accountFocus: "Check whether the account is unique to Jaiho 91 or reused across a brand network and how privacy or deletion requests affect linked services.",
@@ -428,13 +428,13 @@ export const appEditorial: Record<string, AppEditorial> = {
   "joy-rummy": {
     summary: "A Joy Rummy guide that separates upbeat branding from verifiable Android, player-account and card-game information.",
     hero: "This page explains how to check a Joy Rummy source before a positive brand name, APK button or bonus message influences the decision.",
-    directAnswer: "Joy Rummy is documented as a rummy and card-game catalog record. The verified entry confirms the review, not a guaranteed enjoyable experience, reward or withdrawal.",
+    directAnswer: "Joy Rummy is documented as a rummy and card-game catalog record. The page's Reviewed status confirms it passed review, not a guaranteed enjoyable experience, reward or withdrawal.",
     identityFocus: "“Joy” is a common brand word. Match the complete Joy Rummy name, icon, developer, domain and support contact so an unrelated app is not mistaken for this listing.",
     apkFocus: "Compare the Joy Rummy APK package and signer with the identified publisher and recheck them if an update comes from a different host.",
     accountFocus: "The privacy policy should explain who receives phone, KYC, device and game-history data and how the player can request correction or deletion.",
     paymentFocus: "Do not confuse a welcome reward with withdrawable money. Read table-entry, bonus, expiry, verification and cash-out rules before depositing.",
     localContext: "Paid rummy availability can differ by state and product format. Branding and download access do not establish local permission.",
-    takeaway: "Let verified identity and written player terms—not the cheerful Joy Rummy name—guide the installation and account decision.",
+    takeaway: "Let confirmed identity and written player terms—not the cheerful Joy Rummy name—guide the installation and account decision.",
     seoTitle: "Joy Rummy APK Download and Player Safety",
     seoDescription: "Check Joy Rummy APK and app information, publisher and package identity, Android permissions, player privacy, bonuses and withdrawal terms.",
   },
@@ -454,7 +454,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "maha-games": {
     summary: "A Maha Games overview for checking a broad multi-game identity, Android package changes and rules that vary by mode.",
     hero: "This guide helps visitors understand which Maha Games product they found and how to evaluate its APK, shared account and mixed-game terms.",
-    directAnswer: "Maha Games is cataloged as an arcade and multi-game app record. The verified page does not confirm the number of live games, an operator or a common reward system.",
+    directAnswer: "Maha Games is cataloged as an arcade and multi-game app record. The Reviewed page does not confirm the number of live games, an operator or a common reward system.",
     identityFocus: "“Maha” and “Games” can be used in many unrelated names. Match the exact icon, game list, developer, domain and support information.",
     apkFocus: "A multi-game Maha Games APK may change frequently. Recheck the package signer and permissions whenever modes are added, removed or updated.",
     accountFocus: "One profile may connect several game modes. The privacy policy should show how identity, device, play and transaction data move across them.",
@@ -467,7 +467,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "max-rummy": {
     summary: "A Max Rummy record focused on exact brand identity, Android download verification and the limits behind “maximum” reward language.",
     hero: "This page checks the evidence behind Max Rummy without treating its superlative name, bonus display or APK button as proof.",
-    directAnswer: "Max Rummy is listed as a rummy and card-game app record. The verified catalog status does not confirm maximum returns, bonus value or withdrawal success.",
+    directAnswer: "Max Rummy is listed as a rummy and card-game app record. The Reviewed catalog status does not confirm maximum returns, bonus value or withdrawal success.",
     identityFocus: "“Max” is common in promotional names. Confirm the complete Max Rummy icon, developer, domain, legal identity and support route before relying on a search result.",
     apkFocus: "For a Max Rummy APK, verify the package, signer and download host and examine permission changes after every update.",
     accountFocus: "Read which organization controls phone, KYC and game data and whether account closure also removes marketing or referral information.",
@@ -493,7 +493,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "neta-vip": {
     summary: "A Neta VIP app guide examining exclusive-status language, operator identity, Android permissions and VIP reward claims.",
     hero: "This record separates the Neta VIP name from evidence about the actual publisher, download file, member data and premium offer.",
-    directAnswer: "Neta VIP is included as a general gaming-app catalog record. A verified page does not establish VIP status, special access, an operator or a financial benefit.",
+    directAnswer: "Neta VIP is included as a general gaming-app catalog record. A Reviewed page does not establish VIP status, special access, an operator or a financial benefit.",
     identityFocus: "Both “Neta” and “VIP” can carry meanings outside gaming. Confirm the complete legal identity, icon, domain, developer and support details for this exact app.",
     apkFocus: "A VIP label should never reduce technical caution. Verify the Neta VIP package, signer, host and permission requests before installation.",
     accountFocus: "Premium membership may collect profile, referral or payment data. Check who receives it and whether users can cancel membership and delete the account.",
@@ -506,7 +506,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "ok-rummy": {
     summary: "A plain-language OK Rummy record for checking the short brand, Android source, player privacy and rummy money rules.",
     hero: "This page helps visitors decide whether an OK Rummy listing is the intended app before downloading, registering or depositing.",
-    directAnswer: "OK Rummy is cataloged as a rummy and card-game record. “Verified” means the page passed review; it is not a blanket statement that every file is okay or safe.",
+    directAnswer: "OK Rummy is cataloged as a rummy and card-game record. “Reviewed” means the page passed review; it is not a blanket statement that every file is okay or safe.",
     identityFocus: "“OK” is a common word and weak identity signal. Match the full OK Rummy name, icon, developer, domain, support contact and Android package.",
     apkFocus: "Do not treat an ok-rummy filename as approval. Verify the package signer, final host and requested permissions against the identified publisher.",
     accountFocus: "Check who controls mobile-number, KYC, device and game-history data and whether the user can obtain, correct and erase a copy.",
@@ -519,7 +519,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "rumble-rummy": {
     summary: "Review Rumble Rummy through its distinct brand, APK package trail, account security and competitive-table payment terms.",
     hero: "This independent Rumble Rummy page explains how to verify the app behind the energetic name before joining, installing or paying.",
-    directAnswer: "Rumble Rummy is listed as a rummy and card-game catalog record. The verified status covers the information page, not a competition result or payout promise.",
+    directAnswer: "Rumble Rummy is listed as a rummy and card-game catalog record. The Reviewed status covers the information page, not a competition result or payout promise.",
     identityFocus: "Check the full Rumble Rummy wording, icon, developer, domain and support contact. Similar action-themed brands may be unrelated.",
     apkFocus: "Verify the Rumble Rummy package and signer and inspect permissions that could expose communications or control the device beyond gameplay needs.",
     accountFocus: "Competitive features may expose usernames, rankings or play history. Read what becomes public and how profile or KYC data can be removed.",
@@ -532,7 +532,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "rummy-91": {
     summary: "A Rummy 91 guide for exact numeric matching, Android package checks, player data and card-game balance rules.",
     hero: "Use this page to distinguish Rummy 91 from other numbered rummy apps before following an APK, registration or reward link.",
-    directAnswer: "Rummy 91 is cataloged as a rummy and card-game record. The verified listing does not confirm that another “91” app, website or file belongs to the same service.",
+    directAnswer: "Rummy 91 is cataloged as a rummy and card-game record. The Reviewed listing does not confirm that another “91” app, website or file belongs to the same service.",
     identityFocus: "Match the order—Rummy 91—along with the icon, developer, domain and package. A reversed or nearby number can identify a different listing.",
     apkFocus: "Confirm that a Rummy 91 APK installs under the expected package and signer and has not been renamed from another numbered build.",
     accountFocus: "Check whether registration, KYC and transaction data remain within Rummy 91 or are shared across other branded services.",
@@ -558,7 +558,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "rummy-77": {
     summary: "A dedicated Rummy 77 page covering numeric-brand accuracy, APK source continuity and rummy account or withdrawal terms.",
     hero: "This record helps visitors verify Rummy 77 as a specific app rather than confusing it with other 77 or 777 gaming listings.",
-    directAnswer: "Rummy 77 is documented as a rummy and card-game catalog record. The verified page does not connect every 77-branded file or website to this identity.",
+    directAnswer: "Rummy 77 is documented as a rummy and card-game catalog record. The Reviewed page does not connect every 77-branded file or website to this identity.",
     identityFocus: "Count and order the digits carefully, then match the Rummy 77 icon, developer, domain and support identity. “77” and “777” are not interchangeable.",
     apkFocus: "Check that the Rummy 77 APK uses its expected package and signer and has not been relabeled from another numeric variant.",
     accountFocus: "Read whether the account is standalone or linked with other numbered platforms and how phone, KYC and transaction data are managed.",
@@ -584,7 +584,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "saga-slots": {
     summary: "A Saga Slots app guide focused on story-themed branding, Android file identity and the rules behind reels, credits and jackpots.",
     hero: "This independent record checks what sits behind the Saga Slots theme before a visitor installs an APK or relies on a reward display.",
-    directAnswer: "Saga Slots is cataloged as a slots-style app record. The verified page does not confirm a storyline, jackpot value, publisher or withdrawal outcome.",
+    directAnswer: "Saga Slots is cataloged as a slots-style app record. The Reviewed page does not confirm a storyline, jackpot value, publisher or withdrawal outcome.",
     identityFocus: "“Saga” can describe a theme or a company name. Match the complete Saga Slots icon, developer, domain, legal identity and support route.",
     apkFocus: "Verify the Saga Slots package and signer and inspect whether visual or content updates add unexpected Android permissions.",
     accountFocus: "Check what play-history, device and payment data are stored and whether a player can remove the account without contacting an unofficial social profile.",
@@ -610,7 +610,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "slot-spin": {
     summary: "A Slot Spin guide for clarifying the two-part game name, Android source, permission needs and spin-credit rules.",
     hero: "This page explains how to verify the exact Slot Spin listing when both words are widely used across reel and wheel-style games.",
-    directAnswer: "Slot Spin is cataloged as a spin-style gaming record. Its verified page does not prove that every slot-and-spin result, file or reward message belongs to this app.",
+    directAnswer: "Slot Spin is cataloged as a spin-style gaming record. Its Reviewed page does not prove that every slot-and-spin result, file or reward message belongs to this app.",
     identityFocus: "Because “slot” and “spin” are generic mechanics, the icon, developer, final domain, package and support identity carry more weight than the name alone.",
     apkFocus: "Check the Slot Spin APK package and signer and question permissions unrelated to displaying games, saving preferences or securing an account.",
     accountFocus: "Read whether play history, device identifiers and promotional activity are linked to a user profile and how that data can be removed.",
@@ -675,7 +675,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "spin-winner": {
     summary: "An independent Spin Winner record explaining how to verify the APK and assess winner, prize and withdrawal messages.",
     hero: "This guide keeps the Spin Winner name from being mistaken for proof of a result, helping visitors check the app before acting.",
-    directAnswer: "Spin Winner is listed as a spin-style catalog record. The verified page does not mean every user wins or that a displayed reward can be withdrawn.",
+    directAnswer: "Spin Winner is listed as a spin-style catalog record. The Reviewed page does not mean every user wins or that a displayed reward can be withdrawn.",
     identityFocus: "The word “Winner” can appear in advertisements for many apps. Match the full Spin Winner identity, icon, developer, domain and Android package.",
     apkFocus: "Check the Spin Winner APK signer and final host, especially when a supposed prize message includes a private download or update link.",
     accountFocus: "Never share an OTP to confirm winnings. Use the documented account and privacy routes to verify notifications and protect player data.",
@@ -740,7 +740,7 @@ export const appEditorial: Record<string, AppEditorial> = {
   "yono-vip": {
     summary: "A Yono VIP app record addressing premium-access branding, YONO SBI confusion, Android identity and membership reward claims.",
     hero: "This guide checks what Yono VIP actually identifies before a visitor trusts an exclusive offer, APK, member account or payment request.",
-    directAnswer: "Yono VIP is cataloged as a general gaming-app record. The verified page does not establish VIP benefits, a publisher, a banking service or affiliation with YONO SBI.",
+    directAnswer: "Yono VIP is cataloged as a general gaming-app record. The Reviewed page does not establish VIP benefits, a publisher, a banking service or affiliation with YONO SBI.",
     identityFocus: "Match the complete Yono VIP legal identity, icon, developer, domain and support route. “Yono” and “VIP” together do not indicate SBI endorsement or official status.",
     apkFocus: "Verify the Yono VIP APK package, signer and permissions. Premium wording should never justify disabling Android protections or accepting broad device access.",
     accountFocus: "Check how membership, referral, identity and transaction data are handled and whether the user can cancel access and remove the account.",
