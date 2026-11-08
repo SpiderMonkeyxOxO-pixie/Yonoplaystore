@@ -2,13 +2,20 @@
 # Providing this file replaces the one vinext would generate, so its
 # immutable rule for hashed build assets is repeated here.
 #
-# NOTE: this file has no effect in the current production deploy. The Worker
-# (worker/index.ts) calls env.ASSETS.fetch() directly for every file-like
-# path, which bypasses Cloudflare's native _headers-processing pipeline
-# entirely. The same Content-Type/Cache-Control rules below are applied in
-# code instead, in worker/index.ts's withStaticAssetHeaders(). Keep both in
-# sync if either changes; this file only becomes live if asset routing is
-# ever restructured so Cloudflare's own pipeline serves these paths again.
+# NOTE: this file has no effect in the current production deploy. The site
+# actually runs self-hosted via `vinext start` under PM2, not literal
+# Cloudflare edge Workers, so there is no real ASSETS binding and this
+# `_headers` convention is never read. The Cache-Control rules below are
+# applied in code instead, in worker/index.ts's withStaticAssetHeaders().
+# Keep both in sync if either changes; this file only becomes live if the
+# deploy target ever changes to one where Cloudflare's own asset pipeline
+# serves these paths.
+#
+# /llms.txt and /.well-known/security.txt are NOT listed here: they're plain
+# text and the static pipeline's extension-based Content-Type lookup has no
+# .txt entry (and strips any override), so both are served directly from
+# routeRequest() in worker/index.ts instead, the same way /robots.txt and
+# /sitemap.xml already are. See app/llms.ts.
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -18,12 +25,6 @@
 
 /articles/*
   Cache-Control: public, max-age=2592000
-
-/llms.txt
-  Content-Type: text/plain; charset=utf-8
-
-/.well-known/security.txt
-  Content-Type: text/plain; charset=utf-8
 
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains

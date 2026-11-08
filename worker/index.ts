@@ -3,6 +3,7 @@ import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } fr
 import handler from "vinext/server/app-router-entry";
 import robots from "../app/robots";
 import sitemap from "../app/sitemap";
+import llmsTxt from "../app/llms";
 
 interface Env {
   ASSETS: Fetcher;
@@ -29,6 +30,12 @@ interface ExecutionContext {
 
 const CANONICAL_HOST = "yonoplaystore.com";
 
+const SECURITY_TXT = `Contact: https://${CANONICAL_HOST}/contact/
+Expires: 2027-11-08T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://${CANONICAL_HOST}/.well-known/security.txt
+`;
+
 const SECURITY_HEADERS: Record<string, string> = {
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Content-Type-Options": "nosniff",
@@ -51,22 +58,27 @@ function withSecurityHeaders(response: Response): Response {
  * public/_headers is a Cloudflare Pages/Workers-Static-Assets convention: it only
  * applies to requests Cloudflare's own asset pipeline serves directly. Calling
  * env.ASSETS.fetch() from inside this Worker script bypasses that pipeline
- * entirely, so _headers is silently inert in production. Re-apply the same
- * rules here instead of relying on the file.
+ * entirely, so _headers is silently inert in production. Re-apply the
+ * Cache-Control rules here instead of relying on the file.
+ *
+ * Content-Type is deliberately NOT set here: when there is no real ASSETS
+ * binding (the self-hosted `vinext start` deployment this site actually
+ * runs under — see worker/index.ts's isFilePath branch), the response is
+ * handed off to vinext's own static-file server via a signal header, which
+ * strips any Content-Type override before serving the file and uses its own
+ * extension-based lookup instead. That lookup has no entry for .txt, so any
+ * plain-text file routed through isFilePath still comes back as
+ * application/octet-stream regardless of what's set here. /llms.txt and
+ * /.well-known/security.txt are routed around this entirely instead (served
+ * directly in routeRequest(), same as /robots.txt and /sitemap.xml).
  */
 function withStaticAssetHeaders(response: Response, pathname: string): Response {
   const withHeaders = new Response(response.body, response);
-  const headers = withHeaders.headers;
-
-  if (pathname === "/llms.txt" || pathname === "/.well-known/security.txt") {
-    headers.set("Content-Type", "text/plain; charset=utf-8");
-  }
   if (pathname.startsWith("/assets/")) {
-    headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    withHeaders.headers.set("Cache-Control", "public, max-age=31536000, immutable");
   } else if (pathname.startsWith("/apps/") || pathname.startsWith("/articles/")) {
-    headers.set("Cache-Control", "public, max-age=2592000");
+    withHeaders.headers.set("Cache-Control", "public, max-age=2592000");
   }
-
   return withHeaders;
 }
 
@@ -129,6 +141,12 @@ async function routeRequest(request: Request, env: Env, ctx: ExecutionContext, u
     }
     if (url.pathname === "/robots.txt") {
       return new Response(robotsTxt(), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+    }
+    if (url.pathname === "/llms.txt") {
+      return new Response(llmsTxt(), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+    }
+    if (url.pathname === "/.well-known/security.txt") {
+      return new Response(SECURITY_TXT, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
     }
 
     // Files from public/ (images, favicon, llms.txt, …) must not get the
