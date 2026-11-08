@@ -293,4 +293,404 @@ export const handAuthoredAppArticles: Record<string, AppArticle> = {
     seoTitle: "IND Slots APK: Domain, Identity and Jackpot-Claim Checks",
     seoDescription: "IND Slots app record: what the IND prefix does and doesn't mean, the indslotsgame.com download source, APK checks, privacy and jackpot/withdrawal-term guidance.",
   },
+
+  "777-game": {
+    directAnswer:
+      "777 Game is catalogued here as an arcade and multi-game record. “777” is reused across several separately operated records in this catalog — including Yono 777, Jaiho 777, Hindi 777 and YN 777 — so the digits alone do not identify this one. Its supplied download source is `777game2.com`, a numbered mirror domain.",
+    sections: [
+      {
+        heading: "777 Game, Yono 777, Jaiho 777, Hindi 777 and YN 777: same number, different records",
+        paragraphs: [
+          "This catalog lists five separate “777”-named records. A shared number does not establish a shared owner, APK, account system or wallet between any of them. If a search led here for a different “777” app, open that app’s own record rather than assuming this page covers it.",
+        ],
+      },
+      {
+        heading: "Why the domain is 777game2.com, not 777game.com",
+        paragraphs: [
+          "The supplied source adds a “2” to the plain name — a numbered mirror-domain pattern used by several records in this catalog. Treat the exact current domain as something to confirm at the time you visit rather than something to memorise once.",
+        ],
+      },
+      {
+        heading: "777 Game APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signing information for the installer reached through this link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "777 Game account, privacy and payment checks",
+        paragraphs: [
+          "Check which organisation receives any phone number or account details you provide, and read the written terms for how an in-app balance, bonus or reward converts to a withdrawal before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is 777 Game the same as Yono 777, Jaiho 777, Hindi 777 or YN 777?", "No. These are separate catalog records. A shared “777” does not establish a common operator, APK, account or wallet — check the full name and domain for each."],
+      ["Why does the domain say 777game2.com?", "Operators in this space commonly publish through numbered mirror domains. The “2” is part of how the destination is currently reachable; it is not evidence about who operates it."],
+      ["Is 777 Game safe?", "No blanket safety claim is made here. Safety depends on the current file, operator and account/payment practices behind the supplied domain, which can change after this record was last reviewed."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "777 Game APK: Domain, Identity and Family-Name Checks",
+    seoDescription: "777 Game app record: how it differs from Yono 777, Jaiho 777, Hindi 777 and YN 777, the 777game2.com download source, APK and payment-term checks.",
+  },
+
+  "789-jackpots": {
+    directAnswer:
+      "789 Jackpots is catalogued here as a slots-style gaming record. The name invokes large wins, which this record does not confirm or certify. Its supplied download source is `join789jackpots.cc` — a “join”-prefixed domain on the uncommon `.cc` ending, the same pattern used by other slots records in this catalog.",
+    sections: [
+      {
+        heading: "Does “Jackpots” in the name mean large payouts are likely?",
+        paragraphs: [
+          "No. It is a name chosen to suggest big wins, not a documented payout rate or a result this catalog can verify. Any jackpot figure shown inside the app is a claim from its own interface, not an independently confirmed fact.",
+        ],
+      },
+      {
+        heading: "What the “join” prefix and `.cc` ending mean here",
+        paragraphs: [
+          "`join789jackpots.cc` combines a call-to-action word with a less common top-level domain rather than the plain name on a `.com` address — the same construction used by 567 Slots’ source. A domain built this way is easy to swap without visitors noticing, so recheck the exact current address at each visit rather than relying on memory.",
+        ],
+      },
+      {
+        heading: "789 Jackpots APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "789 Jackpots credits, jackpots and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed jackpot or credit figure as a status, not a guaranteed payout. Promotional, pending and withdrawable are different stages — read the app’s own written terms to see which applies before relying on a number shown in the interface.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does 789 Jackpots mean I will win a jackpot?", "No. The name is marketing language, not a documented payout rate or a claim this catalog can confirm."],
+      ["What does the join789jackpots.cc domain tell me?", "Only that it is the currently supplied download destination. The “join” prefix and `.cc` ending are a pattern also seen elsewhere in this catalog and are not themselves evidence of safety or risk."],
+      ["Are displayed jackpot amounts real, withdrawable money?", "Not necessarily. Check the app’s own written terms for how a displayed figure becomes withdrawable, and under what conditions, before relying on it."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "789 Jackpots APK: Domain, Source and Jackpot-Claim Checks",
+    seoDescription: "789 Jackpots app record: the join789jackpots.cc download source explained, APK checks, and why a displayed jackpot figure isn't a guaranteed payout.",
+  },
+
+  "bet-213": {
+    directAnswer:
+      "Bet 213 is catalogued here as a slots-style gaming record whose name explicitly references wagering. “213” is a number, not a version or edition this record can confirm. Its supplied download source is `bet213app.com`.",
+    sections: [
+      {
+        heading: "What does the number “213” in the name mean?",
+        paragraphs: [
+          "This record documents no confirmed meaning for the digits — they function as part of the brand name, similar to other numbered app names in this catalog. Do not assume “213” refers to a version, edition or feature set without a source that actually states that.",
+        ],
+      },
+      {
+        heading: "Bet 213 APK and permission checks",
+        paragraphs: [
+          "Confirm the final destination at `bet213app.com` matches what you expect before downloading, and compare the Android package identity and signer on every update rather than assuming continuity from the name alone.",
+        ],
+      },
+      {
+        heading: "Bet 213 account, OTP and privacy checks",
+        paragraphs: [
+          "Find out which organisation receives your phone number or other account details and whether its privacy terms offer a working correction or deletion route before registering.",
+        ],
+      },
+      {
+        heading: "Bet 213 balances, bets and withdrawal claims",
+        paragraphs: [
+          "The name “Bet” implies wagering outcomes, not a result. Read the written rules for how a balance moves from displayed credit to an actual withdrawal, including any minimum or fee, before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “213” in Bet 213 mean a specific version?", "This record documents no confirmed meaning for the number. Treat it as part of the brand name rather than a version indicator unless a reliable source states otherwise."],
+      ["Is Bet 213 a real-money betting app?", "The name references betting, but this record does not confirm whether real-money wagering is offered or its legal status where you live."],
+      ["Is Bet 213 safe to use?", "No blanket safety claim is made. Safety depends on the current file, operator and account/payment practices behind bet213app.com."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Bet 213 APK: Domain, Identity and Withdrawal-Term Checks",
+    seoDescription: "Bet 213 app record: the bet213app.com download source, what the 213 name does and doesn't claim, APK checks, privacy and payment-term guidance.",
+  },
+
+  "bingo-101": {
+    directAnswer:
+      "Bingo 101 is catalogued here as a general gaming-app record. “101” reads as an introductory or beginner label but is simply part of the app’s name. Its supplied download source is `bingo101.info` — note the `.info` domain ending, different from the `.com`/`.cc`/`.top` endings seen on other records in this catalog.",
+    sections: [
+      {
+        heading: "Does “101” mean this is a tutorial or beginner app?",
+        paragraphs: [
+          "No. “101” is commonly used in app names to suggest something introductory, but here it is simply part of the brand name — the app itself is a full gaming listing, not a guide.",
+        ],
+      },
+      {
+        heading: "What the `.info` domain ending means",
+        paragraphs: [
+          "`bingo101.info` uses the `.info` top-level domain rather than `.com`. That is not itself evidence of risk, but it is worth noting and rechecking at each visit, the same caution that applies to the other uncommon domain endings used across this catalog (`.cc`, `.top`, `.vip`, `.net`).",
+        ],
+      },
+      {
+        heading: "Bingo 101 APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "Bingo 101 account and privacy checks",
+        paragraphs: [
+          "Look for a privacy notice stating what data is collected at registration and how a correction or deletion request can be made before sharing a phone number or other personal details.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “101” mean Bingo 101 is a beginner-friendly tutorial app?", "No. “101” is part of the brand name here, not an indication of a tutorial or simplified experience."],
+      ["What does the .info domain ending mean?", "It is a less commonly used top-level domain. It does not by itself indicate risk, but recheck the exact current domain at each visit."],
+      ["Is Bingo 101 the same as other bingo apps?", "Treat it as a separate record. A shared game type or name element does not establish a common operator, APK or account system."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Bingo 101 APK: Domain, Identity and Privacy Checks",
+    seoDescription: "Bingo 101 app record: the bingo101.info download source explained, what the 101 name does and doesn't mean, APK checks and account privacy guidance.",
+  },
+
+  "game-rummy": {
+    directAnswer:
+      "Game Rummy is catalogued here as a rummy and card-game record. The name combines two generic words that also appear in many unrelated app names. Its supplied download source is `gamerummyq.com` — note the trailing “q” before the domain ending.",
+    sections: [
+      {
+        heading: "Why the domain has a trailing “q”",
+        paragraphs: [
+          "`gamerummyq.com` adds a single letter to the plain “gamerummy” name, similar in purpose to the numbered suffixes used by other records in this catalog — a way of publishing a working domain distinct from the exact brand name. It does not by itself confirm or disprove anything about the operator.",
+        ],
+      },
+      {
+        heading: "Game Rummy APK and signer checks",
+        paragraphs: [
+          "Compare the Android package identity and signing information for the installer, and recheck both on future updates rather than assuming the same file is offered each time.",
+        ],
+      },
+      {
+        heading: "Game Rummy account and privacy checks",
+        paragraphs: [
+          "A rummy account typically requires a phone number and OTP. Check which organisation receives that information and whether its privacy policy offers a working correction or deletion route.",
+        ],
+      },
+      {
+        heading: "Game Rummy table rules and withdrawal terms",
+        paragraphs: [
+          "Read the written rules for table entry, bonuses and withdrawal conditions before adding money. A bonus credit is often subject to wagering requirements before it becomes withdrawable.",
+        ],
+      },
+    ],
+    faqs: [
+      ["What does the “q” in gamerummyq.com mean?", "It most likely distinguishes this domain from the plain “gamerummy” name, a pattern similar to the numbered mirror domains used elsewhere in this catalog. It is not itself evidence about the operator."],
+      ["Is Game Rummy different from other rummy apps in this catalog?", "Treat it as a separate record. Shared words like “Game” or “Rummy” do not establish a common operator, APK or account system."],
+      ["Is Game Rummy legal to play?", "Rules for real-money rummy vary by Indian state. Listing in this catalog does not establish that paid play is permitted where you live."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Game Rummy APK: Domain, Identity and Payment-Term Checks",
+    seoDescription: "Game Rummy app record: the gamerummyq.com download source explained, APK checks, account privacy and table-rule/withdrawal guidance.",
+  },
+
+  "hindi-777": {
+    directAnswer:
+      "Hindi 777 is catalogued here as an arcade and multi-game record. “777” is shared with several other, separately operated records in this catalog. Its supplied download source, `hindi777agent4.com`, names itself as an agent domain in the address itself.",
+    sections: [
+      {
+        heading: "Hindi 777 and the wider “777” family",
+        paragraphs: [
+          "This catalog separately lists Yono 777, Jaiho 777, 777 Game and YN 777. A shared number does not establish a shared owner, APK, account or wallet between Hindi 777 and any of them — match the full name and domain, not the digits alone.",
+        ],
+      },
+      {
+        heading: "Why the domain says “agent”",
+        paragraphs: [
+          "`hindi777agent4.com` identifies itself as an agent destination in the domain name, similar to how Dhan Game’s source names itself as a referral domain. That is a more transparent naming choice than most, but it also means the page is explicitly an intermediary — support and account questions may need to go to whoever actually operates the service behind it, which this record cannot confirm.",
+        ],
+      },
+      {
+        heading: "Hindi 777 APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this agent link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "Hindi 777 account, privacy and payment checks",
+        paragraphs: [
+          "Check which organisation ultimately handles any phone number or account details you provide, and read the written terms for how a balance or bonus converts to a withdrawal before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Hindi 777 the same as Yono 777, Jaiho 777, 777 Game or YN 777?", "No. These are separate catalog records. A shared “777” does not establish a common operator, APK or wallet."],
+      ["What does “agent” in the domain name mean?", "The supplied source identifies itself as an agent/referral destination rather than a primary brand domain. This record cannot confirm who operates the service reached through it."],
+      ["Is Hindi 777 safe?", "No blanket safety claim is made. Safety depends on the current file and the operator behind the agent domain, which this record does not control."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Hindi 777 APK: Agent Domain, Identity and Safety Checks",
+    seoDescription: "Hindi 777 app record: why its download source identifies itself as an agent domain, how it differs from other 777-named apps, APK and payment-term checks.",
+  },
+
+  "inr-rummy": {
+    directAnswer:
+      "INR Rummy is catalogued here as a rummy and card-game record. “INR” references the Indian Rupee and appears in other unrelated app names, including Club INR in this same catalog. Its supplied download source is `inrrummysvip.net`.",
+    sections: [
+      {
+        heading: "Does “INR” mean this app is linked to Indian banking authorities?",
+        paragraphs: [
+          "No. “INR” is the currency code for the Indian Rupee, used descriptively to signal real-money or rupee-denominated features. It carries no banking or regulatory endorsement, and is not evidence of a shared operator with Club INR or any other INR-named record.",
+        ],
+      },
+      {
+        heading: "What “svip” in the domain suggests, and why to still check it carefully",
+        paragraphs: [
+          "`inrrummysvip.net` reads as a “super VIP” label built into the domain itself, on a `.net` ending rather than `.com`. A domain name promising VIP or premium status is marketing language, not confirmation of any actual tier, benefit or operator identity — check the site’s own stated terms rather than the domain name.",
+        ],
+      },
+      {
+        heading: "INR Rummy APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "INR Rummy account and withdrawal checks",
+        paragraphs: [
+          "Check which organisation receives any phone number or account details you provide, and read the written table-entry and withdrawal rules before adding money — a displayed INR balance is not automatically withdrawable cash.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “INR” mean INR Rummy is linked to Indian banking authorities?", "No. INR is simply the currency code, used descriptively; it carries no regulatory or banking endorsement."],
+      ["Is INR Rummy the same as Club INR?", "No. These are separate catalog records. A shared “INR” does not establish a common operator, APK or account system."],
+      ["What does “svip” in the domain mean?", "It reads as a marketing label (“super VIP”) built into the domain name. It is not confirmation of an actual membership tier or benefit — check the app’s own stated terms."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "INR Rummy APK: Domain, Identity and Withdrawal-Term Checks",
+    seoDescription: "INR Rummy app record: what INR and \"svip\" in the name do and don't mean, the inrrummysvip.net download source, APK and payment-term checks.",
+  },
+
+  "jaiho-91": {
+    directAnswer:
+      "Jaiho 91 is catalogued here as an arcade and multi-game record. It shares the “Jaiho” prefix with six other separately operated records in this catalog (see the [Jaiho apps collection](/collections/jaiho-apps/)) and the “91” digit also appears on an unrelated Rummy 91 record. Its supplied download source, `jaiho91agents.com`, names itself as an agents domain.",
+    sections: [
+      {
+        heading: "Jaiho 91 and the rest of the Jaiho family",
+        paragraphs: [
+          "This catalog separately lists Jaiho 777, Jaiho Arcade, Jaiho Rummy, Jaiho Slots, Jaiho Spin and Jaiho Win. The shared “Jaiho” prefix helps with discovery, but it does not by itself prove that Jaiho 91 shares an operator, APK, account or wallet with any of them. The [Jaiho apps collection page](/collections/jaiho-apps/) maps all seven as separate records.",
+        ],
+      },
+      {
+        heading: "Why the domain says “agents”",
+        paragraphs: [
+          "`jaiho91agents.com` identifies itself as an agents destination in the domain name. As with other agent-labelled sources in this catalog, that means the page is explicitly an intermediary step — the operator actually responsible for the app, your account and any payment is not confirmed by this record.",
+        ],
+      },
+      {
+        heading: "Jaiho 91 APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this agents link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "Jaiho 91 account, privacy and payment checks",
+        paragraphs: [
+          "Check which organisation ultimately receives your account details, and read the written terms for how a balance or bonus becomes withdrawable before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Jaiho 91 the same as Jaiho 777, Jaiho Rummy or the other Jaiho apps?", "No. These are seven separate catalog records. A shared “Jaiho” prefix does not establish a common operator, APK, account or wallet — see the Jaiho apps collection page."],
+      ["Is Jaiho 91 related to Rummy 91?", "No. A shared “91” does not establish any connection between these separately operated records."],
+      ["What does “agents” in the domain mean?", "The supplied source identifies itself as an agents destination rather than a primary brand domain. This record cannot confirm who ultimately operates the service reached through it."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Jaiho 91 APK: Agent Domain and Jaiho-Family Identity Checks",
+    seoDescription: "Jaiho 91 app record: how it differs from the other six Jaiho-named apps and from Rummy 91, why its source is an agents domain, APK and payment checks.",
+  },
+
+  "neta-vip": {
+    directAnswer:
+      "Neta VIP is catalogued here as a general gaming-app record. “Neta” is a Hindi word for a political leader; its use here is a name choice and does not indicate any political affiliation, government link or endorsement. Its supplied download source is `neta7.vip`.",
+    sections: [
+      {
+        heading: "Does “Neta” mean this app is politically affiliated?",
+        paragraphs: [
+          "No. “Neta” (नेता) is a common Hindi word meaning leader or politician, used here as a branding choice — likely evoking status or influence — not as a reference to any real political party, figure or government body. Treat it the same as any other descriptive brand word.",
+        ],
+      },
+      {
+        heading: "What “VIP” and the `.vip` domain ending do and don't confirm",
+        paragraphs: [
+          "The app name and its domain (`neta7.vip`) both use “VIP” language. That consistency is a naming choice, not confirmation of an actual membership tier, special access or benefit — check the app’s own written terms for what, if anything, a VIP status actually provides and what it costs.",
+        ],
+      },
+      {
+        heading: "Neta VIP APK and permission checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this link, and recheck both on future updates.",
+        ],
+      },
+      {
+        heading: "Neta VIP account, privacy and payment checks",
+        paragraphs: [
+          "Check which organisation receives any phone number or account details you provide, and read the written terms for how any in-app balance, bonus or VIP benefit converts to a withdrawal before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “Neta” mean Neta VIP is linked to a political party or government?", "No. “Neta” is a common Hindi word for leader, used descriptively as a brand name. This record finds no political or government affiliation."],
+      ["Does the “VIP” label mean I get special benefits?", "Not automatically. A VIP label is marketing language; check the app’s own written terms for what tier benefits actually exist, how they're reached and what they cost."],
+      ["Is Neta VIP safe to use?", "No blanket safety claim is made. Safety depends on the current file, operator and account/payment practices behind neta7.vip."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Neta VIP APK: Domain, Name Meaning and Safety Checks",
+    seoDescription: "Neta VIP app record: what \"Neta\" and \"VIP\" in the name do and don't mean, the neta7.vip download source, APK checks and payment-term guidance.",
+  },
+
+  "yn-777": {
+    directAnswer:
+      "YN 777 is catalogued here as an arcade and multi-game record. No external download source is currently supplied for this record. “777” is shared with several other, separately operated records in this catalog, including Yono 777, Jaiho 777, 777 Game and Hindi 777.",
+    sections: [
+      {
+        heading: "YN 777 and the wider “777” family",
+        paragraphs: [
+          "This catalog separately lists Yono 777, Jaiho 777, 777 Game and Hindi 777. A shared number does not establish a shared owner, APK, account or wallet between YN 777 and any of them. If a search for a specific “777” app led here, confirm the full name before assuming this record covers it.",
+        ],
+      },
+      {
+        heading: "No download source is currently supplied",
+        paragraphs: [
+          "Unlike most records in this catalog, YN 777 currently has no external download link attached. That means there is nothing here to compare a found APK against — if you already have a file or link claiming to be YN 777, the checks below still apply, but this record cannot confirm whether that destination is the one intended.",
+        ],
+      },
+      {
+        heading: "YN 777 identity checks if you already have a source",
+        paragraphs: [
+          "Match the exact name “YN 777” against the app’s icon, package name, publisher and support details before treating any file as this record. Do not assume a connection to Yono 777, Jaiho 777 or any other “777”-named app based on the number alone.",
+        ],
+      },
+      {
+        heading: "General APK and account caution",
+        paragraphs: [
+          "If you do install an APK claiming to be YN 777, compare its Android package identity and signer on every update, and never share an OTP, UPI PIN or device unlock code during account setup.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Where can I download YN 777?", "No external source is currently supplied for this record. This catalog does not host or distribute APK files."],
+      ["Is YN 777 the same as Yono 777, Jaiho 777, 777 Game or Hindi 777?", "No. These are separate catalog records. A shared “777” does not establish a common operator, APK or wallet."],
+      ["Why doesn't this record have a Download APK button?", "No current external destination has been supplied for YN 777. The record documents identity and caution guidance instead."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "YN 777 App: Identity Checks and 777-Family Name Guide",
+    seoDescription: "YN 777 catalog record: no download source is currently supplied, how it differs from Yono 777, Jaiho 777, 777 Game and Hindi 777, and identity checks to apply.",
+  },
 };
