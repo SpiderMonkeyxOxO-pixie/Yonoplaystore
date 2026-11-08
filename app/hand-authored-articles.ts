@@ -693,4 +693,465 @@ export const handAuthoredAppArticles: Record<string, AppArticle> = {
     seoTitle: "YN 777 App: Identity Checks and 777-Family Name Guide",
     seoDescription: "YN 777 catalog record: no download source is currently supplied, how it differs from Yono 777, Jaiho 777, 777 Game and Hindi 777, and identity checks to apply.",
   },
+
+  "boss-rummy": {
+    directAnswer:
+      "Boss Rummy is catalogued here as a rummy and card-game record. “Boss” is marketing language, not a ranking this catalog can confirm. Its supplied download source is `bossrummyv.com` — note the trailing “v” before the domain ending.",
+    sections: [
+      {
+        heading: "Why the domain has a trailing “v”",
+        paragraphs: [
+          "`bossrummyv.com` adds a single letter to the plain “bossrummy” name — a lightweight variant of the numbered-suffix pattern used by other records in this catalog. It does not confirm a version, edition or anything else about the operator; treat the exact current domain as something to check at each visit.",
+        ],
+      },
+      {
+        heading: "Boss Rummy APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this link, and recheck both on future updates. For account setup, check which organisation receives your phone number and whether its privacy terms offer a working correction route.",
+        ],
+      },
+      {
+        heading: "Boss Rummy table rules and withdrawal claims",
+        paragraphs: [
+          "“Boss” does not describe table odds, bonus value or withdrawal reliability. Read the app’s own written rules for entry fees, bonuses and withdrawal conditions before adding money.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “Boss” mean Boss Rummy has better odds than other rummy apps?", "No. It is a brand name, not a documented claim this catalog can verify."],
+      ["What does the “v” in bossrummyv.com mean?", "This record documents no confirmed meaning. It functions as part of the current domain, similar to numbered suffixes used elsewhere in this catalog."],
+      ["Is Boss Rummy legal to play?", "Rules for real-money rummy vary by Indian state. Listing here does not establish that paid play is permitted where you live."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Boss Rummy APK: Domain, Identity and Payment-Term Checks",
+    seoDescription: "Boss Rummy app record: the bossrummyv.com download source explained, APK checks, account privacy and table-rule/withdrawal guidance.",
+  },
+
+  "ind-club": {
+    directAnswer:
+      "IND Club is catalogued here as a general gaming-app record. “IND” is a common India-referencing prefix shared with other, separately operated records in this catalog, including IND Slots and IND Rummy. Its supplied download source is `indclub38.com`.",
+    sections: [
+      {
+        heading: "Does “IND” mean this is an official Indian app?",
+        paragraphs: [
+          "No. “IND” is used descriptively across several unrelated records in this catalog — IND Club, IND Slots and IND Rummy are separate identities, not a single operator’s product range. Sharing the prefix is not evidence of a shared APK, account or wallet.",
+        ],
+      },
+      {
+        heading: "IND Club download source and domain checks",
+        paragraphs: [
+          "`indclub38.com` is the destination currently supplied. Confirm you land on that exact domain after following the link, and recheck it on future visits since these addresses can change.",
+        ],
+      },
+      {
+        heading: "IND Club APK, account and payment checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer, and recheck on future updates. Check which organisation receives any account details you provide, and read the written terms for how a balance converts to a withdrawal before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is IND Club an official Indian government or licensed app?", "No. “IND” is a descriptive prefix, not a regulatory marker."],
+      ["Is IND Club related to IND Slots or IND Rummy?", "Not necessarily. These are separately catalogued records; a shared prefix does not establish a common operator."],
+      ["What does the “38” in indclub38.com mean?", "This record documents no confirmed meaning. It is part of the current domain, similar to numbered suffixes used by other records in this catalog."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "IND Club APK: Domain, Identity and Withdrawal-Term Checks",
+    seoDescription: "IND Club app record: what the IND prefix does and doesn't mean, the indclub38.com download source, APK checks and payment-term guidance.",
+  },
+
+  "jaiho-slots": {
+    directAnswer:
+      "Jaiho Slots is catalogued here as a slots-style record. It shares the “Jaiho” prefix with six other separately operated records in this catalog (see the [Jaiho apps collection](/collections/jaiho-apps/)). Its supplied download source is `jaihoslots24.com`.",
+    sections: [
+      {
+        heading: "Jaiho Slots and the rest of the Jaiho family",
+        paragraphs: [
+          "This catalog separately lists Jaiho 777, Jaiho 91, Jaiho Arcade, Jaiho Rummy, Jaiho Spin and Jaiho Win. A shared “Jaiho” prefix does not establish that Jaiho Slots shares an operator, APK, account or wallet with any of them — the [Jaiho apps collection page](/collections/jaiho-apps/) maps all seven as separate records.",
+        ],
+      },
+      {
+        heading: "Jaiho Slots APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `jaihoslots24.com`, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Jaiho Slots credits, jackpots and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed credit or jackpot figure as a status, not a guaranteed payout. Read the app’s written terms for how a balance becomes withdrawable before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Jaiho Slots the same as the other Jaiho apps in this catalog?", "No. Seven separate records share the “Jaiho” prefix. A shared name element does not establish a common operator, APK or wallet — see the Jaiho apps collection page."],
+      ["What does the “24” in jaihoslots24.com mean?", "This record documents no confirmed meaning. It is part of the current domain, a pattern similar to other numbered mirror domains in this catalog."],
+      ["Are jackpot amounts shown in Jaiho Slots real money?", "Not necessarily. Check the app's own written terms for how a displayed figure becomes withdrawable."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Jaiho Slots APK: Domain and Jaiho-Family Identity Checks",
+    seoDescription: "Jaiho Slots app record: how it differs from the other six Jaiho-named apps, the jaihoslots24.com download source, APK and jackpot-claim checks.",
+  },
+
+  "jaiho-spin": {
+    directAnswer:
+      "Jaiho Spin is catalogued here as a spin-style record. It shares the “Jaiho” prefix with six other separately operated records in this catalog (see the [Jaiho apps collection](/collections/jaiho-apps/)). Its supplied download source, `7jaihospinagent.com`, names itself as an agent domain.",
+    sections: [
+      {
+        heading: "Jaiho Spin and the rest of the Jaiho family",
+        paragraphs: [
+          "This catalog separately lists Jaiho 777, Jaiho 91, Jaiho Arcade, Jaiho Rummy, Jaiho Slots and Jaiho Win. A shared “Jaiho” prefix does not establish that Jaiho Spin shares an operator, APK, account or wallet with any of them — the [Jaiho apps collection page](/collections/jaiho-apps/) maps all seven as separate records.",
+        ],
+      },
+      {
+        heading: "Why the domain says “agent”",
+        paragraphs: [
+          "`7jaihospinagent.com` identifies itself as an agent destination in the domain name, similar to other agent-labelled sources in this catalog. That means the page is explicitly an intermediary — this record cannot confirm who ultimately operates the service behind it.",
+        ],
+      },
+      {
+        heading: "Jaiho Spin APK, account and reward checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer, and recheck on future updates. Treat every displayed spin credit or reward as a status, not a guaranteed payout, and check the written terms before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Jaiho Spin the same as the other Jaiho apps?", "No. Seven separate records share the “Jaiho” prefix — see the Jaiho apps collection page for the full mapping."],
+      ["What does “agent” in the domain mean?", "The supplied source identifies itself as an agent destination rather than a primary brand domain. This record cannot confirm who ultimately operates it."],
+      ["Are spin rewards in Jaiho Spin withdrawable cash?", "Not necessarily. Read the app's own written terms for how a displayed reward becomes withdrawable."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Jaiho Spin APK: Agent Domain and Jaiho-Family Checks",
+    seoDescription: "Jaiho Spin app record: why its source is an agent domain, how it differs from the other six Jaiho-named apps, APK and reward-claim checks.",
+  },
+
+  "love-rummy": {
+    directAnswer:
+      "Love Rummy is catalogued here as a rummy and card-game record. The name is a branding choice and does not describe the game format. Its supplied download source is `loverummy88.com`.",
+    sections: [
+      {
+        heading: "Love Rummy APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `loverummy88.com`, and recheck both on future updates. Check which organisation receives any phone number or account details before registering.",
+        ],
+      },
+      {
+        heading: "Love Rummy table rules and withdrawal terms",
+        paragraphs: [
+          "Read the written rules for table entry, bonuses and withdrawal conditions before adding money. A bonus credit is often subject to wagering requirements before it becomes withdrawable cash.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Love Rummy different from other rummy apps in this catalog?", "Treat it as a separate record. A shared word like “Rummy” does not establish a common operator, APK or account system."],
+      ["Is Love Rummy legal to play?", "Rules for real-money rummy vary by Indian state. Listing here does not establish that paid play is permitted where you live."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Love Rummy APK: Domain, Identity and Payment-Term Checks",
+    seoDescription: "Love Rummy app record: the loverummy88.com download source, APK checks, account privacy and table-rule/withdrawal guidance.",
+  },
+
+  "maha-games": {
+    directAnswer:
+      "Maha Games is catalogued here as an arcade and multi-game record. “Maha” is a common Hindi/Sanskrit word meaning great or grand, used descriptively rather than as a claim this catalog can verify. Its supplied download source is `mahagames-a.com`.",
+    sections: [
+      {
+        heading: "What does “Maha” in the name mean?",
+        paragraphs: [
+          "“Maha” means great or grand and is used in many unrelated product names across India. It is not evidence of scale, quality or an official status — match the full name, domain and operator identity together rather than relying on the word alone.",
+        ],
+      },
+      {
+        heading: "Why the domain has a trailing “-a”",
+        paragraphs: [
+          "`mahagames-a.com` adds a letter to the plain “mahagames” name, a lightweight variant of the suffix pattern used elsewhere in this catalog. It does not by itself confirm anything about the operator.",
+        ],
+      },
+      {
+        heading: "Maha Games APK, account and reward checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer, and recheck on future updates. A displayed in-app balance or reward is not automatically withdrawable — read the app’s written terms before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “Maha” mean this app is officially endorsed or large-scale?", "No. “Maha” is a descriptive word meaning great or grand, used in many unrelated product names."],
+      ["What does the “-a” in mahagames-a.com mean?", "This record documents no confirmed meaning. It is part of the current domain, similar to suffix patterns used by other records in this catalog."],
+      ["Is Maha Games safe to use?", "No blanket safety claim is made. Safety depends on the current file and the operator behind mahagames-a.com."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Maha Games APK: Domain, Name Meaning and Safety Checks",
+    seoDescription: "Maha Games app record: what \"Maha\" in the name means, the mahagames-a.com download source, APK checks and reward-claim guidance.",
+  },
+
+  "max-rummy": {
+    directAnswer:
+      "Max Rummy is catalogued here as a rummy and card-game record. “Max” is marketing language implying maximum returns, which this catalog does not confirm. Its supplied download source is `maxrummy99.com`.",
+    sections: [
+      {
+        heading: "Does “Max” mean maximum returns or bonuses?",
+        paragraphs: [
+          "No. It is a brand name, not a documented payout or bonus rate. Any “maximum” figure shown inside the app is a claim from its own interface, not an independently confirmed fact.",
+        ],
+      },
+      {
+        heading: "Max Rummy APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `maxrummy99.com`, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Max Rummy table rules and withdrawal claims",
+        paragraphs: [
+          "Read the app’s own written terms for table entry, bonuses and withdrawal conditions. A displayed bonus is often subject to wagering requirements before it becomes withdrawable cash.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “Max” in Max Rummy mean I get the best bonus available?", "No. It is a brand name, not a documented or guaranteed bonus rate."],
+      ["What does the “99” in maxrummy99.com mean?", "This record documents no confirmed meaning. It is part of the current domain, similar to numbered suffixes used by other records in this catalog."],
+      ["Is Max Rummy legal to play?", "Rules for real-money rummy vary by Indian state. Listing here does not establish that paid play is permitted where you live."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Max Rummy APK: Domain, Identity and Bonus-Claim Checks",
+    seoDescription: "Max Rummy app record: what the \"Max\" name does and doesn't claim, the maxrummy99.com download source, APK checks and withdrawal-term guidance.",
+  },
+
+  "rumble-rummy": {
+    directAnswer:
+      "Rumble Rummy is catalogued here as a rummy and card-game record. Its supplied download source is `rumblerummy333.net` — a triple-digit domain suffix on a `.net` ending, different from the `.com` addresses used by most records in this catalog.",
+    sections: [
+      {
+        heading: "Why the domain is rumblerummy333.net",
+        paragraphs: [
+          "The “333” suffix and `.net` ending are part of the current domain construction, a variant of the numbered-mirror pattern seen across this catalog. Neither detail confirms anything about the operator — treat the exact current domain as something to check at each visit.",
+        ],
+      },
+      {
+        heading: "Rumble Rummy APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer, and recheck on future updates. Check which organisation receives any phone number or account details before registering.",
+        ],
+      },
+      {
+        heading: "Rumble Rummy table rules and withdrawal terms",
+        paragraphs: [
+          "Read the written rules for table entry, bonuses and withdrawal conditions before adding money, and match the payment recipient to the documented operator.",
+        ],
+      },
+    ],
+    faqs: [
+      ["What does the “333” in rumblerummy333.net mean?", "This record documents no confirmed meaning. It is part of the current domain, similar to numbered suffixes used by other records in this catalog."],
+      ["Is Rumble Rummy different from other rummy apps in this catalog?", "Treat it as a separate record. A shared word like “Rummy” does not establish a common operator, APK or account system."],
+      ["Is Rumble Rummy legal to play?", "Rules for real-money rummy vary by Indian state. Listing here does not establish that paid play is permitted where you live."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Rumble Rummy APK: Domain, Identity and Payment-Term Checks",
+    seoDescription: "Rumble Rummy app record: the rumblerummy333.net download source, APK checks, account privacy and table-rule/withdrawal guidance.",
+  },
+
+  "saga-slots": {
+    directAnswer:
+      "Saga Slots is catalogued here as a slots-style record. “Saga” suggests an ongoing story or series, used as branding rather than a documented feature. Its supplied download source is `sagaslots23.com`.",
+    sections: [
+      {
+        heading: "Saga Slots APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `sagaslots23.com`, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Saga Slots credits, jackpots and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed credit or jackpot figure as a status, not a guaranteed payout. Promotional, pending and withdrawable are different stages — read the app’s own written terms to see which applies.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Saga Slots related to other slots apps in this catalog?", "Not necessarily. Shared game-type naming does not establish a common operator, APK or account system."],
+      ["Are jackpot figures in Saga Slots real money?", "Not necessarily. Check the app's own written terms for how a displayed figure becomes withdrawable."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Saga Slots APK: Domain, Identity and Jackpot-Claim Checks",
+    seoDescription: "Saga Slots app record: the sagaslots23.com download source, APK checks and jackpot/withdrawal-claim guidance.",
+  },
+
+  "share-slots": {
+    directAnswer:
+      "Share Slots is catalogued here as a slots-style record. Its supplied download source is `share977.com` — a domain that drops “slots” from the app’s own name entirely, worth confirming before you treat it as the expected destination.",
+    sections: [
+      {
+        heading: "Why the download domain doesn't match the app name",
+        paragraphs: [
+          "The app is listed as “Share Slots”, but its supplied source is `share977.com` — no “slots” in the domain at all, plus a “977” suffix. A domain that drops part of the app’s own name is worth extra scrutiny: confirm the destination explicitly identifies itself as the Share Slots app before registering or downloading, rather than assuming the match from the catalog listing alone.",
+        ],
+      },
+      {
+        heading: "Share Slots APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Share Slots credits and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed credit or jackpot figure as a status, not a guaranteed payout. Read the app’s own written terms for how a balance becomes withdrawable.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Why doesn't share977.com mention “slots” in the name?", "This catalog cannot confirm why. Treat the mismatch as a reason to double-check the destination explicitly identifies itself as Share Slots before registering."],
+      ["What does the “977” in share977.com mean?", "This record documents no confirmed meaning. It is part of the current domain."],
+      ["Is Share Slots safe to use?", "No blanket safety claim is made. Safety depends on the current file and the operator behind share977.com, which this record cannot fully confirm given the name mismatch."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Share Slots APK: Domain Mismatch and Identity Checks",
+    seoDescription: "Share Slots app record: why its download source, share977.com, doesn't include \"slots\" in the name, APK checks and withdrawal-claim guidance.",
+  },
+
+  "slot-spin": {
+    directAnswer:
+      "Slot Spin is catalogued here as a spin-style record. Its supplied download source is `slotsspiny.com` — plural “slots” and a trailing “y”, not an exact match for the app’s own “Slot Spin” name. Confirm the destination before registering.",
+    sections: [
+      {
+        heading: "Why the domain doesn't exactly match “Slot Spin”",
+        paragraphs: [
+          "The app is listed as “Slot Spin” (singular), but its supplied source is `slotsspiny.com` — plural “Slots” with a trailing “y”. Small wording differences like this between an app’s catalog name and its download domain are worth noticing rather than assuming are identical; confirm the destination page itself identifies the same app before downloading or registering.",
+        ],
+      },
+      {
+        heading: "Slot Spin APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Slot Spin credits and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed spin credit or reward as a status, not a guaranteed payout. Read the app’s own written terms for how a balance becomes withdrawable.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Why is the domain “slotsspiny.com” instead of “slotspin.com”?", "This record documents no confirmed reason for the wording difference. Confirm the destination page identifies itself as the same Slot Spin app before relying on it."],
+      ["Is Slot Spin safe to use?", "No blanket safety claim is made, and the naming difference between the app and its domain is a reason for extra caution here specifically."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Slot Spin APK: Domain Wording Mismatch and Identity Checks",
+    seoDescription: "Slot Spin app record: why its download source, slotsspiny.com, doesn't exactly match the app name, APK checks and withdrawal-claim guidance.",
+  },
+
+  "slots-winner": {
+    directAnswer:
+      "Slots Winner is catalogued here as a slots-style record. “Winner” is marketing language, not a documented outcome. Its supplied download source is `slotswinnerk.com`.",
+    sections: [
+      {
+        heading: "Does “Winner” mean players win?",
+        paragraphs: [
+          "No. It is part of the brand name, not a payout rate or a guarantee this catalog can verify. Any “winner” framing inside the app is a claim from its own interface.",
+        ],
+      },
+      {
+        heading: "Slots Winner APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `slotswinnerk.com`, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Slots Winner credits and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed jackpot or “win” figure as a status, not a guaranteed payout. Read the app’s own written terms for how a balance becomes withdrawable.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does “Winner” in Slots Winner mean I will win?", "No. It is a brand name, not a documented outcome this catalog can confirm."],
+      ["What does the “k” in slotswinnerk.com mean?", "This record documents no confirmed meaning. It is part of the current domain."],
+      ["Is Slots Winner related to Spin Winner in this catalog?", "No. Despite the shared “Winner” word, these are separate records — treat them as independent identities."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Slots Winner APK: Domain, Identity and Jackpot-Claim Checks",
+    seoDescription: "Slots Winner app record: what the \"Winner\" name does and doesn't claim, the slotswinnerk.com download source, APK and withdrawal-claim checks.",
+  },
+
+  "spin-crush": {
+    directAnswer:
+      "Spin Crush is catalogued here as a spin-style record. “Crush” is a common game-branding word used by many unrelated titles and does not indicate any connection to another trademarked game by a similar name. Its supplied download source is `spincrush61.com`.",
+    sections: [
+      {
+        heading: "Does “Crush” connect this app to other well-known games?",
+        paragraphs: [
+          "No. “Crush” is a widely used word in casual-game branding. This record finds no evidence linking Spin Crush to any other trademarked title that uses similar language — treat the name as this app’s own, not as an extension of another product.",
+        ],
+      },
+      {
+        heading: "Spin Crush APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `spincrush61.com`, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Spin Crush credits and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed spin credit or reward as a status, not a guaranteed payout. Read the app’s own written terms for how a balance becomes withdrawable.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Spin Crush related to any other well-known “Crush”-named game?", "No evidence of that was found. “Crush” is common casual-game branding language used independently across many unrelated titles."],
+      ["What does the “61” in spincrush61.com mean?", "This record documents no confirmed meaning. It is part of the current domain."],
+      ["Is Spin Crush safe to use?", "No blanket safety claim is made. Safety depends on the current file and the operator behind spincrush61.com."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Spin Crush APK: Domain, Name Meaning and Safety Checks",
+    seoDescription: "Spin Crush app record: whether the \"Crush\" name connects to other games, the spincrush61.com download source, APK and reward-claim checks.",
+  },
+
+  "spin-winner": {
+    directAnswer:
+      "Spin Winner is catalogued here as a spin-style record. “Winner” is marketing language shared with the separately operated Slots Winner record in this catalog, not a documented outcome. Its supplied download source is `spinwinner-y.com`.",
+    sections: [
+      {
+        heading: "Does “Winner” mean players win, and is this the same as Slots Winner?",
+        paragraphs: [
+          "“Winner” is part of the brand name, not a payout guarantee. Spin Winner and Slots Winner are separate catalog records despite the shared word — a common operator, APK or account system between them is not established by the name alone.",
+        ],
+      },
+      {
+        heading: "Spin Winner APK and account checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `spinwinner-y.com`, and recheck on future updates. Check which organisation receives any account details before registering.",
+        ],
+      },
+      {
+        heading: "Spin Winner credits and withdrawal claims",
+        paragraphs: [
+          "Treat every displayed spin credit or “win” figure as a status, not a guaranteed payout. Read the app’s own written terms for how a balance becomes withdrawable.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Spin Winner the same as Slots Winner in this catalog?", "No. These are separate records. A shared “Winner” word does not establish a common operator, APK or account system."],
+      ["Does “Winner” mean I will win?", "No. It is a brand name, not a documented outcome this catalog can confirm."],
+      ["What does the “-y” in spinwinner-y.com mean?", "This record documents no confirmed meaning. It is part of the current domain."],
+    ],
+    datePublished: "2026-11-08",
+    dateModified: "2026-11-08",
+    seoTitle: "Spin Winner APK: Domain, Identity and Jackpot-Claim Checks",
+    seoDescription: "Spin Winner app record: how it differs from Slots Winner, the spinwinner-y.com download source, APK checks and withdrawal-claim guidance.",
+  },
 };
