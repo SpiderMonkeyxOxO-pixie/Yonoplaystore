@@ -17,6 +17,7 @@ const organizationNode = {
   description: "Independent, unofficial catalog of Yono-named Android gaming apps. It documents app identity, source status and safety checks, and does not host or distribute APK files.",
   disambiguatingDescription: "Not affiliated with Google Play, Google LLC, YONO SBI or State Bank of India.",
   sameAs: ["https://t.me/OfficialYonoPlaystore"],
+  contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: `${SITE_URL}/contact/` },
 };
 const websiteId = `${SITE_URL}/#website`;
 /** Date of the initial editorial review, used where a page has no article-level date. */
@@ -161,7 +162,7 @@ function SectionHead({ index, eyebrow, title, copy, link, linkLabel }: { index: 
 }
 
 function HomePage() {
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) };
+  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: mdToPlainText(answer) } })) };
   const websiteSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -364,15 +365,34 @@ function slugifyHeading(heading: string): string {
 }
 
 /**
- * Renders editorial prose that may contain `**bold**` and `[text](/url/)` markdown
- * as real HTML. Escapes HTML special characters first, so plain text (the vast
- * majority of existing content) renders identically to before this was introduced.
+ * Renders editorial prose that may contain `` `code` ``, `**bold**`, `*italic*`
+ * and `[text](/url/)` markdown as real HTML. Escapes HTML special characters
+ * first, so plain text (the vast majority of existing content) renders
+ * identically to before this was introduced. Bold is replaced before italic
+ * so a leftover single `*` from a consumed `**pair**` is never re-matched.
  */
 function mdInlineToHtml(text: string): string {
   const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   return escaped
+    .replace(/`([^`]+)`/g, (_m, code: string) => `<code>${code}</code>`)
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label: string, href: string) => `<a href="${href}">${label}</a>`)
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+}
+
+/**
+ * Strips the same `` `code` ``/`**bold**`/`*italic*`/`[text](url)` markdown down
+ * to plain text, for contexts that must not contain HTML or literal markdown
+ * syntax — JSON-LD string fields (e.g. FAQPage Answer.text), where raw
+ * backticks/asterisks/brackets would otherwise leak into structured data and
+ * to anything an AI or rich-result consumer reads as plain text.
+ */
+function mdToPlainText(text: string): string {
+  return text
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1");
 }
 
 /** Parses a newline-separated Markdown table ("| a | b |" rows); returns null for ordinary text. */
@@ -423,7 +443,7 @@ function AppDetail({ app }: { app: AppRecord }) {
       { "@type": "WebPage", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#webpage`, url: absoluteUrl(`/apps/${app.slug}/`), name: app.editorial.seoTitle, description: app.editorial.seoDescription, isPartOf: { "@id": websiteId }, about: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#app` }, primaryImageOfPage: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image` }, inLanguage: "en-IN", ...(article ? { datePublished: article.datePublished, dateModified: article.dateModified } : {}) },
       { "@type": "SoftwareApplication", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#app`, name: app.name, applicationCategory: "GameApplication", operatingSystem: "Android", description: app.summary, image: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image` } },
       { "@type": "ImageObject", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#image`, url: absoluteUrl(app.image), contentUrl: absoluteUrl(app.image), caption: `${app.name} app icon` },
-      { "@type": "FAQPage", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#faq`, isPartOf: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#webpage` }, mainEntity: appFaqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
+      { "@type": "FAQPage", "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#faq`, isPartOf: { "@id": `${absoluteUrl(`/apps/${app.slug}/`)}#webpage` }, mainEntity: appFaqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: mdToPlainText(answer) } })) },
     ],
   };
 
@@ -640,8 +660,8 @@ function GuidesPage() {
 
 function EditorialArticlePage({ resource, basePath, sectionLabel }: { resource: EditorialResource; basePath: string; sectionLabel: string }) {
   const articleUrl = absoluteUrl(`${basePath}${resource.slug}/`);
-  const schema = { "@context": "https://schema.org", "@graph": [organizationNode, { "@type": "WebPage", "@id": `${articleUrl}#webpage`, url: articleUrl, name: resource.title, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: resource.title, description: resource.summary, url: articleUrl, datePublished: resource.datePublished ?? BASE_REVIEW_DATE, dateModified: resource.dateModified ?? resource.datePublished ?? BASE_REVIEW_DATE, image: absoluteUrl(resource.image ?? "/yono-playstore-logo.png"), author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: resource.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
-  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],[sectionLabel,basePath],[resource.title,`${basePath}${resource.slug}/`]]} /><article className="article article--resource shell"><header><span className="section-index">{resource.code}</span><p className="eyebrow">{resource.eyebrow}</p><h1>{resource.title}</h1><p>{resource.summary}</p><div><span>{resource.read} read</span><span>Independent guidance</span><span>Reviewed 12 Aug 2026</span></div></header>{resource.image && <div className="article-featured-image"><img src={resource.image} alt={resource.imageAlt || resource.title} width="1200" height="675" loading="lazy" /></div>}<div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={resource.directAnswer} /></div>{resource.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Questions people ask</h2><div className="faq-list faq-list--record">{resource.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section><div className="article-disclosure"><b>Scope of this resource</b><p>This guide explains a verification method. It does not certify every APK, publisher, account, reward, payment or legal status. Apply the checks to the current app and source.</p></div></div><aside className="article-aside article-aside--resource"><b>FIELD CHECK</b>{resource.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/apps/">Open an app record ↗</a><a href="/guides/">All resources ↗</a></aside></div></article></main><Footer /></>;
+  const schema = { "@context": "https://schema.org", "@graph": [organizationNode, { "@type": "WebPage", "@id": `${articleUrl}#webpage`, url: articleUrl, name: resource.title, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: resource.title, description: resource.summary, url: articleUrl, datePublished: resource.datePublished ?? BASE_REVIEW_DATE, dateModified: resource.dateModified ?? resource.datePublished ?? BASE_REVIEW_DATE, image: absoluteUrl(resource.image ?? "/yono-playstore-logo.png"), author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: resource.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:mdToPlainText(answer)}})) }] };
+  return <><JsonLd data={schema} /><Header /><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],[sectionLabel,basePath],[resource.title,`${basePath}${resource.slug}/`]]} /><article className="article article--resource shell"><header><span className="section-index">{resource.code}</span><p className="eyebrow">{resource.eyebrow}</p><h1>{resource.title}</h1><p>{resource.summary}</p><div><span>{resource.read} read</span><span>Independent guidance</span><span>Reviewed 12 Aug 2026</span></div></header>{resource.image && <div className="article-featured-image"><img src={resource.image} alt={resource.imageAlt || resource.title} width="1200" height="675" loading="lazy" /></div>}<div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={resource.directAnswer} /></div>{resource.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Questions people ask</h2><div className="faq-list faq-list--record">{resource.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section><div className="article-disclosure"><b>Scope of this resource</b><p>This guide explains a verification method. It does not certify every APK, publisher, account, reward, payment or legal status. Apply the checks to the current app and source.</p></div></div><aside className="article-aside article-aside--resource"><b>FIELD CHECK</b>{resource.checklist.map((item)=><span key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}<a href="/apps/">Open an app record ↗</a><a href="/guides/">All resources ↗</a></aside></div></article></main><Footer /></>;
 }
 
 function GuideArticle({ slug }: { slug: string }) {
@@ -669,8 +689,8 @@ function ComparisonArticle({ slug }: { slug: string }) {
   if (!comparison) return <NotFoundPage/>;
   const comparedApps = comparison.appSlugs.map((appSlug)=>apps.find((app)=>app.slug===appSlug)).filter((app): app is AppRecord=>Boolean(app));
   const articleUrl = absoluteUrl(`/compare/${comparison.slug}/`);
-  const schema = { "@context": "https://schema.org", "@graph": [organizationNode, { "@type": "WebPage", "@id": `${articleUrl}#webpage`, url: articleUrl, name: comparison.title, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: comparison.title, description: comparison.summary, url: articleUrl, datePublished: comparison.datePublished ?? BASE_REVIEW_DATE, dateModified: comparison.dateModified ?? comparison.datePublished ?? BASE_REVIEW_DATE, image: absoluteUrl(comparison.image ?? "/yono-playstore-logo.png"), author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: comparison.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}})) }] };
-  return <><JsonLd data={schema}/><Header/><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],["App Comparisons","/compare/"],[comparison.title,`/compare/${comparison.slug}/`]]}/><article className="article article--resource shell"><header><span className="section-index">{comparison.code}</span><p className="eyebrow">{comparison.eyebrow}</p><h1>{comparison.title}</h1><p>{comparison.summary}</p><div><span>{comparison.read} read</span><span>{comparedApps.length} exact records</span><span>Reviewed 12 Aug 2026</span></div></header>{comparison.image && <div className="article-featured-image"><img src={comparison.image} alt={comparison.imageAlt || comparison.title} width="1200" height="675" loading="lazy" /></div>}<div className="comparison-records">{comparedApps.map((app)=><a href={`/apps/${app.slug}/`} key={app.slug}><AppIcon app={app}/><span><small>{app.category} record</small><b>{app.name}</b><p>{comparison.identityNotes[app.slug]}</p></span><i>Open record ↗</i></a>)}</div><div className="comparison-matrix" role="table" aria-label={`${comparison.title} identity comparison`}><div className="comparison-matrix-row comparison-matrix-head" role="row"><span role="columnheader">Check</span>{comparedApps.map((app)=><b role="columnheader" key={app.slug}>{app.name}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Canonical record</span>{comparedApps.map((app)=><a role="cell" href={`/apps/${app.slug}/`} key={app.slug}>/apps/{app.slug}/</a>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Catalog category</span>{comparedApps.map((app)=><b role="cell" key={app.slug}>{app.category}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Do not assume</span>{comparedApps.map((app)=><p role="cell" key={app.slug}>{comparison.identityNotes[app.slug]}</p>)}</div></div><div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={comparison.directAnswer} /></div>{comparison.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Comparison questions</h2><div className="faq-list faq-list--record">{comparison.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section></div><aside className="article-aside article-aside--resource"><b>IDENTITY CHECK</b>{comparison.checklist.map((item)=><span key={item}>{item}</span>)}<a href="/compare/">All comparisons ↗</a><a href="/apps/">Search app records ↗</a></aside></div></article></main><Footer/></>;
+  const schema = { "@context": "https://schema.org", "@graph": [organizationNode, { "@type": "WebPage", "@id": `${articleUrl}#webpage`, url: articleUrl, name: comparison.title, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "Article", "@id": `${articleUrl}#article`, mainEntityOfPage: { "@id": `${articleUrl}#webpage` }, headline: comparison.title, description: comparison.summary, url: articleUrl, datePublished: comparison.datePublished ?? BASE_REVIEW_DATE, dateModified: comparison.dateModified ?? comparison.datePublished ?? BASE_REVIEW_DATE, image: absoluteUrl(comparison.image ?? "/yono-playstore-logo.png"), author: { "@id": organizationId }, publisher: { "@id": organizationId }, isPartOf: { "@id": websiteId }, inLanguage: "en-IN" }, { "@type": "FAQPage", "@id": `${articleUrl}#faq`, mainEntity: comparison.faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:mdToPlainText(answer)}})) }] };
+  return <><JsonLd data={schema}/><Header/><main><Breadcrumb items={[["Guides & Comparisons","/guides/"],["App Comparisons","/compare/"],[comparison.title,`/compare/${comparison.slug}/`]]}/><article className="article article--resource shell"><header><span className="section-index">{comparison.code}</span><p className="eyebrow">{comparison.eyebrow}</p><h1>{comparison.title}</h1><p>{comparison.summary}</p><div><span>{comparison.read} read</span><span>{comparedApps.length} exact records</span><span>Reviewed 12 Aug 2026</span></div></header>{comparison.image && <div className="article-featured-image"><img src={comparison.image} alt={comparison.imageAlt || comparison.title} width="1200" height="675" loading="lazy" /></div>}<div className="comparison-records">{comparedApps.map((app)=><a href={`/apps/${app.slug}/`} key={app.slug}><AppIcon app={app}/><span><small>{app.category} record</small><b>{app.name}</b><p>{comparison.identityNotes[app.slug]}</p></span><i>Open record ↗</i></a>)}</div><div className="comparison-matrix" role="table" aria-label={`${comparison.title} identity comparison`}><div className="comparison-matrix-row comparison-matrix-head" role="row"><span role="columnheader">Check</span>{comparedApps.map((app)=><b role="columnheader" key={app.slug}>{app.name}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Canonical record</span>{comparedApps.map((app)=><a role="cell" href={`/apps/${app.slug}/`} key={app.slug}>/apps/{app.slug}/</a>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Catalog category</span>{comparedApps.map((app)=><b role="cell" key={app.slug}>{app.category}</b>)}</div><div className="comparison-matrix-row" role="row"><span role="cell">Do not assume</span>{comparedApps.map((app)=><p role="cell" key={app.slug}>{comparison.identityNotes[app.slug]}</p>)}</div></div><div className="article-layout"><div className="article-body"><div className="article-direct"><span>DIRECT ANSWER</span><Prose text={comparison.directAnswer} /></div>{comparison.sections.map((section,index)=><section className="editorial-section" key={section.heading}><span>0{index+1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph)=><Prose text={paragraph} key={paragraph} />)}{section.bullets&&<ul className="content-list content-list--article">{section.bullets.map((item)=><li key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}</ul>}</section>)}<section className="editorial-section" id="faq"><span>FAQ</span><h2>Comparison questions</h2><div className="faq-list faq-list--record">{comparison.faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary>{question}<i>+</i></summary><Prose text={answer} /></details>)}</div></section></div><aside className="article-aside article-aside--resource"><b>IDENTITY CHECK</b>{comparison.checklist.map((item)=><span key={item} dangerouslySetInnerHTML={{__html: mdInlineToHtml(item)}} />)}<a href="/compare/">All comparisons ↗</a><a href="/apps/">Search app records ↗</a></aside></div></article></main><Footer/></>;
 }
 
 function CollectionsPage() {
@@ -701,7 +721,25 @@ const infoPages: Record<string,{code:string;eyebrow:string;title:string;intro:st
 
 function InfoPage({ type }: { type: string }) {
   const page = infoPages[type] || infoPages.about;
-  return <><Header /><main><Breadcrumb items={[[page.title,`/${type}/`]]} /><PageHero code={page.code} eyebrow={page.eyebrow} title={page.title} copy={page.intro} /><section className="info-body shell"><div className="info-rail"><span>DOCUMENT INDEX</span><a href="#content">Overview</a><a href="/methodology/">Methodology</a><a href="/corrections-policy/">Corrections</a></div><article id="content">{page.sections.map(([title,copy],i)=><section key={title}><span>0{i+1}</span><div><h2>{title}</h2><p>{copy}</p></div></section>)}</article></section></main><Footer /></>;
+  const pageUrl = absoluteUrl(`/${type}/`);
+  const infoPageSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      organizationNode,
+      {
+        "@type": type === "about" ? "AboutPage" : "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: page.title,
+        description: page.intro,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": organizationId },
+        ...(type === "about" ? { mainEntity: { "@id": organizationId } } : {}),
+        inLanguage: "en-IN",
+      },
+    ],
+  };
+  return <><JsonLd data={infoPageSchema} /><Header /><main><Breadcrumb items={[[page.title,`/${type}/`]]} /><PageHero code={page.code} eyebrow={page.eyebrow} title={page.title} copy={page.intro} /><section className="info-body shell"><div className="info-rail"><span>DOCUMENT INDEX</span><a href="#content">Overview</a><a href="/methodology/">Methodology</a><a href="/corrections-policy/">Corrections</a></div><article id="content">{page.sections.map(([title,copy],i)=><section key={title}><span>0{i+1}</span><div><h2>{title}</h2><p>{copy}</p></div></section>)}</article></section></main><Footer /></>;
 }
 
 function NotFoundPage() {
