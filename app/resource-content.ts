@@ -199,6 +199,52 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
       ["Can I remove a permission later?", "Android settings allow many permissions to be reviewed and revoked. Some features may stop working, which helps reveal whether the access was actually required."],
     ],
   },
+  "123-rummy-launch": {
+    slug: "123-rummy-launch",
+    code: "NEW / 05",
+    eyebrow: "Pre-launch record",
+    title: "123 Rummy: Launch Date and What to Check First",
+    summary: "123 Rummy is scheduled to launch 16 November 2026 at 8:00 AM IST. No download link, welcome bonus or promo code has been confirmed yet — this record will be updated once it is.",
+    directAnswer: "123 Rummy is scheduled to launch on 16 November 2026 at 8:00 AM IST, as a new real-money rummy app in the same naming family tracked across this catalog. No download link, welcome bonus or promo code has been published yet. This record will be reviewed and updated once the app is live.",
+    read: "3 min",
+    sections: [
+      {
+        heading: "What's actually confirmed right now",
+        paragraphs: [
+          "Only one fact is confirmed at the time of writing: the scheduled launch date and time, 16 November 2026 at 8:00 AM IST. No download source, welcome bonus figure or promo code has been announced. Treat any such claim circulating before launch as unverified.",
+        ],
+      },
+      {
+        heading: "What to check once 123 Rummy is live",
+        paragraphs: [
+          "Once a download link appears, apply the same checks this catalog uses for every other record before installing or registering.",
+        ],
+        bullets: [
+          "Confirm the download domain and where it actually leads after any redirect",
+          "Check the Android package identity and signer, and compare them again on future updates",
+          "Read the app's own stated terms for any welcome bonus before relying on a figure seen elsewhere",
+          "Verify account and OTP requests go to a service whose privacy terms you can actually read",
+        ],
+      },
+      {
+        heading: "Why this record exists before the app has launched",
+        paragraphs: [
+          "This catalog documents app identities as they become relevant, including the short pre-launch window when searches for a name begin before any official source exists yet. Publishing a record this early makes one thing easier to state plainly: nothing is confirmed yet, and any pre-launch APK, bonus code or download link claiming to be 123 Rummy should be treated as unverified until this record is updated with a real source to check it against.",
+        ],
+      },
+    ],
+    checklist: ["Launch date confirmed", "Download source not yet published", "Welcome bonus not yet announced", "Promo code not yet announced"],
+    faqs: [
+      ["When does 123 Rummy launch?", "123 Rummy is scheduled to launch on 16 November 2026 at 8:00 AM IST. This record will be updated with a verified download link once it goes live."],
+      ["Is there a 123 Rummy welcome bonus yet?", "No. No bonus figure or promo code has been announced. Any such claim circulating before launch is unverified."],
+      ["Where will the 123 Rummy download link appear?", "Once a source is published and can be verified, it will be added to this record along with the usual domain and package checks."],
+      ["Does Yono Play Store operate 123 Rummy?", "No. Yono Play Store is an independent catalog record and does not host, operate or control the external destination this or any other record links to."],
+    ],
+    datePublished: "2026-11-12",
+    dateModified: "2026-11-12",
+    seoTitle: "123 Rummy Launch: Date, Status and What to Verify First",
+    seoDescription: "123 Rummy launches 16 November 2026, 8:00 AM IST. No download link, bonus or promo code confirmed yet -- what's known so far and what to check once it's live.",
+  },
 };
 
 export const guideArticles: Record<string, EditorialResource> = { ...handAuthoredGuideArticles, ...generatedGuideArticles };

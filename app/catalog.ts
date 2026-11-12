@@ -213,6 +213,13 @@ const handAuthoredGuides = [
     summary: "Learn what common permissions do and which unexpected requests deserve a closer look.",
     read: "7 min",
   },
+  {
+    slug: "123-rummy-launch",
+    number: "05",
+    title: "123 Rummy: Launch Date and What to Check First",
+    summary: "123 Rummy is scheduled to launch 16 November 2026. What's confirmed so far and what to verify once it's live.",
+    read: "3 min",
+  },
 ];
 
 export const guides = [...handAuthoredGuides, ...generatedGuideIndexEntries];
