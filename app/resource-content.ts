@@ -202,48 +202,59 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
   "123-rummy-launch": {
     slug: "123-rummy-launch",
     code: "NEW / 05",
-    eyebrow: "Pre-launch record",
-    title: "123 Rummy: Launch Date and What to Check First",
-    summary: "123 Rummy is scheduled to launch 16 November 2026 at 8:00 AM IST. No download link, welcome bonus or promo code has been confirmed yet — this record will be updated once it is.",
-    directAnswer: "123 Rummy is scheduled to launch on 16 November 2026 at 8:00 AM IST, as a new real-money rummy app in the same naming family tracked across this catalog. No download link, welcome bonus or promo code has been published yet. This record will be reviewed and updated once the app is live.",
-    read: "3 min",
+    eyebrow: "Launch confirmed",
+    title: "123 Rummy: Now Live and What to Check Before You Install",
+    summary: "123 Rummy launched on 16 November 2026 at 8:00 AM IST. A download link is now live through a referral destination; no welcome bonus or promo code has been confirmed by any official source. This record has been reviewed and updated to reflect the confirmed launch.",
+    directAnswer: "123 Rummy launched on 16 November 2026 at 8:00 AM IST. A download link is now live through a referral destination; no welcome bonus figure or promo code has been confirmed by any official source. 123 Rummy is a real-money rummy app, intended for adults aged 18+ only where lawful. This record has been reviewed to reflect the confirmed launch and will be updated again if a bonus or promo code is announced.",
+    read: "4 min",
     sections: [
       {
-        heading: "What's actually confirmed right now",
+        heading: "123 Rummy is now live",
         paragraphs: [
-          "Only one fact is confirmed at the time of writing: the scheduled launch date and time, 16 November 2026 at 8:00 AM IST. No download source, welcome bonus figure or promo code has been announced. Treat any such claim circulating before launch as unverified.",
+          "123 Rummy launched on 16 November 2026 at 8:00 AM IST, as scheduled. A download link is now available through a referral destination: [123rummy2.com](https://www.123rummy2.com/?code=HT9PS5WTMED&t=1794797556).",
+          "No welcome bonus figure or promo code has been confirmed by an official source as of this review. Treat any such claim seen elsewhere as unverified until it is published here with a source that can be checked.",
         ],
       },
       {
-        heading: "What to check once 123 Rummy is live",
+        heading: "Before you install or register",
         paragraphs: [
-          "Once a download link appears, apply the same checks this catalog uses for every other record before installing or registering.",
+          "Apply the same checks this catalog uses for every other record before installing an APK or registering with real money.",
         ],
         bullets: [
           "Confirm the download domain and where it actually leads after any redirect",
           "Check the Android package identity and signer, and compare them again on future updates",
           "Read the app's own stated terms for any welcome bonus before relying on a figure seen elsewhere",
           "Verify account and OTP requests go to a service whose privacy terms you can actually read",
+          "Treat the link above as a referral link — see the disclosure below before registering",
         ],
       },
       {
-        heading: "Why this record exists before the app has launched",
+        heading: "Age, legal status and this link",
         paragraphs: [
-          "This catalog documents app identities as they become relevant, including the short pre-launch window when searches for a name begin before any official source exists yet. Publishing a record this early makes one thing easier to state plainly: nothing is confirmed yet, and any pre-launch APK, bonus code or download link claiming to be 123 Rummy should be treated as unverified until this record is updated with a real source to check it against.",
+          "123 Rummy is a real-money rummy app. It is intended for adults aged 18+ only where lawful. Rules on online real-money games differ across India and have changed recently, including under the Promotion and Regulation of Online Gaming Act, 2025 and state laws; listing a launch here does not mean the app is lawful in your location. Check current official guidance before registering or paying.",
+          "The download link above is a referral link, and Yono Play Store may receive a benefit if a visitor registers through it. See the [affiliate disclosure](/affiliate-disclosure/) page for the full policy, and the [responsible gaming](/responsible-gaming/) page for limits and warning signs before you play.",
+          "If a transfer or withdrawal through this or any other app appears deceptive or unauthorized, preserve the URL, messages and transaction details, then contact your bank and report it at cybercrime.gov.in or by calling 1930.",
+        ],
+      },
+      {
+        heading: "Why this record stays open after launch",
+        paragraphs: [
+          "This catalog documents app identities as they become relevant, including the pre-launch window before an official source exists. Now that 123 Rummy has launched, this record has been reviewed and updated with the confirmed launch status and download destination.",
+          "Two facts remain unconfirmed: a welcome bonus figure and a promo code. This record will be reviewed again if either is published with a source that can be checked. Any claim about a bonus or code that cannot be matched to an official source should still be treated as unverified.",
         ],
       },
     ],
-    checklist: ["Launch date confirmed", "Download source not yet published", "Welcome bonus not yet announced", "Promo code not yet announced"],
+    checklist: ["Launch date confirmed", "Download link now live", "Welcome bonus not yet announced", "Promo code not yet announced", "18+ and legal-status note reviewed"],
     faqs: [
-      ["When does 123 Rummy launch?", "123 Rummy is scheduled to launch on 16 November 2026 at 8:00 AM IST. This record will be updated with a verified download link once it goes live."],
-      ["Is there a 123 Rummy welcome bonus yet?", "No. No bonus figure or promo code has been announced. Any such claim circulating before launch is unverified."],
-      ["Where will the 123 Rummy download link appear?", "Once a source is published and can be verified, it will be added to this record along with the usual domain and package checks."],
-      ["Does Yono Play Store operate 123 Rummy?", "No. Yono Play Store is an independent catalog record and does not host, operate or control the external destination this or any other record links to."],
+      ["Is 123 Rummy live yet?", "Yes. 123 Rummy launched on 16 November 2026 at 8:00 AM IST, and a download link is now available through a referral destination."],
+      ["Is there a 123 Rummy welcome bonus?", "No bonus figure or promo code has been confirmed by an official source as of this review. Any such claim seen elsewhere is unverified until it is published here with a source that can be checked."],
+      ["Where can I download 123 Rummy?", "A referral link to 123rummy2.com is included in this record. Confirm the domain and where it leads after any redirect, and check the Android package identity and signer before installing."],
+      ["Does Yono Play Store operate 123 Rummy?", "No. Yono Play Store is an independent catalog record and does not host, operate or control the external destination this or any other record links to. The download link above is a referral link; see the affiliate disclosure page for the full policy."],
     ],
     datePublished: "2026-11-12",
-    dateModified: "2026-11-12",
-    seoTitle: "123 Rummy Launch: Date, Status and What to Verify First",
-    seoDescription: "123 Rummy launches 16 November 2026, 8:00 AM IST. No download link, bonus or promo code confirmed yet -- what's known so far and what to check once it's live.",
+    dateModified: "2026-11-17",
+    seoTitle: "123 Rummy Launch: Now Live, Download Link and What to Check",
+    seoDescription: "123 Rummy launched 16 Nov 2026, 8:00 AM IST. A referral download link is live; no bonus or promo code confirmed yet. 18+ only — what to check before installing.",
   },
 };
 

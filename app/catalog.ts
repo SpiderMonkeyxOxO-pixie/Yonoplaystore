@@ -217,7 +217,7 @@ const handAuthoredGuides = [
     slug: "123-rummy-launch",
     number: "05",
     title: "123 Rummy: Launch Date and What to Check First",
-    summary: "123 Rummy is scheduled to launch 16 November 2026. What's confirmed so far and what to verify once it's live.",
+    summary: "123 Rummy launched 16 November 2026. A download link is now live; no welcome bonus or promo code has been confirmed yet.",
     read: "3 min",
   },
 ];
