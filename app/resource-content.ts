@@ -332,6 +332,76 @@ const handAuthoredComparisonArticles: ComparisonResource[] = [
     checklist: ["Prefix or suffix", "Complete 777 name", "Final source domain", "Package and signer", "Operator identity", "Payment recipient"],
     faqs: [["Are all 777 apps connected?", "No. The shared number alone does not establish an operator, package, account system or business relationship."], ["Is YN short for Yono?", "Do not assume an expansion. Use the publisher's own consistent documentation and technical identity."], ["Which URL should target “Yono 777”?", "The individual Yono 777 app record targets the entity query; this page targets users explicitly comparing the three names."]],
   },
+  {
+    slug: "567-slots-vs-789-jackpots-vs-bet-213",
+    code: "CMP / 04",
+    eyebrow: "Numbered slots comparison",
+    title: "567 Slots vs 789 Jackpots vs Bet 213: Which App Is It?",
+    summary: "Compare three separate slots-style app records that each use a bare number as their name, without treating the shared digit-naming pattern as proof that they share an operator, package or signer.",
+    directAnswer: "567 Slots, 789 Jackpots and Bet 213 are three separate catalog records. Each uses a plain number as its name or a core part of it, and each individual record already notes that the digits alone do not identify one operator. A shared numbering style — or even a shared domain-naming pattern — is a naming motif, not evidence of a shared operator, APK package or signing identity. Match the complete name, source domain, package and signer for the specific app before relying on any of its claims.",
+    read: "7 min",
+    appSlugs: ["567-slots", "789-jackpots", "bet-213"],
+    identityNotes: {
+      "567-slots": "Number sequences like \"567\" are reused across unrelated slot apps; match the complete join567slots.cc source rather than the digits alone.",
+      "789-jackpots": "\"789\" follows the same join-prefixed, .cc-ending domain construction as 567 Slots; verify join789jackpots.cc on its own rather than assuming a shared source family.",
+      "bet-213": "\"213\" is a number, not a version or edition this record can confirm; verify bet213app.com independently rather than treating it as part of a numbered set.",
+    },
+    sections: [
+      {
+        heading: "What the shared number motif does and doesn't tell you",
+        paragraphs: [
+          "567, 789 and 213 are bare numbers used as (or as the core of) each app's name. That is a naming device, the same kind this catalog has already documented across numbered rummy apps like Rummy 91, Rummy 888 and Rummy 77 — a digit sequence that is easy to omit, repeat, transpose or reuse across unrelated apps.",
+          "Two of these three records also share a domain-construction pattern: 567 Slots' source is `join567slots.cc` and 789 Jackpots' source is `join789jackpots.cc` — both a \"join\" call-to-action prefix on an uncommon `.cc` ending. That repeated construction is a naming convention, not a connected-ownership signal. It does not establish that the two sites are run by the same operator, share a package, or honor each other's account or bonus terms. Bet 213's source, `bet213app.com`, does not follow that pattern at all, which only reinforces that the three names and their sources should be treated as unrelated unless shown otherwise.",
+        ],
+      },
+      {
+        heading: "How to verify the correct record",
+        paragraphs: [
+          "Start with the exact full name shown on the page, file or install screen you're looking at, then work down to the technical identifiers. A number match alone is never enough.",
+        ],
+        bullets: [
+          "Match the complete name — \"567 Slots,\" \"789 Jackpots\" or \"Bet 213\" — not just the digits.",
+          "Confirm the final destination domain: `join567slots.cc`, `join789jackpots.cc` or `bet213app.com` respectively, checked at the time of the visit since these addresses can change.",
+          "Compare the installed Android package name and signing identity shown on the device against a reliable earlier reference, and recheck both after any update.",
+          "Open the individual catalog record for the exact app before following any external download link.",
+          "Do not carry a package name, signer or domain detail confirmed for one of the three over to either of the other two.",
+        ],
+      },
+      {
+        heading: "The comparison's actual conclusion",
+        paragraphs: [
+          "567 Slots, 789 Jackpots and Bet 213 are documented here as three separate catalog identities. Nothing in their records establishes a shared operator, shared APK package, shared signer or shared account system — including the two that share a similar domain-naming pattern.",
+          "The responsible way to use this comparison is to pick the one app you actually intend to install or use, then verify its name, source domain, package and signer on its own terms. If any of those details don't line up with what the individual record documents, stop and treat it as a new, unverified source rather than assuming it is one of these three under a different wrapper.",
+        ],
+      },
+    ],
+    checklist: [
+      "Complete name matches (not just the digits)",
+      "Final domain matches the documented source",
+      "Package name and signer confirmed on the device",
+      "Account and support terms name the same operator",
+      "Jackpot, credit or bet claims stay attached to one app",
+      "Payment recipient matches the app you intend to use",
+    ],
+    faqs: [
+      [
+        "Are 567 Slots, 789 Jackpots and Bet 213 made by the same company?",
+        "This comparison does not establish shared ownership. Each is a separate catalog record, and the operator behind each one must be verified independently through its own domain, package and written terms.",
+      ],
+      [
+        "The join567slots.cc and join789jackpots.cc domains look alike — does that mean 567 Slots and 789 Jackpots are related?",
+        "Not on its own. Both use the same construction — a \"join\" call-to-action prefix on an uncommon .cc ending — but a shared domain-naming pattern is not evidence of a shared operator, package or account system. Verify each source independently.",
+      ],
+      [
+        "Can I use one app's bonus or jackpot claim to judge the other two?",
+        "No. Treat every displayed credit, jackpot figure or bet outcome as specific to the one app and source it came from. Read that app's own written terms before relying on a number shown in its interface — it tells you nothing about either of the other two.",
+      ],
+    ],
+    datePublished: "2026-11-18",
+    dateModified: "2026-11-18",
+    seoTitle: "567 Slots vs 789 Jackpots vs Bet 213: Same Numbers, Different Apps",
+    seoDescription: "567 Slots, 789 Jackpots and Bet 213 compared: why number-style naming (and a shared join-/.cc domain pattern) isn't proof of a shared operator, plus the domain, package and signer checks to run before installing.",
+  },
 ];
 
 export const comparisonArticles: ComparisonResource[] = handAuthoredComparisonArticles.map((item) =>
