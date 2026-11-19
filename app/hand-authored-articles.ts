@@ -153,6 +153,106 @@ export const handAuthoredAppArticles: Record<string, AppArticle> = {
     seoDescription: "Win Rummy app record: why its download source is a numbered domain, what the name does and doesn't claim, APK checks, account privacy and payment-term guidance.",
   },
 
+  "yono-rummy": {
+    directAnswer:
+      "Yono Rummy is catalogued here as a rummy and card-game record. Both “Yono” and “Rummy” are generic, widely reused words across unrelated apps, so the name alone does not identify one operator. Its supplied download source is `yonorummy044.com` — a numbered domain, not a plain `yonorummy.com`.",
+    sections: [
+      {
+        heading: "Does the name “Yono Rummy” uniquely identify one app?",
+        paragraphs: [
+          "No. “Yono” and “Rummy” both appear, separately and in combination, across many unrelated apps, websites and files — this catalog alone lists other Yono-prefixed records (Yono 777, Yono Arcade, Yono Slots, Yono Vip, Yono Games) and other Rummy-named records (Win Rummy, Game Rummy, Boss Rummy, Love Rummy, Max Rummy) that do not share an operator with this one.",
+          "Match the complete name together with the icon, the exact current domain and the developer identity before treating any page, file or message as this record. Neither word by itself is evidence of a shared source.",
+        ],
+      },
+      {
+        heading: "Why does the domain say “yonorummy044”, not “yonorummy.com”?",
+        paragraphs: [
+          "Like several other records in this catalog (Win Rummy's `winrummy45.com`, 777 Game's `777game2.com`), Yono Rummy's supplied source is a numbered mirror domain rather than a single fixed address. Operators in this space commonly rotate through a series of numbered domains over time — `yonorummy044.com` today, potentially a different number later.",
+          "The number is part of how the destination is currently reachable; it is not itself evidence about who operates it. Treat each numbered domain as its own destination to check at the time you visit, not as a permanent address to memorise.",
+        ],
+      },
+      {
+        heading: "Yono Rummy APK and signer checks",
+        paragraphs: [
+          "An APK reached through a numbered domain should be checked the same way as any unfamiliar Android file: confirm the final destination after any redirect, then compare the package identity and signing information on every update rather than assuming continuity from the icon or name alone.",
+        ],
+        bullets: [
+          "Confirm the final destination after any redirect, not just the first link clicked",
+          "Compare the Android package name and signer on every update, not only the first install",
+          "Treat a renamed or mirrored installer as a separate, unverified source",
+          "Be cautious if the app asks to disable standard device protections to install",
+        ],
+      },
+      {
+        heading: "Yono Rummy account, OTP and table-rules checks",
+        paragraphs: [
+          "A rummy account typically requires a phone number and OTP at minimum. Find out which organisation actually receives that information and whether its privacy terms offer a working correction or deletion route before registering. Never share an OTP, UPI PIN or device unlock code with anyone claiming to need it for verification.",
+          "Separately, read the written table-entry and bonus rules before adding money. A displayed table balance, bonus credit or promotional reward is not automatically the same as withdrawable cash — the app's own terms, not the display, determine how and when a balance becomes payable, including any minimum, fee or verification step.",
+          "Rules for real-money rummy also vary by Indian state and have changed recently. Listing in this catalog does not establish that paid play is permitted where you live — check current official guidance before participating.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does the name “Yono Rummy” mean this app is tied to one specific publisher?", "No. “Yono” and “Rummy” are both generic, widely reused words, including elsewhere in this same catalog. Match the full name, icon, domain and developer identity together rather than relying on either word alone."],
+      ["Why does the download link say yonorummy044.com instead of yonorummy.com?", "Operators in this space often publish through numbered mirror domains that change over time. The number is part of how the destination is currently reachable; it does not by itself confirm or disprove who operates it."],
+      ["Is a table balance shown in Yono Rummy the same as withdrawable money?", "Not necessarily. A displayed balance, bonus credit or promotional reward is a status, not a guaranteed payout. Read the app's written terms for how it converts to an actual withdrawal, including any minimum, fee or verification step."],
+      ["Is Yono Rummy legal to play for real money in India?", "Rules for real-money rummy vary by Indian state and have changed recently. Listing in this catalog does not establish that paid play is permitted where you live — check current official guidance first."],
+    ],
+    datePublished: "2026-11-19",
+    dateModified: "2026-11-19",
+    seoTitle: "Yono Rummy APK: Domain, Identity and Withdrawal-Term Checks",
+    seoDescription: "Yono Rummy app record: why its download source is a numbered domain, what the generic Yono/Rummy name does and doesn't confirm, APK checks, account privacy and table-rule guidance.",
+  },
+
+  "yono-arcade": {
+    directAnswer:
+      "Yono Arcade is catalogued here as an arcade and multi-game record. Its supplied download source is `yonoofficial1.com` — and the word “official” appearing in a domain name is not, by itself, evidence that Google, a publisher or any authority has verified it as such.",
+    sections: [
+      {
+        heading: "Does “yonoofficial1.com” mean this is an officially verified source?",
+        paragraphs: [
+          "No. A domain is simply a string of characters its registrant chose; including the word “official” in it is a naming decision, not a certification from Google, an app store or any other authority. The same caution applies to the trailing “1” in the domain, which reads as a numbered variant rather than a confirmed version marker.",
+          "Treat the word “official” in a domain the same way you would treat “VIP”, “genuine” or “verified” elsewhere — as marketing language to verify independently, not as a claim this catalog record can confirm on its own.",
+        ],
+      },
+      {
+        heading: "Yono Arcade APK and signer checks",
+        paragraphs: [
+          "Before installing any file reached through this link, apply the same checks you would to any unfamiliar Android app.",
+        ],
+        bullets: [
+          "Confirm the final destination after any redirect, not just the first link clicked",
+          "Compare the Android package name and signer on every update, not only the first install",
+          "Treat a renamed or mirrored installer as a separate, unverified source",
+          "Be cautious if the app asks to disable standard device protections to install",
+        ],
+      },
+      {
+        heading: "Yono Arcade account checks: one login, several games",
+        paragraphs: [
+          "An arcade-style app commonly bundles several separate game modes behind a single account. Before registering, look for a privacy notice that explains whether your phone number and other registration details are shared across every included game or sub-game, which organisation actually controls that data, and whether a working correction or deletion route exists.",
+          "Never share an OTP, UPI PIN or device unlock code with anyone claiming to need it for account or game verification.",
+        ],
+      },
+      {
+        heading: "What this record does and doesn't cover",
+        paragraphs: [
+          "This page documents the Yono Arcade catalog entry — its name, download source and the generic identity and installation checks above. It does not identify who operates the app, confirm any package or version number, document a withdrawal or KYC procedure, or compare Yono Arcade against other apps. Readers who need that level of detail should look for primary, operator-confirmed sources rather than relying on a catalog record for it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Does the word “official” in yonoofficial1.com mean Google or a publisher verified this app?", "No. Including “official” in a domain name is a choice made by whoever registered it, not a certification from Google, an app store or any other authority. Verify the operator independently rather than relying on the domain name."],
+      ["Why does Yono Arcade's download source look different from a plain “yonoarcade.com” address?", "The supplied source, yonoofficial1.com, uses different wording and a numbered suffix rather than the app's plain name. This record cannot confirm why; treat the exact current domain as something to check at the time you visit."],
+      ["If Yono Arcade shares one login across several games, what should I check before registering?", "Look for a privacy notice stating whether your registration details are shared across every included game, which organisation controls that data, and whether a correction or deletion route exists."],
+      ["Does this record confirm who operates Yono Arcade or whether withdrawals work?", "No. This catalog record covers identity and installation checks only. It does not document an operator, a withdrawal or KYC procedure, or a specific package/version number."],
+    ],
+    datePublished: "2026-11-19",
+    dateModified: "2026-11-19",
+    seoTitle: "Yono Arcade APK: Domain-Name Checks and Source Verification",
+    seoDescription: "Yono Arcade app record: why \"official\" in the yonoofficial1.com download source isn't a verification claim, APK checks, and shared-login account privacy guidance.",
+  },
+
   "567-slots": {
     directAnswer:
       "567 Slots is catalogued here as a slots-style gaming record. Number sequences like “567” are reused across unrelated slot apps, so the digits alone do not identify one operator. Its supplied download source is `join567slots.cc` — note the “join” prefix and the `.cc` domain ending, both worth checking rather than assuming.",
