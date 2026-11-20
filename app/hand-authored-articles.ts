@@ -930,6 +930,87 @@ export const handAuthoredAppArticles: Record<string, AppArticle> = {
     seoDescription: "Jaiho Spin app record: why its source is an agent domain, how it differs from the other six Jaiho-named apps, APK and reward-claim checks.",
   },
 
+  "jaiho-777": {
+    directAnswer:
+      "Jaiho 777 is catalogued here as an arcade and multi-game record. It sits at the intersection of two name-families already documented in this catalog: the “777” family (Yono 777, 777 Game, Hindi 777, YN 777) and the “Jaiho” family of seven records (see the [Jaiho apps collection](/collections/jaiho-apps/)). Neither the digits nor the prefix alone identify who operates it. Its supplied download source is `jaiho77790.com` — a numbered mirror domain.",
+    sections: [
+      {
+        heading: "Jaiho 777 and the wider “777” family",
+        paragraphs: [
+          "This catalog separately lists Yono 777, 777 Game, Hindi 777 and YN 777. A shared number does not establish a shared owner, APK, account or wallet between Jaiho 777 and any of them — match the full name and domain, not the digits alone.",
+        ],
+      },
+      {
+        heading: "Jaiho 777 and the rest of the Jaiho family",
+        paragraphs: [
+          "This catalog separately lists Jaiho 91, Jaiho Arcade, Jaiho Rummy, Jaiho Slots, Jaiho Spin and Jaiho Win. A shared “Jaiho” prefix does not establish that Jaiho 777 shares an operator, APK, account or wallet with any of them — the [Jaiho apps collection page](/collections/jaiho-apps/) maps all seven as separate records.",
+        ],
+      },
+      {
+        heading: "Why the domain says “jaiho77790”, not “jaiho777”",
+        paragraphs: [
+          "`jaiho77790.com` adds a number to the plain “jaiho777” name — the same numbered-mirror pattern used by other real-money gaming sources in this catalog. The number does not confirm a version, edition or anything else about the operator; a different number later is not proof the operator changed, and the same number is not proof it didn't. Confirm the final destination after any redirect, not just the first link clicked.",
+        ],
+      },
+      {
+        heading: "Jaiho 777 APK, account and payment checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this link, and recheck both on future updates. Check which organisation ultimately receives any phone number or account details you provide, and read the written terms for how a displayed balance or bonus becomes an actual withdrawal before relying on it.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Jaiho 777 the same as the other Jaiho apps in this catalog?", "No. Seven separate records share the “Jaiho” prefix — see the Jaiho apps collection page for the full mapping. A shared prefix does not establish a common operator, APK or wallet."],
+      ["Is Jaiho 777 related to Yono 777, 777 Game, Hindi 777 or YN 777?", "No. A shared “777” does not establish any connection between these separately operated records."],
+      ["What does the number in jaiho77790.com mean?", "This record documents no confirmed meaning. It functions as a numbered mirror domain, a pattern also used by other real-money sources in this catalog, and can change without notice."],
+      ["Is Jaiho 777 safe?", "No blanket safety claim is made. Safety depends on the current file and the operator behind jaiho77790.com, which this record does not control."],
+    ],
+    datePublished: "2026-11-20",
+    dateModified: "2026-11-20",
+    seoTitle: "Jaiho 777 APK: 777-Family, Jaiho-Family and Domain Checks",
+    seoDescription: "Jaiho 777 app record: how it differs from the 777-named and Jaiho-named apps in this catalog, the jaiho77790.com numbered mirror source, APK and payment checks.",
+  },
+  "jaiho-rummy": {
+    directAnswer:
+      "Jaiho Rummy is catalogued here as a rummy and card-game record. It shares the “Jaiho” prefix with six other separately operated records in this catalog (see the [Jaiho apps collection](/collections/jaiho-apps/)) and the “Rummy” suffix with many other unrelated records. Its supplied download source, `jaihorummyagent.club`, names itself as an agent domain on an uncommon `.club` ending.",
+    sections: [
+      {
+        heading: "Jaiho Rummy and the rest of the Jaiho family",
+        paragraphs: [
+          "This catalog separately lists Jaiho 777, Jaiho 91, Jaiho Arcade, Jaiho Slots, Jaiho Spin and Jaiho Win. A shared “Jaiho” prefix does not establish that Jaiho Rummy shares an operator, APK, account or wallet with any of them — the [Jaiho apps collection page](/collections/jaiho-apps/) maps all seven as separate records.",
+        ],
+      },
+      {
+        heading: "Jaiho Rummy among this catalog's many “Rummy”-named records",
+        paragraphs: [
+          "“Rummy” is one of the most common words in this catalog's app names, covering separately operated records such as Win Rummy, Boss Rummy, INR Rummy, Rummy 91, Rummy 77 and Rummy 888, among others. Sharing that word proves nothing about a common publisher, APK or wallet — Jaiho Rummy should be matched by its full name, icon and domain, not by “Rummy” alone.",
+        ],
+      },
+      {
+        heading: "Why the domain says “agent”, on a .club ending",
+        paragraphs: [
+          "`jaihorummyagent.club` identifies itself as an agent destination directly in the domain name, on a `.club` ending rather than `.com` — the same transparent-intermediary naming pattern already seen in this catalog at `hindi777agent4.com` (Hindi 777) and `jaiho91agents.com` (Jaiho 91). That is a more transparent naming choice than most, but it also means the page is explicitly an intermediary — support and account questions may need to go to whoever actually operates the service behind it, which this record cannot confirm.",
+        ],
+      },
+      {
+        heading: "Jaiho Rummy APK, KYC and withdrawal checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through this agent link, and recheck both on future updates. For a rummy-style account, find out which organisation ultimately receives any phone number, KYC document or account detail you provide, and read the written table-entry and withdrawal rules before relying on a displayed balance or bonus as withdrawable cash.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Jaiho Rummy the same as the other Jaiho apps?", "No. Seven separate records share the “Jaiho” prefix — see the Jaiho apps collection page for the full mapping. A shared prefix does not establish a common operator, APK or wallet."],
+      ["Is Jaiho Rummy related to Win Rummy, Boss Rummy, Rummy 91 or the other “Rummy”-named apps in this catalog?", "No. These are separate catalog records. A shared “Rummy” does not establish a common operator, APK or wallet."],
+      ["What does “agent” in the jaihorummyagent.club domain mean?", "The supplied source identifies itself as an agent destination rather than a primary brand domain, the same pattern used by Hindi 777 and Jaiho 91's sources in this catalog. This record cannot confirm who ultimately operates the service reached through it."],
+      ["Are Jaiho Rummy table balances withdrawable cash?", "Not necessarily. Read the app's own written rules for entry fees, bonuses and withdrawal conditions before adding money or sharing KYC details."],
+    ],
+    datePublished: "2026-11-20",
+    dateModified: "2026-11-20",
+    seoTitle: "Jaiho Rummy APK: Agent Domain and Jaiho-Family Checks",
+    seoDescription: "Jaiho Rummy app record: why its jaihorummyagent.club source is an agent domain, how it differs from the other Jaiho apps and other Rummy-named records, APK and withdrawal checks.",
+  },
+
   "love-rummy": {
     directAnswer:
       "Love Rummy is catalogued here as a rummy and card-game record. The name is a branding choice and does not describe the game format. Its supplied download source is `loverummy88.com`.",
