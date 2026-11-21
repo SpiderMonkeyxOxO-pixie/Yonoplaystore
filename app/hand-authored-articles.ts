@@ -714,6 +714,48 @@ export const handAuthoredAppArticles: Record<string, AppArticle> = {
     seoDescription: "Jaiho 91 app record: how it differs from the other six Jaiho-named apps and from Rummy 91, why its source is an agents domain, APK and payment checks.",
   },
 
+  "jaiho-arcade": {
+    image: "/articles/jaiho-arcade-featured.webp",
+    imageAlt: "Jaiho Arcade APK domain and Jaiho-family identity checks",
+    directAnswer:
+      "Jaiho Arcade is catalogued here as an arcade and multi-game record. It shares the “Jaiho” prefix with six other separately operated records in this catalog (see the [Jaiho apps collection](/collections/jaiho-apps/)). Its supplied download source is `jaihoarcade48.com` — a numbered domain.",
+    sections: [
+      {
+        heading: "Jaiho Arcade and the rest of the Jaiho family",
+        paragraphs: [
+          "This catalog separately lists Jaiho 777, Jaiho 91, Jaiho Rummy, Jaiho Slots, Jaiho Spin and Jaiho Win. A shared “Jaiho” prefix does not establish that Jaiho Arcade shares an operator, APK, account or wallet with any of them — the [Jaiho apps collection page](/collections/jaiho-apps/) maps all seven as separate records. If a link or a chat message called an app simply “Jaiho” without the second word, match the full two-word name against the icon and installer before assuming it is this record.",
+        ],
+      },
+      {
+        heading: "What “Arcade” means here: one login, several game modes",
+        paragraphs: [
+          "Unlike the other six Jaiho records, which each cover one game type, “Arcade” in this name signals a bundle of several modes — cards, reels, a wheel — reachable from a single login. That changes what needs checking: rules, bonuses and withdrawal terms can differ by mode even though the account and package are shared.",
+        ],
+      },
+      {
+        heading: "Jaiho Arcade APK and domain checks",
+        paragraphs: [
+          "Compare the Android package identity and signer for the installer reached through `jaihoarcade48.com`, and recheck both on future updates — an update that adds new game modes is a reasonable time to review permissions again. Treat a different number (`jaihoarcade47`, `jaihoarcade49`) as a separate, unverified destination until the same operator details appear there.",
+        ],
+      },
+      {
+        heading: "Shared login, mode-specific balances",
+        paragraphs: [
+          "Find out whether your account, device and KYC data are used only inside Jaiho Arcade or shared with other Jaiho-branded products, and whether each mode keeps its own bonus and withdrawable balance or pools them together. Read the specific mode's entry fee, bonus and payout terms before adding money — a reward shown at the app level is not proof it applies, or applies equally, in every mode.",
+        ],
+      },
+    ],
+    faqs: [
+      ["Is Jaiho Arcade the same app as Jaiho 777, Jaiho Win or the other Jaiho records?", "No. Seven separate records share the “Jaiho” prefix. A shared name element does not establish a common operator, APK, account or wallet — see the Jaiho apps collection page."],
+      ["Does one Jaiho Arcade login work for every game mode inside the app?", "Usually one login reaches every mode, but balances, bonuses and payout rules can differ by mode. Read each mode's own terms rather than assuming the app-level reward applies everywhere."],
+      ["What does the “48” in jaihoarcade48.com mean?", "This record documents no confirmed meaning. It is part of the current domain, a pattern similar to other numbered mirror domains in this catalog (for example jaihoslots24.com, jaiho77790.com)."],
+    ],
+    datePublished: "2026-11-21",
+    dateModified: "2026-11-21",
+    seoTitle: "Jaiho Arcade APK: Domain Checks and Jaiho-Family Identity Guide",
+    seoDescription: "Jaiho Arcade app record: how it differs from the other six Jaiho-named apps, the jaihoarcade48.com download source, shared-login/multi-mode checks and APK guidance.",
+  },
+
   "neta-vip": {
     directAnswer:
       "Neta VIP is catalogued here as a general gaming-app record. “Neta” is a Hindi word for a political leader; its use here is a name choice and does not indicate any political affiliation, government link or endorsement. Its supplied download source is `neta7.vip`.",
