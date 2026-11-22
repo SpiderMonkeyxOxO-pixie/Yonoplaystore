@@ -220,6 +220,13 @@ const handAuthoredGuides = [
     summary: "123 Rummy launched 16 November 2026. A download link is now live; no welcome bonus or promo code has been confirmed yet.",
     read: "3 min",
   },
+  {
+    slug: "rush-gala-launch",
+    number: "06",
+    title: "Rush Gala: Launch Date and What to Check First",
+    summary: "Rush Gala is scheduled to launch 23 November 2026. What's confirmed so far and what to verify once it's live.",
+    read: "3 min",
+  },
 ];
 
 export const guides = [...handAuthoredGuides, ...generatedGuideIndexEntries];
