@@ -224,7 +224,7 @@ const handAuthoredGuides = [
     slug: "rush-gala-launch",
     number: "06",
     title: "Rush Gala: Launch Date and What to Check First",
-    summary: "Rush Gala is scheduled to launch 23 November 2026. What's confirmed so far and what to verify once it's live.",
+    summary: "Rush Gala launched 23 November 2026. A download link is now live; bonus, deposit and withdrawal figures are stated by the operator's own listing.",
     read: "3 min",
   },
 ];
