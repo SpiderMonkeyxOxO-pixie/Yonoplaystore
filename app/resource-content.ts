@@ -199,6 +199,71 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
       ["Can I remove a permission later?", "Android settings allow many permissions to be reviewed and revoked. Some features may stop working, which helps reveal whether the access was actually required."],
     ],
   },
+  "how-to-check-apk-signer": {
+    slug: "how-to-check-apk-signer",
+    code: "APK / 05",
+    image: "/articles/how-to-check-apk-signer-featured.webp",
+    imageAlt: "Comparing an Android app's package name and signing certificate between two files",
+    eyebrow: "Identity verification",
+    title: "How to Check an APK's Package Name and Signer",
+    summary: "Learn what a package name and signing certificate actually prove, and practical ways to compare them before trusting an install or update.",
+    directAnswer: "A package name is Android's internal identity string for an app (for example, a reversed-domain-style label), and a signing certificate is the cryptographic signature every version of that app must carry to be treated as an update rather than a different app. Together they tell you whether a file is actually a continuation of the app you trust — a familiar name, icon or splash screen does not. If either one changes without explanation, Android itself will often refuse to install the new file over the old one, or will warn you; that refusal is a signal worth stopping for, not a bug to work around.",
+    read: "6 min",
+    sections: [
+      {
+        heading: "Two identities, not one",
+        paragraphs: [
+          "An app you see on a page has at least two names: the display name you read, and the package name Android uses internally to track exactly one app across every version it ever installs. Two apps can share a display name, icon and even marketing copy while using two different package names — which, to Android, makes them two unrelated apps that happen to look alike.",
+          "The signing certificate is separate again. It is a cryptographic signature the app's publisher attaches to every build. Android checks that an update carries the same signing certificate as the version already installed. A new file with a different signer is not treated as an update — it is a different, unrelated package as far as the device is concerned, even if the filename, icon and version number all look identical.",
+        ],
+      },
+      {
+        heading: "What changes should make you stop",
+        paragraphs: [
+          "You do not need specialized tools to notice the warning signs. Android's own installer behavior does most of the work if you pay attention to what it tells you.",
+        ],
+        bullets: [
+          "An update fails to install over the existing app with a signature- or package-conflict message — do not uninstall the old app to force the new one through without first re-verifying the source.",
+          "The app's package name, where visible, does not match what you recorded the first time you installed it.",
+          "A second copy of the \"same\" app is willing to install alongside the first instead of updating it — that is Android telling you it sees two different packages.",
+          "A source that previously delivered consistent updates suddenly offers a file that triggers either of the above.",
+        ],
+      },
+      {
+        heading: "Practical ways to compare them",
+        paragraphs: [
+          "The exact menu names for viewing an installed app's package name vary by Android version and device manufacturer, so this guide describes the method rather than a fixed tap-by-tap path. Most devices expose some form of \"App info\" or \"App details\" screen reachable by long-pressing the app icon or through Settings' app list; package identity is sometimes shown directly there, and sometimes only indirectly through a store link or an \"Advanced\" section.",
+          "For a precise, repeatable check — particularly before trusting an update that arrived through a redirect, message or mirror rather than the original source — a desktop Android developer toolchain can read a package's declared name and certificate fingerprint directly from the file, without installing it first. That is a more exact method than comparing on-screen labels, but it is an optional, technical step; most readers can rely on the behavioral signals in the section above.",
+          "Whichever method you use, the goal is the same: write down the package name and a certificate fingerprint (or at minimum, note the signer behavior) the first time you install an app from a given source, and compare again before trusting a later update from anywhere other than the exact same source.",
+        ],
+      },
+      {
+        heading: "Why this matters more than it looks",
+        paragraphs: [
+          "A changed package name or signer does not automatically mean an app is fraudulent — a publisher can legitimately rebuild under a new identity. But it does mean the trust you built with the earlier version does not carry over automatically. Treat the new file as a new, unverified source and re-run the full check described in [How to Check an APK Download Source](/apk-guides/how-to-check-apk-source/) rather than assuming continuity.",
+          "This check is one part of a larger picture. Read [What Is an APK?](/apk-guides/what-is-an-apk/) for the file format itself, [How to Install an APK Carefully](/apk-guides/how-to-install-apk/) for the installation flow this fits into, and [Android App Permissions Explained](/apk-guides/android-app-permissions/) for what to review after the signer check passes.",
+        ],
+      },
+    ],
+    checklist: [
+      "Package name recorded at first install",
+      "Signing certificate behavior noted (update accepted vs. rejected)",
+      "Installer conflict or warning message not bypassed",
+      "Second \"copy\" of the app treated as a new source, not an update",
+      "Mismatch traced back to How to Check an APK Download Source",
+    ],
+    faqs: [
+      ["Is a package name the same as the app name?", "No. The app name is the label you see; the package name is Android's internal identifier for exactly one app across all its versions. Two apps can share a display name while using different package names."],
+      ["What happens if an update has a different signer than the installed app?", "Android does not treat it as an update. It is handled as a separate, unrelated package, and the device may refuse the install or require the original app to be removed first — a signal worth investigating, not bypassing."],
+      ["Do I need special software to check a package name or signer?", "Not always. Android's own installer behavior — accepting or rejecting an update, or allowing a second copy to install — already tells you a great deal. A desktop developer toolchain gives a more exact, optional check for cases that need it."],
+      ["Does a matching package name prove an APK is official?", "No, on its own. Match it together with the signer, the source domain and the publisher's own documentation, as described in How to Check an APK Download Source. No single identifier is sufficient alone."],
+      ["Can a legitimate publisher change their signer?", "Yes, which is why a changed signer is a reason to re-verify rather than an automatic red flag. Treat the new file as a new source and recheck it, rather than assuming either fraud or continued legitimacy."],
+    ],
+    datePublished: "2026-11-24",
+    dateModified: "2026-11-24",
+    seoTitle: "How to Check an APK's Package Name and Signer",
+    seoDescription: "Learn what an APK's package name and signing certificate actually prove, and practical ways to compare them before trusting an install or update.",
+  },
   "123-rummy-launch": {
     slug: "123-rummy-launch",
     code: "NEW / 05",
