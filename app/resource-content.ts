@@ -264,6 +264,76 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
     seoTitle: "How to Check an APK's Package Name and Signer",
     seoDescription: "Learn what an APK's package name and signing certificate actually prove, and practical ways to compare them before trusting an install or update.",
   },
+  "android-developer-verification": {
+    slug: "android-developer-verification",
+    code: "APK / 06",
+    image: "/articles/android-developer-verification-featured.webp",
+    imageAlt: "Android phone showing a developer-verification style confirmation screen before sideloading an app",
+    eyebrow: "Platform policy update",
+    title: "Android Developer Verification: What It Means for Sideloaded APKs",
+    summary: "Google's new developer-verification system is rolling out country by country, with a slower \"advanced flow\" for sideloaded apps whose developer hasn't registered. Here's what's actually live right now, what isn't, and what it means for APKs distributed the way the apps in this catalog are.",
+    directAnswer: "Android developer verification is a Google requirement that app developers register and verify their real identity before their apps can be installed on certified Android devices — regardless of download source. It went into effect on 30 September 2026, but only in Brazil, Indonesia, Singapore and Thailand so far, covering installs from a specific list of app stores. It has not reached India or the US yet. A global rollout for all certified Android devices is planned for 2027. Sideloading an app from a developer who hasn't registered isn't blocked; it goes through a slower \"advanced flow\" — Developer Options, a confirmation step, a reboot and a 24-hour wait — that Google describes as designed to interrupt scam-driven, coerced installs.",
+    read: "6 min",
+    sections: [
+      {
+        heading: "What's actually changing, and what isn't",
+        paragraphs: [
+          "Google has built three separate paths for getting an app onto a certified Android device. Full distribution is for organizations and professional developers: they verify their identity once, and installing their apps looks exactly like it does today. Limited distribution is aimed at students and hobbyists — no ID required, but the app can only reach up to 20 devices, and each recipient has to accept an invitation from a developer they already know. The third path, sideloading an unregistered app, is for developers who haven't verified at all. Installing from that path still works. It just runs through the slower \"advanced flow\" described below, instead of the install screen most people are used to.",
+          "None of this is a ban on sideloading, and none of it is live everywhere yet. It's a staged rollout, and most readers of this catalog are not currently inside the enforcement zone.",
+        ],
+      },
+      {
+        heading: "Where this is already in effect, and where it isn't",
+        paragraphs: [
+          "The practical read is simple: this is a real, already-live policy, but it is not yet a live constraint for most of this site's readers. That is likely to change over the next year, which is why it is worth understanding now rather than when it first interrupts an install.",
+        ],
+        bullets: [
+          "Enforcement started 30 September 2026, in Brazil, Indonesia, Singapore and Thailand only.",
+          "In that first phase, Google checks installs coming from Google Play, HONOR App Market, OPPO App Market, Samsung's Galaxy Store, Transsion's Palm Store, vivo's V-Appstore and Xiaomi's GetApps.",
+          "India and the US are not part of this first phase. If you're installing an app from this catalog from either country today, developer verification is not yet something your device is enforcing.",
+          "Google has said the protections will expand to all certified Android devices globally in 2027, and that the verification capability will extend to third-party app stores beyond the current list.",
+        ],
+      },
+      {
+        heading: "The \"advanced flow\": what sideloading an unregistered app will look like",
+        paragraphs: [
+          "When developer verification does apply to an unregistered developer's app, installing it isn't refused outright — it's slowed down deliberately. The person installing has to turn on Developer Options, go through a confirmation step that amounts to stating no one else is directing the install, reboot the device, and then wait 24 hours before the install can proceed, at which point the risk has to be acknowledged again. Leave the setting on afterward and the wait doesn't repeat for later installs; turn it off and it resets. Developers and enthusiasts who use ADB to sideload directly aren't subject to the wait.",
+          "Google's own language for why this exists is worth reading closely: the delay is meant to give \"critical time and space needed to break the cycle of potential coercion\" — in plain terms, to interrupt the exact scenario where someone is on the phone talking a person through installing something, in real time, under pressure.",
+        ],
+      },
+      {
+        heading: "What this means for the apps in this catalog",
+        paragraphs: [
+          "Every app record in this catalog is distributed through a referral link to the developer's own site, not through one of the app stores currently in scope for the first enforcement phase, and none of these developers' verification status is something this catalog can confirm. That combination — install source outside the current checked list, developer registration unconfirmed — is exactly the shape of app that the advanced flow is built around, once enforcement reaches a reader's country and store surface.",
+          "That doesn't change anything you need to do today if you're installing from India or the US. It does mean two things worth keeping in mind: first, if a future install or update suddenly asks you to enable Developer Options, confirm you're not being instructed by anyone, and wait 24 hours, that is very likely this system working as intended — not a sign the file or your device is broken. Second, developer verification checks who the developer is, not whether a specific package name and signing certificate match what you installed before. It sits alongside the checks this catalog already covers in [How to Check an APK Download Source](/apk-guides/how-to-check-apk-source/) and [How to Check an APK's Package Name and Signer](/apk-guides/how-to-check-apk-signer/) — it doesn't replace either one.",
+        ],
+      },
+      {
+        heading: "What to actually do about it now",
+        paragraphs: [
+          "Nothing urgent, if you're outside the four enforced countries — but it's worth building two habits before this reaches you. Keep doing the source and signer checks this catalog already walks through, since developer verification is a new, separate layer on top of those, not a substitute for them. And treat the advanced flow's confirmation step honestly: if you ever reach that screen while someone else is telling you what to tap, stop and call them back later on your own terms, not theirs.",
+        ],
+      },
+    ],
+    checklist: [
+      "Confirmed whether your country is currently enforced (only Brazil, Indonesia, Singapore, Thailand as of this writing — not India, not the US)",
+      "Understood the advanced flow is a 24-hour delay plus confirmation steps, not a block",
+      "Treated an advanced-flow prompt as normal behavior, not a sign of a broken file",
+      "Kept source and package/signer checks running regardless of developer-verification status",
+      "Never completed the \"no one is instructing me\" confirmation while someone was, in fact, instructing you",
+    ],
+    faqs: [
+      ["Is Google banning sideloading?", "No. Google has built a slower, extra-step \"advanced flow\" for sideloading apps from developers who haven't verified their identity, but sideloading itself still works. The change adds friction and an anti-coercion delay, not a block."],
+      ["Does this affect installs in India right now?", "Not yet. As of this writing, enforcement is live only in Brazil, Indonesia, Singapore and Thailand, covering a specific list of app stores. Google has said a global rollout for all certified Android devices is planned for 2027."],
+      ["What is the Android \"advanced flow\"?", "It's the sideloading path for apps from developers who haven't verified with Google. It requires enabling Developer Options, confirming no one else is directing the install, rebooting the device, and waiting 24 hours before the install can proceed."],
+      ["Will this stop me from installing apps like the ones in this catalog?", "Not currently, and not as an outright block even once it does apply — it adds the advanced-flow steps and delay rather than refusing the install."],
+      ["Does developer verification replace checking an APK's package name and signer?", "No. Developer verification checks who registered the app's developer account. It doesn't check whether the specific file you're installing matches the package name and signing certificate of a version you trusted before — that's a separate check, covered in this catalog's signer guide."],
+    ],
+    datePublished: "2026-11-25",
+    dateModified: "2026-11-25",
+    seoTitle: "Android Developer Verification Explained: Sideloading in 2026",
+    seoDescription: "Google's Android developer verification is live in 4 countries (not India yet) with a 2027 global rollout. Here's what the new sideloading 'advanced flow' changes — and what it doesn't.",
+  },
   "123-rummy-launch": {
     slug: "123-rummy-launch",
     code: "NEW / 05",
