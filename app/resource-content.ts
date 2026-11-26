@@ -334,6 +334,77 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
     seoTitle: "Android Developer Verification Explained: Sideloading in 2026",
     seoDescription: "Google's Android developer verification is live in 4 countries (not India yet) with a 2027 global rollout. Here's what the new sideloading 'advanced flow' changes — and what it doesn't.",
   },
+  "how-to-verify-apk-file-integrity": {
+    slug: "how-to-verify-apk-file-integrity",
+    code: "APK / 07",
+    image: "/articles/how-to-verify-apk-file-integrity-featured.webp",
+    imageAlt: "Comparing a SHA-256 checksum string against a published reference value for a downloaded APK file",
+    eyebrow: "Integrity verification",
+    title: "How to Verify an APK File's Integrity Before Installing It (Checksum Checks)",
+    summary: "Learn how a SHA-256 checksum confirms an APK download matches what the source published, and why that checks something different from Android's own signer verification.",
+    directAnswer: "A checksum (most commonly SHA-256) is a short string calculated from the exact bytes of a downloaded file. If a source publishes a checksum for its APK somewhere other than the download button itself, you can calculate the same type of hash on the file you actually received and compare the two strings character for character. A match means your file is byte-identical to whatever the checksum was taken from — it does not, by itself, prove that file is official or safe. A mismatch means the file changed somewhere between the original and your download, through corruption, an incomplete transfer, or substitution, and should not be installed. This is a different check from the one Android performs during installation: Android's own signing verification confirms a file matches its own embedded signature, which tells you whether an update is consistent with a previous install — not whether the content matches what a publisher originally released.",
+    read: "6 min",
+    sections: [
+      {
+        heading: "A checksum answers a different question than a signature",
+        paragraphs: [
+          "Android has checked an APK's integrity against its own signature since signature scheme v2 became the default: during installation, the system hashes the complete package and compares that hash against the signing block embedded in the file itself. Change a single byte after signing, and that comparison fails, so Android refuses the install outright. That check is real and it already runs automatically — but it only confirms a file matches its own embedded signature, not that the file matches whatever the original publisher actually released.",
+          "The gap is in what a signature cannot see. A file can be modified and then signed again with a different certificate entirely, and Android's install-time check will still pass, because it is only verifying internal consistency, not comparing against an external original. A checksum sidesteps that gap: when a source publishes a hash somewhere independent of the download button itself, in release notes, on a separate page, or through another channel, you can calculate the same hash on the file you actually received and compare it before installing, catching a substitution that a signature check alone would wave through.",
+        ],
+      },
+      {
+        heading: "What a checksum can and cannot prove",
+        paragraphs: [
+          "A checksum is a narrow tool. It is worth being precise about what a match or mismatch actually tells you, rather than treating either result as a general verdict on the app.",
+        ],
+        bullets: [
+          "Can confirm the download is complete and uncorrupted — no bytes dropped or altered in transfer.",
+          "Can confirm the file matches a specific prior release you already trusted, if that release's checksum was recorded at the time.",
+          "Can catch substitution on a mirror or secondary host, if the reference checksum came from somewhere other than that mirror.",
+          "Cannot prove the publisher is legitimate or that the app itself is safe to use.",
+          "Proves nothing if the only \"reference\" checksum shown sits on the same page as the download — a substituted file and a substituted checksum can be swapped together.",
+        ],
+      },
+      {
+        heading: "How to check a checksum in practice",
+        paragraphs: [
+          "The method matters more than any specific tool. Desktop operating systems include command-line utilities that compute file hashes, and a number of Android file-manager apps can calculate a hash for a file already on the device — this guide does not endorse a particular one, since the method is the same regardless of which tool performs the calculation.",
+        ],
+        bullets: [
+          "Find a checksum published somewhere independent of the download link itself — release notes, a separate verification page, or another official channel.",
+          "Compute the same type of hash (for example, SHA-256) on the exact, unmodified file you downloaded.",
+          "Compare the full string end to end, not just the first or last few characters — a near-match is not a match.",
+          "Treat any mismatch as a stop signal. Do not install the file, and do not simply re-download from the same source expecting a different result.",
+        ],
+      },
+      {
+        heading: "Where this fits with the rest of this catalog's checks",
+        paragraphs: [
+          "A checksum check is one more layer, not a replacement for the others. Read [What Is an APK?](/apk-guides/what-is-an-apk/) for the file format itself, [How to Check an APK Download Source](/apk-guides/how-to-check-apk-source/) for evaluating where a file actually came from, and [How to Check an APK's Package Name and Signer](/apk-guides/how-to-check-apk-signer/) for the identity check Android performs automatically.",
+          "Many sideloaded files will not have a checksum published anywhere at all. That absence is common, not a red flag by itself — it simply means this particular layer isn't available for that file, which makes the source, package and signer checks carry more of the weight.",
+        ],
+      },
+    ],
+    checklist: [
+      "Found a checksum published somewhere other than the download page",
+      "Computed the matching hash type on the exact, unmodified file",
+      "Compared the full string, not a truncated portion",
+      "Treated a mismatch as a stop signal",
+      "Did not treat a match alone as proof of legitimacy",
+      "Still checked source, package and signer separately",
+    ],
+    faqs: [
+      ["Does a matching checksum mean an APK is official?", "No, not by itself. A match only means the file you downloaded is byte-identical to whatever the published checksum was calculated from. It says nothing about who published that original file or whether the app is safe — confirm the source and publisher separately."],
+      ["Isn't Android's own signature verification already enough?", "It checks a different thing. Android's signature check confirms a file matches its own embedded signature, which is how the system decides whether to treat a new file as a genuine update. A checksum instead compares your downloaded file against a reference the publisher placed somewhere independent of the download itself, which can catch a substitution that a valid-but-different signature would not."],
+      ["Where do I find a checksum to compare against?", "Look somewhere separate from the download button — official release notes, a dedicated verification page, or another channel the publisher controls. A checksum shown only next to the same download link offers little protection, since a substituted file and a substituted checksum can be posted together."],
+      ["What hashing algorithm should I use?", "Use whichever algorithm the source actually published a checksum for — most commonly SHA-256 today. The specific algorithm matters less than making sure you compute the same one the publisher used and compare the complete output string."],
+      ["What should I do if no checksum is available anywhere?", "Treat it as normal rather than suspicious; many sideloaded files are distributed without one. Rely more heavily on the other checks in this catalog — the source, the package name and the signing certificate — since the checksum layer simply isn't available for that file."],
+    ],
+    datePublished: "2026-11-26",
+    dateModified: "2026-11-26",
+    seoTitle: "How to Verify an APK File's Integrity (SHA-256 Checksum)",
+    seoDescription: "Learn how a SHA-256 checksum confirms an APK download matches what the source published, and why that checks something different from Android's own signer verification.",
+  },
   "123-rummy-launch": {
     slug: "123-rummy-launch",
     code: "NEW / 05",
