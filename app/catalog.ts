@@ -248,6 +248,13 @@ const handAuthoredGuides = [
     summary: "Rush Gala launched 23 November 2026. A download link is now live; bonus, deposit and withdrawal figures are stated by the operator's own listing.",
     read: "3 min",
   },
+  {
+    slug: "apk-split-files-explained",
+    number: "10",
+    title: "Why a Single APK File Can Fail to Install (Split APKs Explained)",
+    summary: "Some Android apps need a base APK plus separate split files to install. Here's what that means for a sideloaded download, and why one file can be incomplete.",
+    read: "6 min",
+  },
 ];
 
 export const guides = [...handAuthoredGuides, ...generatedGuideIndexEntries];

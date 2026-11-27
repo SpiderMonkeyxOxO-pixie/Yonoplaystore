@@ -537,6 +537,77 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
     seoTitle: "Rush Gala Launch: Now Live, Download Link, Bonus and Limits",
     seoDescription: "Rush Gala launched 23 Nov 2026, 8:00 AM IST. Referral download link live; bonus Rs.50-500 random, deposit Rs.50-100, withdrawal Rs.100 (operator's listing). 18+ only.",
   },
+  "apk-split-files-explained": {
+    slug: "apk-split-files-explained",
+    code: "APK / 08",
+    image: "/articles/apk-split-files-explained-featured.webp",
+    imageAlt: "A base APK file alongside separate split APK files that together make up one installed app",
+    eyebrow: "Install failures",
+    title: "Why a Single APK File Can Fail to Install (Split APKs Explained)",
+    summary: "Some Android apps need a base APK plus separate split files to install. Here's what that means for a sideloaded download, and why one file can be incomplete.",
+    directAnswer: "Some Android apps aren't built as one self-contained file. When a developer publishes using Android's App Bundle format, the system generates a \"base\" APK plus one or more \"split\" (also called configuration) APKs, separate files that each cover something like a specific processor type, screen density or language. The Play Store is what normally hands a device every split it needs, together, in one step. A sideloaded download does not automatically get that same treatment: Android's own documentation states that a partial install (a base APK without its required splits) \"fail[s] on all Google-certified devices and devices running Android 10 (API level 29) or higher\" when it isn't installed through the Play Store. In practice, a file that looks complete, comes from a source you've already checked, and isn't corrupted in the checksum sense can still fail to install, or install without everything it needs, for a reason that has nothing to do with tampering, a wrong signer or a bad download.",
+    read: "6 min",
+    sections: [
+      {
+        heading: "A single APK file isn't always the whole app",
+        paragraphs: [
+          "Android has supported split APKs for years. Instead of one file containing everything, an app can ship as one base APK plus any number of split APKs, where each split is scoped to a single device trait, such as a processor architecture, a screen density or a language, rather than being a smaller copy of the whole app. A device only needs the splits that actually match it, which is the point of the format: less data moved, for the same end result once everything needed is in place.",
+          "Since 2021, Google has required new, larger apps published to the Play Store to use the Android App Bundle format rather than uploading a single APK directly. A bundle is not itself installable. Google's own developer documentation describes App Bundle publishing as a process that \"defer[s] APK generation and signing to Google Play,\" and states plainly that \"you can't deploy an app bundle directly to a device.\" Play is the piece that turns a bundle into a matched set of APKs for a specific device and delivers that whole set in one step, which is why most people who install exclusively through the Play Store never notice any of this happening at all.",
+        ],
+      },
+      {
+        heading: "What changes when that install happens outside the Play Store",
+        paragraphs: [
+          "The automatic matching described above is a Play Store delivery behavior, not a restriction built into the split-APK format itself. Any distributor can host a base APK and its splits, and in principle anyone could reassemble them correctly. The problem is that nothing outside Play guarantees that reassembly happens, or that every split a given device needs is actually included in what you were given to download.",
+          "Android's own documentation is explicit about what happens when that guarantee is missing. A partial install, meaning a base APK installed without the splits it requires, \"fail[s] on all Google-certified devices and devices running Android 10 (API level 29) or higher\" when the install doesn't go through the Play Store. Android's PackageInstaller component, which handles installs more broadly, enforces a related set of rules for any multi-package install: a base APK must be present, a subset of an app's splits can be installed together as a unit, and every APK in that set has to share the same package name, version code and signing certificate. One thing the documentation does not spell out is exactly what a device shows you when a required split is missing, whether that's a refused install that stops before completion, or an install that completes and only breaks later when the app tries to use the missing piece. Treat that distinction as unknown rather than guessing at it; either behavior is consistent with the documentation above.",
+        ],
+      },
+      {
+        heading: "How to tell this apart from the other install problems this catalog covers",
+        paragraphs: [
+          "This catalog documents three genuinely distinct ways an APK install can go wrong, and conflating them leads to the wrong fix. A checksum mismatch, covered in [How to Verify an APK File's Integrity](/apk-guides/how-to-verify-apk-file-integrity/), is a transfer or substitution problem: the bytes you received don't match the bytes the source actually published, full stop. A signer or package conflict, covered in [How to Check an APK's Package Name and Signer](/apk-guides/how-to-check-apk-signer/), is an identity problem: Android looks at the file and concludes it belongs to a different app than the one already on your device, regardless of how the file arrived.",
+          "A missing split is neither of those. The file you have can be byte-for-byte identical to what the source published, and it can carry a perfectly valid signing certificate that matches every prior version, and it can still fail to install correctly, because it was only ever one piece of an app that was built and published in several pieces. None of the checks in this catalog's other guides are designed to catch that, because there is nothing wrong with the file itself to catch.",
+        ],
+      },
+      {
+        heading: "What to actually do about it",
+        paragraphs: [
+          "There is no tool this guide recommends for reconstructing a missing split from a base APK alone; that isn't something a reader can safely patch over on their own. What's more useful is recognizing the signals that point toward a missing-split problem in the first place, so you know what you're actually dealing with.",
+        ],
+        bullets: [
+          "An install that fails right after the permission prompt, not at it, can point toward a split problem rather than a blocked or rejected package.",
+          "If a source distributes several files for one app version instead of a single APK, treat that as expected rather than suspicious, and make sure you actually obtained every file it listed rather than just the first or largest one.",
+          "An app that installs without error but shows broken screens, missing images, or the wrong language afterward is a plausible sign that a split it needed wasn't included.",
+          "The resolution path runs back through the source itself, not through the file in isolation. Revisit [How to Check an APK Download Source](/apk-guides/how-to-check-apk-source/) and confirm whether that source actually distributes a complete set of files for the version you need.",
+        ],
+      },
+      {
+        heading: "Where this fits with the rest of this catalog's checks",
+        paragraphs: [
+          "A missing-split failure sits alongside, not instead of, the other checks this catalog recommends. Read [What Is an APK?](/apk-guides/what-is-an-apk/) for the file format itself, [How to Check an APK Download Source](/apk-guides/how-to-check-apk-source/) for evaluating whether a source is actually complete, and [How to Check an APK's Package Name and Signer](/apk-guides/how-to-check-apk-signer/) for the separate identity check Android performs automatically. This guide does not replace any of them; it accounts for a failure mode the others were never built to catch.",
+        ],
+      },
+    ],
+    checklist: [
+      "Recognized that some apps install from a base APK plus separate split files, not one file alone",
+      "Understood that this automatic matching is a Play Store delivery behavior, not a guarantee for sideloaded installs",
+      "Did not treat an install failure here as proof of a corrupted or fake file",
+      "Distinguished a missing-split failure from a checksum mismatch and from a signer/package conflict",
+      "Confirmed a source distributing multiple files actually explains why, and provided every file it lists",
+      "Still ran the separate source, signer and checksum checks on whatever files were provided",
+    ],
+    faqs: [
+      ["Why would an APK fail to install even though the installer screen didn't block it?", "Some apps are published as a base APK plus separate split files rather than one self-contained file. If a source only gives you the base APK and leaves out a split your device actually needs, the installer may get past the earlier prompts and still fail, or finish but leave the app missing something, because the file you had was never the whole app to begin with."],
+      ["Does an install failure here mean the file is corrupted or fake?", "Not necessarily. A missing-split failure can happen with a file that is byte-for-byte correct and properly signed. It fails because it's an incomplete piece of a multi-file app, not because anything about that piece is wrong. That's a different problem from a corrupted download or a substituted file, and it calls for a different response."],
+      ["What is a split or configuration APK?", "It's one part of an app that was built using Android's App Bundle format. Instead of one APK containing everything, the app ships as a base APK plus one or more splits, where each split is scoped to something like a specific processor architecture, screen density or language rather than being a smaller copy of the whole app. A device needs the base plus whichever splits actually match it."],
+      ["If a source gives me several files for one app instead of one, is that suspicious?", "Not by itself. A base-plus-splits app genuinely needs more than one file, so a source listing several files for a single version is often just describing the app correctly. What matters is making sure you actually get every file the source lists for that version, then still checking the source, the signer and, if available, a checksum, for each one."],
+      ["Can I just install the base APK and skip the rest?", "That's exactly the setup this guide describes going wrong. Android's own documentation states that a base APK installed without its required splits fails on Google-certified devices and on Android 10 or higher when it isn't installed through the Play Store. Treat a base-only install as incomplete rather than a shortcut."],
+    ],
+    datePublished: "2026-11-27",
+    dateModified: "2026-11-27",
+    seoTitle: "Split APK Files Explained: Why an Install Can Fail",
+    seoDescription: "Some Android apps need a base APK plus separate split files to install. Here's what that means for a sideloaded download, and why one file can be incomplete.",
+  },
 };
 
 export const guideArticles: Record<string, EditorialResource> = { ...handAuthoredGuideArticles, ...generatedGuideArticles };
