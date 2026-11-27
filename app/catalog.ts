@@ -255,6 +255,13 @@ const handAuthoredGuides = [
     summary: "Some Android apps need a base APK plus separate split files to install. Here's what that means for a sideloaded download, and why one file can be incomplete.",
     read: "6 min",
   },
+  {
+    slug: "spin-dost-launch",
+    number: "11",
+    title: "Spin Dost: Launch Date and What to Check First",
+    summary: "Spin Dost is scheduled to launch 1 December 2026. No further details have been confirmed yet.",
+    read: "3 min",
+  },
 ];
 
 export const guides = [...handAuthoredGuides, ...generatedGuideIndexEntries];

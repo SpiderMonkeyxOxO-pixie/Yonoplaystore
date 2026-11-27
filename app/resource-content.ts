@@ -608,6 +608,53 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
     seoTitle: "Split APK Files Explained: Why an Install Can Fail",
     seoDescription: "Some Android apps need a base APK plus separate split files to install. Here's what that means for a sideloaded download, and why one file can be incomplete.",
   },
+  "spin-dost-launch": {
+    slug: "spin-dost-launch",
+    code: "NEW / 11",
+    eyebrow: "Pre-launch record",
+    title: "Spin Dost: Launch Date and What to Check First",
+    summary: "Spin Dost is scheduled to launch 1 December 2026 at 8:00 AM IST. No download link, game type, welcome bonus or promo code has been confirmed yet — this record will be updated once it is.",
+    directAnswer: "Spin Dost is a platform announced to launch on 1 December 2026 at 8:00 AM IST. No further details have been confirmed yet: the game type, a download source, any welcome bonus figure and any promo code are all unconfirmed at the time of writing. This record will be reviewed and updated once the app is live and a verifiable source exists.",
+    read: "3 min",
+    sections: [
+      {
+        heading: "What's actually confirmed right now",
+        paragraphs: [
+          "Only one fact is confirmed at the time of writing: the scheduled launch date and time, 1 December 2026 at 8:00 AM IST. The game type, a download source, a welcome bonus figure and a promo code have not been announced. Treat any such claim circulating before launch as unverified.",
+        ],
+      },
+      {
+        heading: "What to check once Spin Dost is live",
+        paragraphs: [
+          "Once a download link appears, apply the same checks this catalog uses for every other record before installing or registering.",
+        ],
+        bullets: [
+          "Confirm the download domain and where it actually leads after any redirect",
+          "Check the Android package identity and signer, and compare them again on future updates",
+          "Read the app's own stated terms for any welcome bonus before relying on a figure seen elsewhere",
+          "Verify account and OTP requests go to a service whose privacy terms you can actually read",
+        ],
+      },
+      {
+        heading: "Why this record exists before the app has launched",
+        paragraphs: [
+          "This catalog documents app identities as they become relevant, including the short pre-launch window when searches for a name begin before any official source exists yet. Publishing a record this early makes one thing easier to state plainly: nothing beyond the launch date is confirmed yet, and any pre-launch APK, bonus code or download link claiming to be Spin Dost should be treated as unverified until this record is updated with a real source to check it against.",
+        ],
+      },
+    ],
+    checklist: ["Launch date confirmed", "Game type not yet announced", "Download source not yet published", "Welcome bonus not yet announced", "Promo code not yet announced"],
+    faqs: [
+      ["When does Spin Dost launch?", "Spin Dost is scheduled to launch on 1 December 2026 at 8:00 AM IST. This record will be updated with a verified download link once it goes live."],
+      ["What kind of app is Spin Dost?", "Not yet confirmed. No game type, feature list or other specifics have been announced beyond the scheduled launch date."],
+      ["Is there a Spin Dost welcome bonus yet?", "No. No bonus figure or promo code has been announced. Any such claim circulating before launch is unverified."],
+      ["Where will the Spin Dost download link appear?", "Once a source is published and can be verified, it will be added to this record along with the usual domain and package checks."],
+      ["Does Yono Play Store operate Spin Dost?", "No. Yono Play Store is an independent catalog record and does not host, operate or control the external destination this or any other record links to."],
+    ],
+    datePublished: "2026-11-27",
+    dateModified: "2026-11-27",
+    seoTitle: "Spin Dost App: Launch Date and What to Verify First",
+    seoDescription: "Spin Dost launches 1 December 2026, 8:00 AM IST. No game type, download link, bonus or promo code confirmed yet -- the Spin Dost apk and launch date status so far.",
+  },
 };
 
 export const guideArticles: Record<string, EditorialResource> = { ...handAuthoredGuideArticles, ...generatedGuideArticles };
