@@ -262,6 +262,13 @@ const handAuthoredGuides = [
     summary: "Spin Dost is scheduled to launch 1 December 2026. No further details have been confirmed yet.",
     read: "3 min",
   },
+  {
+    slug: "android-minimum-target-api-level-block",
+    number: "12",
+    title: "Android's Minimum Target API Level Block: Why Some Apps Can't Install At All",
+    summary: "Since Android 14, apps built to target SDK 22 or lower can't be installed at all -- a security block aimed at malware that dodges Android's newer permission rules.",
+    read: "6 min",
+  },
 ];
 
 export const guides = [...handAuthoredGuides, ...generatedGuideIndexEntries];

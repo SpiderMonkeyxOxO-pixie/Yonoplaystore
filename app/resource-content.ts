@@ -608,6 +608,77 @@ const handAuthoredGuideArticles: Record<string, EditorialResource> = {
     seoTitle: "Split APK Files Explained: Why an Install Can Fail",
     seoDescription: "Some Android apps need a base APK plus separate split files to install. Here's what that means for a sideloaded download, and why one file can be incomplete.",
   },
+  "android-minimum-target-api-level-block": {
+    slug: "android-minimum-target-api-level-block",
+    code: "APK / 09",
+    image: "/articles/android-minimum-target-api-level-block-featured.webp",
+    imageAlt: "An Android install screen blocking an app whose manifest targets an old, pre-2015 SDK level",
+    eyebrow: "Install-time security block",
+    title: "Android's Minimum Target API Level Block: Why Some Apps Can't Install At All",
+    summary: "Since Android 14, apps built to target SDK 22 or lower can't be installed at all -- a security block aimed at malware that dodges Android's newer permission rules.",
+    directAnswer: "Starting with Android 14, the operating system itself refuses to install any app whose targetSdkVersion is lower than 23 (Android 6.0 Marshmallow). Google's own developer documentation describes the reason as malware: it states that \"malware often targets older API levels in order to bypass security and privacy protections that have been introduced in newer Android versions,\" naming a targetSdkVersion of 22 specifically as a way some malware has avoided the runtime permission model Android introduced in 2015. This is not a Play Protect scan, a signer mismatch, or a developer-verification step -- it's the installer itself refusing the package outright, before anything about the app's behavior is ever evaluated. An app already installed before a device upgrades to Android 14 is not removed, and a developer can still force a test install of an old-targeting APK using an explicit ADB flag, so the block sits at the normal install path rather than the file format itself.",
+    read: "6 min",
+    sections: [
+      {
+        heading: "What Android 14 actually blocks",
+        paragraphs: [
+          "Two different numbers describe an Android app's relationship to API levels, and this block depends on only one of them. minSdkVersion is the oldest Android version an app declares it can run on at all. targetSdkVersion is the API level an app was built and tested against, the value that tells Android which behavior rules to apply. The block covered in this guide looks only at targetSdkVersion, not at the minimum, and not at the actual Android version running on the device.",
+          "The threshold is API level 23, which is Android 6.0 Marshmallow, released in 2015. Starting with Android 14, a device refuses to install any APK whose manifest declares a targetSdkVersion below that number. A Logcat entry from a blocked install reads like this: `INSTALL_FAILED_DEPRECATED_SDK_VERSION: App package must target at least SDK version 23, but found 7`. That \"7\" is a placeholder from one real example, not a fixed number; any value below 23 found in the manifest triggers the same failure. Google's documentation does not specify the exact wording a user sees on-screen when this happens, so this guide does not guess at that dialog text.",
+        ],
+        bullets: [
+          "The check happens at install time, before the app has run even once.",
+          "It is based on a single value read from the app's manifest, not on anything the app does.",
+          "The restriction applies starting with Android 14; earlier Android versions do not enforce it.",
+        ],
+      },
+      {
+        heading: "Why this exists: an old API level as a way around newer permission rules",
+        paragraphs: [
+          "Android 6.0 Marshmallow, API level 23, introduced the runtime permission model still in use today: the one where a dangerous permission like location or contacts has to be requested and granted at the moment it's needed, rather than being granted wholesale at install time the way earlier Android versions handled it. An app that targets an API level below 23 isn't held to that model the same way, because it predates it.",
+          "Google's own security documentation names this directly: \"some malware apps use a targetSdkVersion of 22 to avoid being subjected to the runtime permission model introduced in 2015 by Android 6.0 Marshmallow (API level 23).\" Setting an old target isn't a bug or an oversight in that case, it's a deliberate choice to keep operating under a looser, decade-old permission regime instead of the one every current app is expected to follow. The Android Permissions Explained guide in this catalog covers a different question: once an app installs, what a specific permission request actually does and whether it's an unexpected ask for what the app claims to be. This guide covers something earlier than that -- whether the app can install at all, based on one manifest number, before any permission is requested.",
+        ],
+      },
+      {
+        heading: "What hitting this block does and doesn't prove about one specific app",
+        paragraphs: [
+          "Hitting INSTALL_FAILED_DEPRECATED_SDK_VERSION confirms exactly one fact: the APK's manifest declares a targetSdkVersion below 23. It does not, by itself, confirm that the app is malware. The far more ordinary explanation for an old target is simple neglect -- an app whose developer stopped updating it years ago, or an abandoned side project someone still has an old copy of, built and forgotten long before this rule existed. Google's stated rationale explains why the floor exists across the whole platform; it is not a verdict on the intent behind any one specific file that happens to trip it.",
+          "Treat hitting this block as a floor, not a verdict: it tells you the app can't get past a baseline Android now enforces, not what its developer meant by targeting an old API level. The separate questions of where a file actually came from and what Android identity it installs under are covered in How to Check an APK Download Source and How to Check an APK's Package Name and Signer -- neither of those checks is answered by this one.",
+        ],
+      },
+      {
+        heading: "What already-installed apps and developer testing look like",
+        paragraphs: [
+          "This block only applies to new installs on a device already running Android 14 or later. Google's documentation is explicit that it is not retroactive: \"on devices upgrading to Android 14, any apps with a targetSdkVersion lower than 23 will remain installed.\" An old app you installed before the upgrade stays exactly where it was; the restriction governs what can be installed going forward, not what already exists on the device.",
+          "There is also a documented way around the block, but it exists for developers testing their own software, not for ordinary installs. The command `adb install --bypass-low-target-sdk-block FILENAME.apk` forces an install that would otherwise be refused. If anyone instructs you to run that flag, or any similarly named bypass, against an app you didn't build yourself, treat that as a stop-and-verify signal rather than a routine troubleshooting step -- it means deliberately overriding a check Android put there on purpose.",
+        ],
+      },
+      {
+        heading: "Where this fits with the rest of this catalog's checks",
+        paragraphs: [
+          "This guide is informational about how Android's own targetSdkVersion install restriction works. It does not claim that any specific app elsewhere in this catalog has been tested against it or found to carry an outdated API level. For the underlying file format, read What Is an APK?. For what a permission request means once an app is actually installed, read Android App Permissions Explained. For a separate, unrelated reason a single APK file can fail to install, read Why a Single APK File Can Fail to Install.",
+        ],
+      },
+    ],
+    checklist: [
+      "Understood this is an OS-level install block, not a Play Protect scan, signer mismatch, or developer-verification step",
+      "Confirmed the restriction is based on a single manifest value (targetSdkVersion), not on the app's actual behavior",
+      "Did not treat hitting this block as proof that a specific app is malware",
+      "Still ran separate source, signer and permission checks on anything that does install successfully",
+      "Understood that an app installed before a device's Android 14 upgrade is not retroactively removed",
+      "Recognized the ADB bypass flag as a developer testing tool, and treated any instruction to use it on an unfamiliar app as a stop-and-verify signal",
+    ],
+    faqs: [
+      ["What does INSTALL_FAILED_DEPRECATED_SDK_VERSION mean?", "It means the APK's manifest declares a targetSdkVersion below 23 (Android 6.0 Marshmallow), and the device is running Android 14 or later, which refuses to install any package below that threshold. The number shown after \"but found\" in the Logcat message is whatever value that specific manifest declared, not a fixed figure."],
+      ["Does hitting this block mean the app is malware?", "Not by itself. It confirms only that the app's declared targetSdkVersion is below 23. The far more common explanation is an abandoned or never-updated app rather than deliberate malware, though Google's stated reason for the rule is that some malware has used an old target to avoid newer permission rules."],
+      ["Will this remove an app I already installed?", "No. Google's documentation states that apps already installed before a device upgrades to Android 14 remain installed. The block governs new installs going forward, not existing ones."],
+      ["Is there a way around this block?", "Yes, but it's a developer tool, not a normal user step: the command adb install --bypass-low-target-sdk-block forces the install anyway. Being told to run it against an app you didn't build yourself is a reason to stop and verify what you're installing, not a routine fix."],
+      ["How is this different from the signer and source checks already covered in this catalog?", "This block happens earlier and checks something narrower: a single manifest value, before the app has run or been evaluated in any other way. Source checks (where a file came from) and signer checks (what Android identity it installs under) are separate questions this block doesn't answer, covered in How to Check an APK Download Source and How to Check an APK's Package Name and Signer."],
+    ],
+    datePublished: "2026-11-28",
+    dateModified: "2026-11-28",
+    seoTitle: "Why Android Blocks Installing Apps With an Old SDK Target",
+    seoDescription: "Since Android 14, apps built to target SDK 22 or lower can't be installed at all -- a security block aimed at malware that dodges Android's newer permission rules.",
+  },
   "spin-dost-launch": {
     slug: "spin-dost-launch",
     code: "NEW / 11",
